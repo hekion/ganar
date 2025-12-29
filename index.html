@@ -7,37 +7,38 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --ganar-cyan: #63d6ff; --ganar-black: #0a0f1d; }
-        body { background-color: #f0faff; color: var(--ganar-black); font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; }
+        :root { 
+            --ganar-cyan: #63d6ff; 
+            --ganar-dark-cyan: #4bb8e0; /* 少し濃い水色 */
+            --ganar-black: #0a0f1d; 
+        }
+        /* サイト全体を水色ベースに変更 */
+        body { background-color: var(--ganar-cyan); color: white; font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; }
 
-        /* メニューの出し入れアニメーション */
         #side-nav { transition: transform 0.4s ease-in-out; }
         .nav-open #side-nav { transform: translateX(0); }
         #overlay { transition: opacity 0.3s ease; display: none; }
         .nav-open #overlay { display: block; opacity: 1; }
         
-        /* ロゴをきれいに収めるための設定 */
-        .logo-container img { height: 100%; width: auto; object-fit: contain; }
+        .logo-container img { height: 100%; width: auto; object-fit: contain; filter: brightness(0) invert(1); } /* ロゴを強制的に白く見せる（画像が黒い場合） */
     </style>
 </head>
 <body class="pt-24 md:pt-28">
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-white/95 border-b border-cyan-100 shadow-sm h-24 md:h-28">
-        <div class="max-w-[1600px] mx-auto h-full px-4 flex items-center justify-between">
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 shadow-md h-24 md:h-28">
+        <div class="max-w-[1600px] mx-auto h-full px-4 flex items-center relative">
             
-            <div class="w-10 md:w-20"></div>
-
-            <div class="logo-container h-14 md:h-20 flex-grow flex justify-center">
-                <a href="index.html">
-                    <img src="ganarlogo.png" alt="GANAR">
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-14 md:h-20">
+                <a href="index.html" class="block h-full">
+                    <img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain brightness-0 invert">
                 </a>
             </div>
 
-            <button id="menu-btn" class="w-10 md:w-20 flex justify-end focus:outline-none">
+            <button id="menu-btn" class="ml-auto focus:outline-none z-10">
                 <div class="space-y-1.5">
-                    <span class="block w-8 h-1 bg-black"></span>
-                    <span class="block w-5 h-1 bg-black ml-auto"></span>
-                    <span class="block w-8 h-1 bg-black"></span>
+                    <span class="block w-8 h-1 bg-white"></span>
+                    <span class="block w-5 h-1 bg-white ml-auto"></span>
+                    <span class="block w-8 h-1 bg-white"></span>
                 </div>
             </button>
         </div>
@@ -45,7 +46,7 @@
 
     <div id="overlay" class="fixed inset-0 bg-black/50 z-[55]"></div>
 
-    <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-white z-[60] shadow-2xl translate-x-full">
+    <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white">
         <div class="p-10 flex flex-col h-full">
             <button id="close-btn" class="self-end text-3xl font-light mb-10">✕</button>
             <ul class="space-y-6 text-2xl font-black italic tracking-tighter uppercase">
@@ -61,62 +62,57 @@
     </nav>
 
     <main>
-        <section class="w-full bg-cyan-100">
+        <section class="w-full bg-white">
             <div class="max-w-[1600px] mx-auto">
                 <div class="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden">
                     <img src="main.png" alt="Main Visual" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#f0faff]/50"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#63d6ff]"></div>
                 </div>
             </div>
         </section>
 
-        <section id="news" class="max-w-5xl mx-auto px-6 py-16 md:py-24">
+        <section id="news" class="max-w-5xl mx-auto px-6 py-16 md:py-24 bg-white/10 mt-10 rounded-3xl backdrop-blur-sm">
             <div class="flex items-center gap-4 mb-10">
-                <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase">News</h2>
-                <div class="h-1 flex-grow bg-cyan-200"></div>
+                <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase text-white">News</h2>
+                <div class="h-1 flex-grow bg-white/30"></div>
             </div>
 
             <div class="flex flex-col gap-4">
-                <a href="news-detail-01.html" class="group bg-white border border-cyan-50 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:border-cyan-400 hover:shadow-lg transition-all rounded-xl">
+                <a href="news-detail-01.html" class="group bg-white/90 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
                     <div class="w-20 h-20 md:w-40 md:h-24 bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
                         <img src="news_thumb1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="flex-grow">
-                        <span class="text-[10px] font-bold text-cyan-500 bg-cyan-50 px-2 py-0.5 uppercase">Update</span>
-                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight group-hover:text-cyan-500 transition-colors line-clamp-2">GANAR Official Website リニューアルのお知らせ</h3>
-                        <p class="text-[10px] text-gray-400 mt-1 font-mono">2026.01.01</p>
+                        <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Update</span>
+                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors line-clamp-2">GANAR Official Website リニューアルのお知らせ</h3>
+                        <p class="text-[10px] text-gray-500 mt-1 font-mono">2026.01.01</p>
                     </div>
                 </a>
                 
-                <a href="news-detail-02.html" class="group bg-white border border-cyan-50 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:border-cyan-400 hover:shadow-lg transition-all rounded-xl">
+                <a href="news-detail-02.html" class="group bg-white/90 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
                     <div class="w-20 h-20 md:w-40 md:h-24 bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
                         <img src="news_thumb2.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="flex-grow">
-                        <span class="text-[10px] font-bold text-cyan-500 bg-cyan-50 px-2 py-0.5 uppercase">Match</span>
-                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight group-hover:text-cyan-500 transition-colors line-clamp-2">国内大会JCGにて優勝。二連覇を達成。</h3>
-                        <p class="text-[10px] text-gray-400 mt-1 font-mono">2025.12.25</p>
+                        <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Match</span>
+                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors line-clamp-2">国内大会JCGにて優勝。二連覇を達成。</h3>
+                        <p class="text-[10px] text-gray-500 mt-1 font-mono">2025.12.25</p>
                     </div>
                 </a>
             </div>
 
             <div class="mt-12 text-center">
-                <a href="news.html" class="inline-block px-12 py-4 bg-black text-white text-xs font-black italic tracking-[0.2em] uppercase hover:bg-cyan-500 transition-colors rounded-sm">
+                <a href="news.html" class="inline-block px-12 py-4 bg-white text-[#4bb8e0] text-xs font-black italic tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-colors rounded-full shadow-md">
                     View More News
                 </a>
             </div>
         </section>
     </main>
 
-    <footer class="bg-black text-white py-16 px-6">
+    <footer class="bg-[#0a1428] text-white py-16 px-6 mt-20">
         <div class="max-w-5xl mx-auto text-center">
             <img src="ganarlogo.png" alt="GANAR" class="h-10 md:h-12 w-auto mx-auto brightness-0 invert opacity-80 mb-8">
-            
-            <a href="https://x.com/GANAR_official" target="_blank" class="inline-flex items-center gap-3 border border-white/30 px-8 py-3 rounded-full hover:bg-cyan-500 hover:border-cyan-500 transition-all group">
-                <span class="text-sm font-bold tracking-[0.2em] group-hover:text-black">FOLLOW ON X</span>
-            </a>
-
-            <p class="mt-12 text-[10px] text-gray-600 tracking-[0.4em] font-mono">© 2026 GANAR ESPORTS GROUP</p>
+            <p class="mt-12 text-[10px] text-gray-400 tracking-[0.4em] font-mono">© 2026 GANAR ESPORTS GROUP</p>
         </div>
     </footer>
 
