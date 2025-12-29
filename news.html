@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { --ganar-main-cyan: #4bb8e0; --ganar-black: #0a0f1d; }
-        body { background-color: var(--ganar-main-cyan); color: var(--ganar-black); font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; }
+        body { background-color: var(--ganar-main-cyan); color: #ffffff; font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; }
         #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .nav-open #side-nav { transform: translateX(0); }
         #overlay { transition: opacity 0.3s ease; display: none; }
@@ -37,25 +37,25 @@
     <div id="overlay" class="fixed inset-0 bg-black/60 z-[55]"></div>
 
     <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto">
-        <div class="p-10 flex flex-col h-full">
+        <div class="p-10 flex flex-col h-full text-white">
             <button id="close-btn" class="self-end text-3xl font-light mb-10 hover:text-[#63d6ff]">✕</button>
-            <ul class="space-y-7 uppercase font-oswald">
-                <li><a href="index.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#63d6ff]">Home</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ホーム</span></a></li>
+            <ul class="space-y-7 uppercase font-oswald text-white">
+                <li><a href="index.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">Home</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ホーム</span></a></li>
                 <li><a href="news.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#63d6ff]">News</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ニュース</span></a></li>
                 <li><a href="about.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">About</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">チームについて</span></a></li>
                 <li><a href="members.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">Members</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">メンバー紹介</span></a></li>
-                <li><a href="news-detail-recruit.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#ffeb3b]">Recruit</span><span class="text-[10px] font-bold tracking-[0.2em] block text-[#ffeb3b] -mt-1 font-sans">メンバー募集</span></a></li>
+                <li><a href="recruit.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#ffeb3b]">Recruit</span><span class="text-[10px] font-bold tracking-[0.2em] block text-[#ffeb3b] -mt-1 font-sans">メンバー募集</span></a></li>
                 <li><a href="fanclub.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">Fanclub</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ファンクラブ</span></a></li>
                 <li><a href="contact.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">Contact</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">お問い合わせ</span></a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-6 py-12 md:py-20">
+    <main class="max-w-4xl mx-auto px-6 py-12 md:py-20 text-white">
         <div class="flex items-center gap-4 mb-10">
             <div class="flex flex-col">
-                <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase text-white drop-shadow-md font-oswald text-[#0a1428]">News</h2>
-                <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 -mt-1 uppercase text-[#0a1428]">ニュース一覧</span>
+                <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald text-white drop-shadow-md leading-none">News</h2>
+                <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 mt-1 uppercase">ニュース一覧</span>
             </div>
             <div class="h-1 flex-grow bg-white/40"></div>
         </div>
@@ -85,7 +85,7 @@
         </div>
 
         <div class="mt-12 text-center">
-            <a href="index.html" class="inline-block text-white font-bold text-sm border-b border-white hover:text-black hover:border-black transition-all pb-1 tracking-widest uppercase">← BACK TO TOP</a>
+            <a href="index.html" class="inline-block text-white font-bold text-sm border-b border-white hover:opacity-60 transition-all pb-1 tracking-widest uppercase">← BACK TO TOP</a>
         </div>
     </main>
 
