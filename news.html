@@ -7,16 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --ganar-main-cyan: #4bb8e0; 
-            --ganar-black: #0a0f1d; 
-        }
-        body { 
-            background-color: var(--ganar-main-cyan); 
-            color: var(--ganar-black); 
-            font-family: 'Noto Sans JP', sans-serif; 
-            overflow-x: hidden; 
-        }
+        :root { --ganar-main-cyan: #4bb8e0; --ganar-black: #0a0f1d; }
+        body { background-color: var(--ganar-main-cyan); color: var(--ganar-black); font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; }
         #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .nav-open #side-nav { transform: translateX(0); }
         #overlay { transition: opacity 0.3s ease; display: none; }
@@ -28,11 +20,11 @@
 <body class="pt-24 md:pt-28">
 
     <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 shadow-md h-24 md:h-28">
-        <div class="max-w-[1600px] mx-auto h-full px-4 flex items-center relative">
+        <div class="max-w-[1600px] mx-auto h-full px-4 flex items-center relative text-white">
             <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12 md:h-16">
                 <a href="index.html"><img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain white-logo"></a>
             </div>
-            <button id="menu-btn" class="ml-auto focus:outline-none z-10 p-2 text-white">
+            <button id="menu-btn" class="ml-auto focus:outline-none z-10 p-2">
                 <div class="space-y-1.5">
                     <span class="block w-8 h-1 bg-white"></span>
                     <span class="block w-5 h-1 bg-white ml-auto"></span>
@@ -50,11 +42,11 @@
             <ul class="space-y-7 uppercase font-oswald">
                 <li><a href="index.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#63d6ff]">Home</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ホーム</span></a></li>
                 <li><a href="news.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#63d6ff]">News</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ニュース</span></a></li>
-                <li><a href="about.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block">About</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">チームについて</span></a></li>
-                <li><a href="members.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block">Members</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">メンバー紹介</span></a></li>
+                <li><a href="about.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">About</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">チームについて</span></a></li>
+                <li><a href="members.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">Members</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">メンバー紹介</span></a></li>
                 <li><a href="news-detail-recruit.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#ffeb3b]">Recruit</span><span class="text-[10px] font-bold tracking-[0.2em] block text-[#ffeb3b] -mt-1 font-sans">メンバー募集</span></a></li>
-                <li><a href="fanclub.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block">Fanclub</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ファンクラブ</span></a></li>
-                <li><a href="contact.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block">Contact</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">お問い合わせ</span></a></li>
+                <li><a href="fanclub.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">Fanclub</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ファンクラブ</span></a></li>
+                <li><a href="contact.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">Contact</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">お問い合わせ</span></a></li>
             </ul>
         </div>
     </nav>
@@ -62,53 +54,45 @@
     <main class="max-w-4xl mx-auto px-6 py-12 md:py-20">
         <div class="flex items-center gap-4 mb-10">
             <div class="flex flex-col">
-                <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase text-white drop-shadow-md font-oswald">News</h2>
-                <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 -mt-1 uppercase">ニュース一覧</span>
+                <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase text-white drop-shadow-md font-oswald text-[#0a1428]">News</h2>
+                <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 -mt-1 uppercase text-[#0a1428]">ニュース一覧</span>
             </div>
             <div class="h-1 flex-grow bg-white/40"></div>
         </div>
 
         <div class="flex flex-col gap-4">
-            
-            <a href="news-detail-recruit.html" class="group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
-                <div class="w-20 h-20 md:w-40 md:h-24 bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
-                    <img src="thumb-recruit.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Recruit">
+            <a href="news-detail-recruit.html" class="group bg-white/95 border border-white/20 p-3 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
+                <div class="w-24 md:w-40 aspect-video bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
+                    <img src="thumb-recruit.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 </div>
-                <div class="flex-grow">
-                    <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Recruit</span>
-                    <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors">GANAR クランメンバー募集開始</h3>
-                    <p class="text-[10px] text-gray-400 mt-1 font-mono">2026.01.01</p>
+                <div class="flex-grow min-w-0">
+                    <span class="text-[9px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase rounded">Recruit</span>
+                    <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors truncate md:whitespace-normal">GANAR クランメンバー募集開始</h3>
+                    <p class="text-[10px] text-gray-400 mt-1 font-mono uppercase">2026.01.01</p>
                 </div>
             </a>
             
-            <a href="news-detail-01.html" class="group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
-                <div class="w-20 h-20 md:w-40 md:h-24 bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
-                    <img src="thumb-open.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Website Open">
+            <a href="news-detail-01.html" class="group bg-white/95 border border-white/20 p-3 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
+                <div class="w-24 md:w-40 aspect-video bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
+                    <img src="thumb-open.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 </div>
-                <div class="flex-grow">
-                    <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Info</span>
-                    <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors">GANAR Official Website オープン</h3>
-                    <p class="text-[10px] text-gray-400 mt-1 font-mono">2026.01.01</p>
+                <div class="flex-grow min-w-0">
+                    <span class="text-[9px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase rounded">Info</span>
+                    <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors truncate md:whitespace-normal">GANAR Official Website オープン</h3>
+                    <p class="text-[10px] text-gray-400 mt-1 font-mono uppercase">2026.01.01</p>
                 </div>
             </a>
 
-        </div>
+            </div>
 
         <div class="mt-12 text-center">
-            <a href="index.html" class="inline-block text-white font-bold text-sm border-b border-white hover:text-black hover:border-black transition-all pb-1 tracking-widest">
-                ← BACK TO TOP
-            </a>
+            <a href="index.html" class="inline-block text-white font-bold text-sm border-b border-white hover:text-black hover:border-black transition-all pb-1 tracking-widest uppercase">← BACK TO TOP</a>
         </div>
     </main>
 
-    <footer class="bg-[#0a1428] text-white py-16 px-6 mt-20">
-        <div class="max-w-5xl mx-auto text-center">
-            <a href="https://x.com/GANAR_official" target="_blank" class="inline-flex items-center gap-3 border border-white/30 px-8 py-3 rounded-full hover:bg-[#63d6ff] hover:text-black hover:border-[#63d6ff] transition-all group font-bold text-sm tracking-widest font-oswald mb-12 uppercase">FOLLOW ON X</a>
-            <div class="space-y-2">
-                <p class="text-[10px] text-gray-400 tracking-[0.4em] font-mono uppercase font-bold">© 2026 GANAR eSports</p>
-                <p class="text-[9px] text-gray-600 tracking-[0.2em] font-mono uppercase font-bold">powered by HEKION</p>
-            </div>
-        </div>
+    <footer class="bg-[#0a1428] text-white py-16 px-6 mt-20 text-center">
+        <a href="https://x.com/GANAR_official" target="_blank" class="inline-flex items-center gap-3 border border-white/30 px-8 py-3 rounded-full hover:bg-[#63d6ff] hover:text-black transition-all font-bold text-sm font-oswald mb-12 uppercase">FOLLOW ON X</a>
+        <p class="text-[10px] text-gray-400 tracking-[0.4em] font-mono font-bold uppercase">© 2026 GANAR eSports</p>
     </footer>
 
     <script>
