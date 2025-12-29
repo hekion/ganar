@@ -44,53 +44,26 @@
 
     <div id="overlay" class="fixed inset-0 bg-black/60 z-[55]"></div>
 
-    <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto">
-        <div class="p-10 flex flex-col h-full">
+    <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto font-oswald">
+        <div class="p-10 flex flex-col h-full text-white">
             <button id="close-btn" class="self-end text-3xl font-light mb-10 hover:text-[#63d6ff]">✕</button>
-            <ul class="space-y-7 uppercase font-oswald">
-                <li>
-                    <a href="index.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">Home</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ホーム</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="news.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">News</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ニュース</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="about.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">About</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">チームについて</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="members.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">Members</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">メンバー紹介</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="news-detail-recruit.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block text-[#ffeb3b]">Recruit</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-[#ffeb3b] -mt-1 font-sans">メンバー募集</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="fanclub.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">Fanclub</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ファンクラブ</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="contact.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">Contact</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">お問い合わせ</span>
-                    </a>
-                </li>
+            <ul class="space-y-7 uppercase text-white">
+                <li><a href="index.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Home</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ホーム</span></a></li>
+                <li><a href="news.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">News</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ニュース</span></a></li>
+                <li><a href="about.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">About</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">チームについて</span></a></li>
+                <li><a href="members.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Members</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">メンバー紹介</span></a></li>
+                <li><a href="news-detail-recruit.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#ffeb3b]">Recruit</span><span class="text-[10px] font-bold tracking-[0.2em] block text-[#ffeb3b] -mt-1 font-sans">メンバー募集</span></a></li>
+                <li><a href="fanclub.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Fanclub</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ファンクラブ</span></a></li>
+                <li><a href="contact.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Contact</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">お問い合わせ</span></a></li>
             </ul>
+
+            <div class="mt-auto pt-10 border-t border-white/10">
+                <a href="https://x.com/GANAR_games" target="_blank" class="inline-flex w-12 h-12 bg-white rounded-full items-center justify-center hover:bg-[#4bb8e0] transition-colors">
+                    <svg class="w-6 h-6 fill-[#0a1428] hover:fill-white" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -158,11 +131,23 @@
         </div>
     </main>
 
-    <footer class="bg-[#0a1428] text-white py-16 px-6 mt-20 text-center">
-        <a href="https://x.com/GANAR_official" target="_blank" class="inline-flex items-center gap-3 border border-white/30 px-8 py-3 rounded-full hover:bg-[#63d6ff] hover:text-black transition-all font-bold text-sm font-oswald mb-12 uppercase">FOLLOW ON X</a>
-        <div class="space-y-2">
-            <p class="text-[10px] text-gray-400 tracking-[0.4em] font-mono uppercase font-bold">© 2026 GANAR eSports</p>
-            <p class="text-[9px] text-gray-600 tracking-[0.2em] font-mono uppercase font-bold">powered by HEKION</p>
+    <footer class="bg-[#0a1428] text-white py-20 px-6 text-center mt-20">
+        <div class="mb-14">
+            <p class="text-[10px] font-bold tracking-[0.3em] text-gray-500 uppercase mb-8 font-sans italic">Follow on Official X</p>
+            <a href="https://x.com/GANAR_games" target="_blank" 
+               class="inline-flex w-16 h-16 bg-white text-[#0a1428] rounded-full items-center justify-center hover:bg-[#4bb8e0] hover:text-white transition-all duration-300 shadow-2xl">
+                <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+        </div>
+
+        <div class="pt-12 border-t border-white/5 flex flex-col items-center gap-10">
+            <p class="text-[10px] text-gray-500 tracking-[0.4em] font-mono font-bold uppercase">
+                ©︎2026 GANAR eSports reserved
+            </p>
+            <div class="flex items-center gap-4">
+                <span class="text-[10px] font-bold tracking-[0.2em] text-gray-600 uppercase font-sans">powered by</span>
+                <img src="hekion-logo.png" alt="HEKION" class="h-6 w-auto opacity-50 transition-opacity hover:opacity-100">
+            </div>
         </div>
     </footer>
 
