@@ -7,25 +7,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --ganar-cyan: #4bb8e0; --ganar-dark: #0a0f1d; }
-        body { background-color: var(--ganar-cyan); font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; margin: 0; color: #ffffff; }
+        :root { 
+            --ganar-main-cyan: #4bb8e0; 
+            --ganar-black: #0a0f1d; 
+        }
+        body { 
+            background-color: var(--ganar-main-cyan); 
+            color: var(--ganar-black); 
+            font-family: 'Noto Sans JP', sans-serif; 
+            overflow-x: hidden; 
+        }
         #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .nav-open #side-nav { transform: translateX(0); }
-        #overlay { display: none; }
-        .nav-open #overlay { display: block; }
+        #overlay { transition: opacity 0.3s ease; display: none; }
+        .nav-open #overlay { display: block; opacity: 1; }
         .white-logo { filter: brightness(0) invert(1); }
         .font-oswald { font-family: 'Oswald', sans-serif; }
     </style>
 </head>
-<body class="pt-32">
+<body class="pt-24 md:pt-28">
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 h-24">
-        <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center relative">
-            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12">
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 shadow-md h-24 md:h-28">
+        <div class="max-w-[1600px] mx-auto h-full px-4 flex items-center relative">
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12 md:h-16">
                 <a href="index.html"><img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain white-logo"></a>
             </div>
-            <button id="menu-btn" class="ml-auto p-2 outline-none">
-                <div class="space-y-2">
+            <button id="menu-btn" class="ml-auto focus:outline-none z-10 p-2 text-white">
+                <div class="space-y-1.5">
                     <span class="block w-8 h-1 bg-white"></span>
                     <span class="block w-5 h-1 bg-white ml-auto"></span>
                     <span class="block w-8 h-1 bg-white"></span>
@@ -36,82 +44,134 @@
 
     <div id="overlay" class="fixed inset-0 bg-black/60 z-[55]"></div>
 
-    <nav id="side-nav" class="fixed top-0 right-0 w-[300px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white">
+    <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto">
         <div class="p-10 flex flex-col h-full">
-            <button id="close-btn" class="self-end text-3xl mb-8">✕</button>
-            <ul class="space-y-6 uppercase font-oswald italic">
-                <li><a href="index.html" class="block">Home</a></li>
-                <li><a href="news.html" class="block">News</a></li>
-                <li><a href="about.html" class="block">About</a></li>
-                <li><a href="members.html" class="block">Members</a></li>
-                <li><a href="news-detail-recruit.html" class="block text-[#4bb8e0]">Recruit</a></li>
-                <li><a href="fanclub.html" class="block">Fan Club</a></li>
-                <li><a href="contact.html" class="block">Contact</a></li>
+            <button id="close-btn" class="self-end text-3xl font-light mb-10 hover:text-[#63d6ff]">✕</button>
+            <ul class="space-y-7 uppercase font-oswald">
+                <li>
+                    <a href="index.html" class="group block">
+                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">Home</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ホーム</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="news.html" class="group block">
+                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">News</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ニュース</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="about.html" class="group block">
+                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">About</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">チームについて</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="members.html" class="group block">
+                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">Members</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">メンバー紹介</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="news-detail-recruit.html" class="group block">
+                        <span class="text-2xl font-black italic tracking-tighter block text-[#ffeb3b]">Recruit</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-[#ffeb3b] -mt-1 font-sans">メンバー募集</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="fanclub.html" class="group block">
+                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">Fanclub</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ファンクラブ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="contact.html" class="group block">
+                        <span class="text-2xl font-black italic tracking-tighter block text-white group-hover:text-[#63d6ff] transition-colors">Contact</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">お問い合わせ</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <main class="max-w-[800px] mx-auto px-6 mb-24">
-        <div class="flex items-center gap-4 mb-12">
-            <h2 class="text-4xl md:text-5xl font-black italic uppercase font-oswald tracking-tighter text-white leading-none">Recruit</h2>
-            <div class="h-[1px] flex-grow bg-white/20"></div>
+    <main class="max-w-4xl mx-auto px-6 py-12 md:py-20">
+        <div class="mb-10">
+            <span class="inline-block bg-black text-[#ffeb3b] text-[10px] font-bold px-3 py-1 uppercase tracking-widest mb-4 font-oswald">Recruit</span>
+            <h1 class="text-3xl md:text-5xl font-black tracking-tighter italic text-white drop-shadow-lg mb-2">GANAR クランメンバー募集開始</h1>
+            <p class="text-sm font-mono text-white/70">2026.01.01</p>
         </div>
 
-        <div class="bg-black/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 md:p-12 shadow-xl">
-            <h1 class="text-2xl md:text-3xl font-bold mb-8">GANAR クランメンバー募集開始</h1>
-            
+        <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl text-[#0a1428] leading-relaxed">
+            <div class="mb-12 border-b border-gray-100 pb-8">
+                <p class="text-xl md:text-2xl font-black italic tracking-tight mb-2 text-[#4bb8e0] font-oswald">Have fun and win.</p>
+                <p class="font-bold text-lg md:text-xl mb-6">— 楽しみながら、勝利を掴む。</p>
+                <p class="font-bold text-gray-700">
+                    GANARは、勝負の熱さと楽しさを両立させるエンジョイチームです。<br>
+                    プレイヤー、イラストレーター、デザイナー、ストリーマー、運営メンバーなど、あなたの「好き」をGANARで活かしませんか？
+                </p>
+            </div>
+
             <div class="space-y-12">
                 <section>
-                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2 italic uppercase font-oswald tracking-wider">
-                        <span class="w-1 h-5 bg-white"></span> Positions
-                    </h3>
-                    <ul class="space-y-2 opacity-90 pl-3 font-bold">
-                        <li>・Player 部門</li>
-                        <li>・Streamer 部門</li>
-                    </ul>
+                    <h2 class="text-xl font-black italic tracking-tighter uppercase flex items-center gap-2 mb-4 font-oswald text-[#4bb8e0]">
+                        <span class="w-2 h-6 bg-[#4bb8e0]"></span> Requirements / 募集要項
+                    </h2>
+                    <div class="pl-4 space-y-4">
+                        <p class="text-sm font-bold text-gray-600 italic">GANARでは、何よりも「居心地の良さ」と「楽しむこと」を大切にしています。活動頻度や返信速度に縛りは設けていません。</p>
+                        <ul class="list-none space-y-3 font-bold text-sm md:text-base">
+                            <li class="flex items-start gap-2"><span class="text-[#4bb8e0]">▶</span> 18歳以上の方（高校生不可）</li>
+                            <li class="flex items-start gap-2"><span class="text-[#4bb8e0]">▶</span> 何よりもゲームや創作を楽しむ心があること</li>
+                            <li class="flex items-start gap-2"><span class="text-[#4bb8e0]">▶</span> 仲間や対戦相手に対し、リスペクトを持って接すること</li>
+                            <li class="flex items-start gap-2"><span class="text-[#4bb8e0]">▶</span> 週の活動ノルマなし（ご自身のペースでOK）</li>
+                            <li class="flex items-start gap-2"><span class="text-[#4bb8e0]">▶</span> イラスト、動画、デザイン等のクリエイティブ活動歓迎</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 mt-2">※ランクや実績は問いません。これから一緒にチームを作る初期メンバーを募集します。</p>
+                    </div>
                 </section>
 
                 <section>
-                    <h3 class="text-lg font-bold mb-6 flex items-center gap-2 italic uppercase font-oswald tracking-wider">
-                        <span class="w-1 h-5 bg-white"></span> Step
-                    </h3>
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <div class="flex-shrink-0 w-10 h-10 border-2 border-white rounded-full flex items-center justify-center font-oswald font-bold">1</div>
-                            <p class="font-bold">公式X（@GANAR_official）をフォロー</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="flex-shrink-0 w-10 h-10 border-2 border-white rounded-full flex items-center justify-center font-oswald font-bold">2</div>
-                            <p class="font-bold">DMにて「加入希望」の旨を送信</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="flex-shrink-0 w-10 h-10 border-2 border-white rounded-full flex items-center justify-center font-oswald font-bold">3</div>
-                            <p class="font-bold">担当者より折り返しご連絡いたします。その後、簡単な面談を実施させていただきます。</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="flex-shrink-0 w-10 h-10 border-2 border-white rounded-full flex items-center justify-center font-oswald font-bold">4</div>
-                            <p class="font-bold">加入決定・活動開始！</p>
-                        </div>
-                    </div>
+                    <h2 class="text-xl font-black italic tracking-tighter uppercase flex items-center gap-2 mb-4 font-oswald text-[#4bb8e0]">
+                        <span class="w-2 h-6 bg-[#4bb8e0]"></span> Flow / 応募の流れ
+                    </h2>
+                    <ol class="pl-4 space-y-4 text-sm md:text-base font-bold">
+                        <li class="flex items-center gap-3"><span class="flex-shrink-0 bg-gray-100 w-8 h-8 rounded-full flex items-center justify-center text-xs">1</span> Googleフォームより応募</li>
+                        <li class="flex items-center gap-3"><span class="flex-shrink-0 bg-gray-100 w-8 h-8 rounded-full flex items-center justify-center text-xs">2</span> 書類選考</li>
+                        <li class="flex items-center gap-3"><span class="flex-shrink-0 bg-gray-100 w-8 h-8 rounded-full flex items-center justify-center text-xs">3</span> お試しマッチ または お話し（堅苦しい面談はありません）</li>
+                        <li class="flex items-center gap-3"><span class="flex-shrink-0 bg-gray-100 w-8 h-8 rounded-full flex items-center justify-center text-xs">4</span> チーム加入！</li>
+                    </ol>
+                </section>
+
+                <section class="bg-[#0a1428] text-white p-8 rounded-2xl shadow-2xl">
+                    <h2 class="text-xl font-black italic tracking-tighter uppercase mb-4 font-oswald text-[#63d6ff]">Entry Form / 応募フォーム</h2>
+                    <p class="text-sm mb-6 opacity-80 font-bold">興味のある方は、ぜひお気軽にご記入ください。<br>後日、公式XのDMまたはDiscordにてご連絡いたします。</p>
+                    <a href="https://docs.google.com/forms/d/1ytf7ubHrSX5Yw8npX6-m6r9TVvcPRGMPC4kYtWGdFMY/viewform" target="_blank" class="block w-full text-center py-4 bg-[#63d6ff] text-[#0a1428] font-bold text-lg rounded-xl hover:bg-white transition-all transform hover:-translate-y-1">
+                        Googleフォームから応募する
+                    </a>
                 </section>
             </div>
         </div>
 
         <div class="mt-12 text-center">
-            <a href="news.html" class="inline-block opacity-60 hover:opacity-100 transition-opacity font-bold text-sm border-b border-white pb-1 uppercase">← Back to News</a>
+            <a href="index.html" class="text-white font-bold text-sm border-b border-white hover:text-[#0a1428] hover:border-[#0a1428] transition-all pb-1 tracking-widest">
+                ← BACK TO TOP / トップページに戻る
+            </a>
         </div>
     </main>
 
-    <footer class="bg-[#0a1428] py-16 text-center text-white">
-        <img src="ganarlogo.png" class="h-8 mx-auto mb-6 white-logo opacity-50">
-        <p class="text-[10px] text-white/30 tracking-[0.5em] font-oswald italic uppercase">© 2026 GANAR ESPORTS</p>
+    <footer class="bg-[#0a1428] text-white py-16 px-6 mt-20 text-center">
+        <a href="https://x.com/GANAR_official" target="_blank" class="inline-flex items-center gap-3 border border-white/30 px-8 py-3 rounded-full hover:bg-[#63d6ff] hover:text-black transition-all font-bold text-sm font-oswald mb-12 uppercase">FOLLOW ON X</a>
+        <div class="space-y-2">
+            <p class="text-[10px] text-gray-400 tracking-[0.4em] font-mono uppercase font-bold">© 2026 GANAR eSports</p>
+            <p class="text-[9px] text-gray-600 tracking-[0.2em] font-mono uppercase font-bold">powered by HEKION</p>
+        </div>
     </footer>
 
     <script>
+        const body = document.body;
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const overlay = document.getElementById('overlay');
-        function toggleMenu() { document.body.classList.toggle('nav-open'); }
+        function toggleMenu() { body.classList.toggle('nav-open'); }
         menuBtn.addEventListener('click', toggleMenu);
         closeBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
