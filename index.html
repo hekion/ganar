@@ -23,7 +23,6 @@
         /* ロゴの白反転設定 */
         .white-logo { filter: brightness(0) invert(1); }
         
-        /* フォント設定 */
         .font-oswald { font-family: 'Oswald', sans-serif; }
     </style>
 </head>
@@ -38,7 +37,7 @@
                 </a>
             </div>
 
-            <button id="menu-btn" class="ml-auto focus:outline-none z-10 p-2">
+            <button id="menu-btn" class="ml-auto focus:outline-none z-10 p-2 text-white">
                 <div class="space-y-1.5">
                     <span class="block w-8 h-1 bg-white"></span>
                     <span class="block w-5 h-1 bg-white ml-auto"></span>
@@ -50,38 +49,50 @@
 
     <div id="overlay" class="fixed inset-0 bg-black/60 z-[55]"></div>
 
-    <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white">
+    <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto">
         <div class="p-10 flex flex-col h-full">
             <button id="close-btn" class="self-end text-3xl font-light mb-10 hover:text-[#63d6ff]">✕</button>
-            <ul class="space-y-8 uppercase">
+            <ul class="space-y-7 uppercase font-oswald">
                 <li>
                     <a href="index.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block text-[#63d6ff] font-oswald">Home</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-white transition">ホーム</span>
+                        <span class="text-2xl font-black italic tracking-tighter block text-[#63d6ff]">Home</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-white transition font-sans">ホーム</span>
                     </a>
                 </li>
                 <li>
                     <a href="news.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block font-oswald">News</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition">ニュース</span>
+                        <span class="text-2xl font-black italic tracking-tighter block">News</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition font-sans">ニュース</span>
                     </a>
                 </li>
                 <li>
                     <a href="about.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block font-oswald">About</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition">チームについて</span>
+                        <span class="text-2xl font-black italic tracking-tighter block">About</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition font-sans">チームについて</span>
                     </a>
                 </li>
                 <li>
                     <a href="members.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block font-oswald">Members</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition">メンバー紹介</span>
+                        <span class="text-2xl font-black italic tracking-tighter block">Members</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition font-sans">メンバー紹介</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="store.html" class="group block">
+                        <span class="text-2xl font-black italic tracking-tighter block">Store</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition font-sans">オンラインショップ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="fanclub.html" class="group block">
+                        <span class="text-2xl font-black italic tracking-tighter block">Fanclub</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition font-sans">ファンクラブ</span>
                     </a>
                 </li>
                 <li>
                     <a href="contact.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block font-oswald">Contact</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition">お問い合わせ</span>
+                        <span class="text-2xl font-black italic tracking-tighter block">Contact</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition font-sans">お問い合わせ</span>
                     </a>
                 </li>
             </ul>
@@ -106,25 +117,25 @@
             </div>
 
             <div class="flex flex-col gap-4">
-                <a href="news-detail-01.html" class="group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
+                <a href="news-detail-recruit.html" class="group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
                     <div class="w-20 h-20 md:w-40 md:h-24 bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
-                        <img src="news_thumb1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="thumb">
+                        <img src="news_thumb1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Recruit">
                     </div>
                     <div class="flex-grow">
-                        <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Update</span>
-                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors line-clamp-2">GANAR Official Website リニューアルのお知らせ</h3>
+                        <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Recruit</span>
+                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors line-clamp-2 font-bold">GANAR クランメンバー募集開始</h3>
                         <p class="text-[10px] text-gray-400 mt-1 font-mono">2026.01.01</p>
                     </div>
                 </a>
                 
-                <a href="news-detail-02.html" class="group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
+                <a href="news-detail-01.html" class="group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
                     <div class="w-20 h-20 md:w-40 md:h-24 bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
-                        <img src="news_thumb2.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="thumb">
+                        <img src="news_thumb2.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Website Open">
                     </div>
                     <div class="flex-grow">
-                        <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Match</span>
-                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors line-clamp-2">国内大会JCGにて優勝。二連覇を達成。</h3>
-                        <p class="text-[10px] text-gray-400 mt-1 font-mono">2025.12.25</p>
+                        <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Info</span>
+                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors line-clamp-2 font-bold">GANAR Official Website オープンのお知らせ</h3>
+                        <p class="text-[10px] text-gray-400 mt-1 font-mono">2026.01.01</p>
                     </div>
                 </a>
             </div>
@@ -139,11 +150,15 @@
 
     <footer class="bg-[#0a1428] text-white py-16 px-6">
         <div class="max-w-5xl mx-auto text-center">
-            <img src="ganarlogo.png" alt="GANAR" class="h-10 w-auto mx-auto white-logo opacity-80 mb-8">
-            <a href="https://x.com/GANAR_official" target="_blank" class="inline-flex items-center gap-3 border border-white/30 px-8 py-3 rounded-full hover:bg-[#63d6ff] hover:text-black hover:border-[#63d6ff] transition-all group font-bold text-sm tracking-widest font-oswald">
+            
+            <a href="https://x.com/GANAR_official" target="_blank" class="inline-flex items-center gap-3 border border-white/30 px-8 py-3 rounded-full hover:bg-[#63d6ff] hover:text-black hover:border-[#63d6ff] transition-all group font-bold text-sm tracking-widest font-oswald mb-12">
                 FOLLOW ON X
             </a>
-            <p class="mt-12 text-[10px] text-gray-500 tracking-[0.4em] font-mono">© 2026 GANAR ESPORTS GROUP</p>
+
+            <div class="space-y-2">
+                <p class="text-[10px] text-gray-400 tracking-[0.4em] font-mono uppercase font-bold">© 2026 GANAR eSports</p>
+                <p class="text-[9px] text-gray-600 tracking-[0.2em] font-mono uppercase font-bold">powered by HEKION</p>
+            </div>
         </div>
     </footer>
 
