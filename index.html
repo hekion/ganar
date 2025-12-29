@@ -8,12 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --ganar-cyan: #63d6ff; 
-            --ganar-dark-cyan: #4bb8e0; 
+            /* チカチカを抑えるため、ヘッダーと同じ濃い目の水色に統一 */
+            --ganar-main-cyan: #4bb8e0; 
             --ganar-black: #0a0f1d; 
         }
         body { 
-            background-color: var(--ganar-cyan); 
+            background-color: var(--ganar-main-cyan); 
             color: var(--ganar-black); 
             font-family: 'Noto Sans JP', sans-serif; 
             overflow-x: hidden; 
@@ -124,7 +124,7 @@
         <section class="w-full bg-white overflow-hidden">
             <div class="max-w-[1600px] mx-auto relative">
                 <img src="main.png" alt="Main Visual" class="w-full h-auto block">
-                <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-[#63d6ff] to-transparent"></div>
+                <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-[#4bb8e0] to-transparent"></div>
             </div>
         </section>
 
@@ -140,7 +140,7 @@
             <div class="flex flex-col gap-4">
                 <a href="news-detail-recruit.html" class="group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
                     <div class="w-20 h-20 md:w-40 md:h-24 bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
-                        <img src="news_thumb1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Recruit">
+                        <img src="thumb-recruit.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Recruit">
                     </div>
                     <div class="flex-grow">
                         <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Recruit</span>
@@ -151,7 +151,7 @@
                 
                 <a href="news-detail-01.html" class="group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-center hover:bg-white transition-all rounded-xl shadow-lg">
                     <div class="w-20 h-20 md:w-40 md:h-24 bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
-                        <img src="news_thumb2.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Website Open">
+                        <img src="thumb-open.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Website Open">
                     </div>
                     <div class="flex-grow">
                         <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Info</span>
