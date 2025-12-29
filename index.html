@@ -12,18 +12,38 @@
             --ganar-dark-cyan: #4bb8e0; 
             --ganar-black: #0a0f1d; 
         }
-        body { background-color: var(--ganar-cyan); color: var(--ganar-black); font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; }
+        body { 
+            background-color: var(--ganar-cyan); 
+            color: var(--ganar-black); 
+            font-family: 'Noto Sans JP', sans-serif; 
+            overflow-x: hidden; 
+        }
 
-        /* メニューアニメーション */
-        #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .nav-open #side-nav { transform: translateX(0); }
-        #overlay { transition: opacity 0.3s ease; display: none; }
-        .nav-open #overlay { display: block; opacity: 1; }
+        /* メニュー開閉アニメーション */
+        #side-nav { 
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .nav-open #side-nav { 
+            transform: translateX(0); 
+        }
+        #overlay { 
+            transition: opacity 0.3s ease; 
+            display: none; 
+        }
+        .nav-open #overlay { 
+            display: block; 
+            opacity: 1; 
+        }
 
-        /* ロゴの白反転設定 */
-        .white-logo { filter: brightness(0) invert(1); }
+        /* ロゴを白く反転させるフィルター */
+        .white-logo { 
+            filter: brightness(0) invert(1); 
+        }
         
-        .font-oswald { font-family: 'Oswald', sans-serif; }
+        /* 英語タイトル用フォント */
+        .font-oswald { 
+            font-family: 'Oswald', sans-serif; 
+        }
     </style>
 </head>
 <body class="pt-24 md:pt-28">
@@ -52,6 +72,7 @@
     <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto">
         <div class="p-10 flex flex-col h-full">
             <button id="close-btn" class="self-end text-3xl font-light mb-10 hover:text-[#63d6ff]">✕</button>
+            
             <ul class="space-y-7 uppercase font-oswald">
                 <li>
                     <a href="index.html" class="group block">
@@ -78,9 +99,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="store.html" class="group block">
-                        <span class="text-2xl font-black italic tracking-tighter block">Store</span>
-                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#63d6ff] transition font-sans">オンラインショップ</span>
+                    <a href="news-detail-recruit.html" class="group block">
+                        <span class="text-2xl font-black italic tracking-tighter block text-[#ffeb3b]">Recruit</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 group-hover:text-[#ffeb3b] transition font-sans">メンバー募集</span>
                     </a>
                 </li>
                 <li>
@@ -123,7 +144,7 @@
                     </div>
                     <div class="flex-grow">
                         <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Recruit</span>
-                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors line-clamp-2 font-bold">GANAR クランメンバー募集開始</h3>
+                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors line-clamp-2">GANAR クランメンバー募集開始</h3>
                         <p class="text-[10px] text-gray-400 mt-1 font-mono">2026.01.01</p>
                     </div>
                 </a>
@@ -134,7 +155,7 @@
                     </div>
                     <div class="flex-grow">
                         <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase">Info</span>
-                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors line-clamp-2 font-bold">GANAR Official Website オープンのお知らせ</h3>
+                        <h3 class="text-sm md:text-xl font-bold mt-1 leading-tight text-gray-900 group-hover:text-[#4bb8e0] transition-colors line-clamp-2">GANAR Official Website オープンのお知らせ</h3>
                         <p class="text-[10px] text-gray-400 mt-1 font-mono">2026.01.01</p>
                     </div>
                 </a>
@@ -148,9 +169,8 @@
         </section>
     </main>
 
-    <footer class="bg-[#0a1428] text-white py-16 px-6">
+    <footer class="bg-[#0a1428] text-white py-16 px-6 border-t border-white/5">
         <div class="max-w-5xl mx-auto text-center">
-            
             <a href="https://x.com/GANAR_official" target="_blank" class="inline-flex items-center gap-3 border border-white/30 px-8 py-3 rounded-full hover:bg-[#63d6ff] hover:text-black hover:border-[#63d6ff] transition-all group font-bold text-sm tracking-widest font-oswald mb-12">
                 FOLLOW ON X
             </a>
