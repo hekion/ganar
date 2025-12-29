@@ -43,15 +43,15 @@
         .font-oswald { font-family: 'Oswald', sans-serif; }
     </style>
 </head>
-<body class="pt-32">
+<body class="pt-24 md:pt-28">
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 h-24">
-        <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center relative">
-            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12">
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 shadow-md h-24 md:h-28">
+        <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center relative text-white">
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12 md:h-16">
                 <a href="index.html"><img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain white-logo"></a>
             </div>
-            <button id="menu-btn" class="ml-auto p-2 outline-none">
-                <div class="space-y-2">
+            <button id="menu-btn" class="ml-auto focus:outline-none z-10 p-2">
+                <div class="space-y-1.5">
                     <span class="block w-8 h-1 bg-white"></span>
                     <span class="block w-5 h-1 bg-white ml-auto"></span>
                     <span class="block w-8 h-1 bg-white"></span>
@@ -62,25 +62,28 @@
 
     <div id="overlay" class="fixed inset-0 bg-black/60 z-[55]"></div>
 
-    <nav id="side-nav" class="fixed top-0 right-0 w-[300px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto">
-        <div class="p-10 flex flex-col min-h-full">
-            <button id="close-btn" class="self-end text-3xl mb-8">✕</button>
-            <ul class="space-y-6 uppercase font-oswald italic mb-10">
-                <li><a href="index.html" class="block"><span class="text-2xl block leading-none">Home</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">ホーム</span></a></li>
-                <li><a href="news.html" class="block"><span class="text-2xl block leading-none">News</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">ニュース</span></a></li>
-                <li><a href="about.html" class="block"><span class="text-2xl block leading-none">About</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">チームについて</span></a></li>
-                <li><a href="members.html" class="block text-[#4bb8e0]"><span class="text-2xl block leading-none">Members</span><span class="text-[9px] not-italic font-sans opacity-100 tracking-widest">メンバー紹介</span></a></li>
-                <li><a href="recruit.html" class="block"><span class="text-2xl block leading-none">Recruit</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">メンバー募集</span></a></li>
-                <li><a href="fanclub.html" class="block"><span class="text-2xl block leading-none">Fan Club</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">ファンクラブ</span></a></li>
-                <li><a href="contact.html" class="block"><span class="text-2xl block leading-none">Contact</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">お問い合わせ</span></a></li>
+    <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto">
+        <div class="p-10 flex flex-col h-full text-white">
+            <button id="close-btn" class="self-end text-3xl font-light mb-10 hover:text-[#63d6ff]">✕</button>
+            <ul class="space-y-7 uppercase font-oswald text-white">
+                <li><a href="index.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">Home</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ホーム</span></a></li>
+                <li><a href="news.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">News</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ニュース</span></a></li>
+                <li><a href="about.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">About</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">チームについて</span></a></li>
+                <li><a href="members.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#63d6ff]">Members</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">メンバー紹介</span></a></li>
+                <li><a href="news-detail-recruit.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#ffeb3b]">Recruit</span><span class="text-[10px] font-bold tracking-[0.2em] block text-[#ffeb3b] -mt-1 font-sans">メンバー募集</span></a></li>
+                <li><a href="fanclub.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">Fanclub</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ファンクラブ</span></a></li>
+                <li><a href="contact.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-white transition hover:text-[#63d6ff]">Contact</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">お問い合わせ</span></a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="max-w-[1200px] mx-auto px-6 mb-24">
+    <main class="max-w-[1200px] mx-auto px-6 mb-24 py-12 md:py-20 text-white">
         <div class="flex items-center gap-4 mb-16">
-            <h2 class="text-4xl md:text-5xl font-black italic uppercase font-oswald tracking-tighter text-white leading-none">Members</h2>
-            <div class="h-[1px] flex-grow bg-white/20"></div>
+            <div class="flex flex-col">
+                <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald text-white drop-shadow-md leading-none">Members</h2>
+                <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 mt-1 uppercase">メンバー紹介</span>
+            </div>
+            <div class="h-1 flex-grow bg-white/40"></div>
         </div>
 
         <section class="mb-20">
@@ -105,10 +108,10 @@
                             </div>
                         </div>
                         <div class="card-back text-white">
-                            <div class="space-y-6 text-white">
-                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q1. 目玉焼きには？</p><p class="text-lg font-bold text-white">ソース</p></div>
-                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q2. 好きなゲームは？</p><p class="text-lg font-bold text-white">モンスト</p></div>
-                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q3. ひとこと</p><p class="text-lg font-bold text-white">良いお年を</p></div>
+                            <div class="space-y-6 text-white text-left">
+                                <div><p class="text-[10px] opacity-50 mb-1">Q1. 目玉焼きには？</p><p class="text-lg font-bold">ソース</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1">Q2. 好きなゲームは？</p><p class="text-lg font-bold">モンスト</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1">Q3. ひとこと</p><p class="text-lg font-bold">良いお年を</p></div>
                             </div>
                         </div>
                     </div>
@@ -124,10 +127,10 @@
                             <div class="mt-auto"><span class="text-[10px] opacity-60 tracking-widest uppercase text-white">Player Info</span></div>
                         </div>
                         <div class="card-back text-white">
-                            <div class="space-y-6 text-white">
-                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q1. 目玉焼きには？</p><p class="text-lg font-bold text-white">ノーコメント</p></div>
-                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q2. 好きなゲームは？</p><p class="text-lg font-bold text-white">ノーコメント</p></div>
-                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q3. ひとこと</p><p class="text-lg font-bold text-white italic opacity-70 text-white">ノーコメント</p></div>
+                            <div class="space-y-6 text-white text-left">
+                                <div><p class="text-[10px] opacity-50 mb-1">Q1. 目玉焼きには？</p><p class="text-lg font-bold">ノーコメント</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1">Q2. 好きなゲームは？</p><p class="text-lg font-bold">ノーコメント</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1">Q3. ひとこと</p><p class="text-lg font-bold italic opacity-70">ノーコメント</p></div>
                             </div>
                         </div>
                     </div>
@@ -148,10 +151,10 @@
                             </div>
                         </div>
                         <div class="card-back text-white">
-                            <div class="space-y-6 text-white">
-                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q1. 目玉焼きには？</p><p class="text-lg font-bold text-white">塩</p></div>
-                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q2. 好きなゲームは？</p><p class="text-sm font-bold text-white leading-snug">風雲 新撰組 幕末伝 Portable</p></div>
-                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q3. ひとこと</p><p class="text-lg font-bold text-white">おやすみなさい</p></div>
+                            <div class="space-y-6 text-white text-left">
+                                <div><p class="text-[10px] opacity-50 mb-1">Q1. 目玉焼きには？</p><p class="text-lg font-bold">塩</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1">Q2. 好きなゲームは？</p><p class="text-sm font-bold leading-snug">風雲 新撰組 幕末伝 Portable</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1">Q3. ひとこと</p><p class="text-lg font-bold">おやすみなさい</p></div>
                             </div>
                         </div>
                     </div>
@@ -159,11 +162,15 @@
 
             </div>
         </section>
+
+        <div class="mt-12 text-center">
+            <a href="index.html" class="inline-block text-white font-bold text-sm border-b border-white hover:opacity-60 transition-all pb-1 tracking-widest uppercase">← BACK TO TOP</a>
+        </div>
     </main>
 
     <footer class="bg-[#0a1428] py-16 text-center text-white">
-        <img src="ganarlogo.png" class="h-8 mx-auto mb-6 white-logo opacity-50 text-white">
-        <p class="text-[10px] text-white/30 tracking-[0.5em] font-oswald italic uppercase text-white">© 2026 GANAR ESPORTS</p>
+        <img src="ganarlogo.png" class="h-8 mx-auto mb-6 white-logo opacity-50">
+        <p class="text-[10px] text-white/30 tracking-[0.5em] font-oswald italic uppercase">© 2026 GANAR ESPORTS</p>
     </footer>
 
     <script>
