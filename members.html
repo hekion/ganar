@@ -28,41 +28,30 @@
             backface-visibility: hidden;
             border-radius: 1rem;
             border: 2px solid rgba(255,255,255,0.3);
-            color: #ffffff !important; /* 文字色を白に強制固定 */
+            color: #ffffff !important;
         }
         .card-front { background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 1.5rem; }
-        .card-back {
-            background: #0a1428;
-            transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2.5rem;
-        }
+        .card-back { background: #0a1428; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; padding: 2.5rem; }
 
-        /* 文字色固定用 */
-        .text-white-fix { color: #ffffff !important; }
-        .opacity-white { color: rgba(255,255,255,0.6) !important; }
-
-        /* ナビゲーション */
+        /* ナビゲーション制御 */
         #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .nav-open #side-nav { transform: translateX(0); }
-        #overlay { display: none; transition: opacity 0.3s ease; }
-        .nav-open #overlay { display: block; opacity: 1; }
+        #overlay { display: none; }
+        .nav-open #overlay { display: block; }
         
         .white-logo { filter: brightness(0) invert(1); }
         .font-oswald { font-family: 'Oswald', sans-serif; }
     </style>
 </head>
-<body class="pt-32 md:pt-40">
+<body class="pt-32">
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 h-24 md:h-32">
-        <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center relative text-white">
-            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12 md:h-20 text-white">
-                <a href="index.html"><img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain white-logo text-white"></a>
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 h-24">
+        <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center relative">
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12">
+                <a href="index.html"><img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain white-logo"></a>
             </div>
             <button id="menu-btn" class="ml-auto p-2 outline-none">
-                <div class="space-y-2 text-white">
+                <div class="space-y-2">
                     <span class="block w-8 h-1 bg-white"></span>
                     <span class="block w-5 h-1 bg-white ml-auto"></span>
                     <span class="block w-8 h-1 bg-white"></span>
@@ -73,53 +62,53 @@
 
     <div id="overlay" class="fixed inset-0 bg-black/60 z-[55]"></div>
 
-    <nav id="side-nav" class="fixed top-0 right-0 w-[300px] md:w-[400px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white">
-        <div class="p-10 flex flex-col h-full text-white">
-            <button id="close-btn" class="self-end text-4xl font-light mb-16 outline-none text-white">✕</button>
-            <ul class="space-y-8 uppercase font-oswald italic text-white">
-                <li><a href="index.html" class="text-3xl hover:opacity-70 transition text-white">Home</a></li>
-                <li><a href="news.html" class="text-3xl hover:opacity-70 transition text-white">News</a></li>
-                <li><a href="about.html" class="text-3xl hover:opacity-70 transition text-white">About</a></li>
-                <li><a href="members.html" class="text-3xl text-white underline decoration-[#ffffff] underline-offset-8">Members</a></li>
+    <nav id="side-nav" class="fixed top-0 right-0 w-[300px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto">
+        <div class="p-10 flex flex-col min-h-full">
+            <button id="close-btn" class="self-end text-3xl mb-8">✕</button>
+            <ul class="space-y-6 uppercase font-oswald italic mb-10">
+                <li><a href="index.html" class="block"><span class="text-2xl block leading-none">Home</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">ホーム</span></a></li>
+                <li><a href="news.html" class="block"><span class="text-2xl block leading-none">News</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">ニュース</span></a></li>
+                <li><a href="about.html" class="block"><span class="text-2xl block leading-none">About</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">チームについて</span></a></li>
+                <li><a href="members.html" class="block text-[#4bb8e0]"><span class="text-2xl block leading-none">Members</span><span class="text-[9px] not-italic font-sans opacity-100 tracking-widest">メンバー紹介</span></a></li>
+                <li><a href="recruit.html" class="block"><span class="text-2xl block leading-none">Recruit</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">メンバー募集</span></a></li>
+                <li><a href="fanclub.html" class="block"><span class="text-2xl block leading-none">Fan Club</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">ファンクラブ</span></a></li>
+                <li><a href="contact.html" class="block"><span class="text-2xl block leading-none">Contact</span><span class="text-[9px] not-italic font-sans opacity-50 tracking-widest">お問い合わせ</span></a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="max-w-[1400px] mx-auto px-6 mb-24">
-        <div class="flex items-center gap-6 mb-20 text-white">
-            <div class="text-white">
-                <h2 class="text-6xl md:text-8xl font-black italic tracking-tighter uppercase font-oswald leading-none text-white">Members</h2>
-                <p class="text-xs font-bold tracking-[0.4em] opacity-80 mt-2 text-white">GANAR 所属メンバー</p>
-            </div>
-            <div class="h-[2px] flex-grow bg-white/30"></div>
+    <main class="max-w-[1200px] mx-auto px-6 mb-24">
+        <div class="flex items-center gap-4 mb-16">
+            <h2 class="text-4xl md:text-5xl font-black italic uppercase font-oswald tracking-tighter text-white leading-none">Members</h2>
+            <div class="h-[1px] flex-grow bg-white/20"></div>
         </div>
 
-        <section class="mb-24">
-            <h3 class="text-3xl font-black italic uppercase text-white font-oswald mb-10 flex items-center gap-4">
-                <span class="bg-white text-[#0a1428] px-3 py-1">Player</span>
+        <section class="mb-20">
+            <h3 class="text-xl font-bold italic uppercase text-white font-oswald mb-8 flex items-center gap-3">
+                <span class="w-2 h-6 bg-white"></span> Player
             </h3>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
                 
                 <div class="member-card" onclick="this.classList.toggle('flipped')">
                     <div class="member-card-inner">
                         <div class="card-front">
-                            <div class="w-full aspect-square bg-black/20 rounded-lg overflow-hidden mb-6 border border-white/20">
+                            <div class="w-full aspect-square bg-black/20 rounded-lg overflow-hidden mb-6">
                                 <img src="member_soutan.png" alt="soutan" class="w-full h-full object-cover">
                             </div>
-                            <h3 class="text-4xl font-black italic font-oswald uppercase tracking-tighter text-white">soutan</h3>
+                            <h3 class="text-3xl font-black italic font-oswald uppercase text-white">soutan</h3>
                             <div class="mt-auto flex items-center justify-between">
-                                <span class="text-[10px] text-white/70 font-bold tracking-[0.2em] uppercase text-white">Player Info</span>
-                                <a href="https://x.com/mx30000000" target="_blank" class="hover:opacity-70 transition-opacity" onclick="event.stopPropagation();">
-                                    <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                <span class="text-[10px] opacity-60 tracking-widest uppercase text-white">Player Info</span>
+                                <a href="https://x.com/mx30000000" target="_blank" onclick="event.stopPropagation();">
+                                    <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                                 </a>
                             </div>
                         </div>
                         <div class="card-back text-white">
-                            <div class="space-y-8 text-white">
-                                <div><p class="text-[10px] font-bold opacity-60 tracking-[0.3em] mb-1 uppercase text-white">Q1. 目玉焼きには？</p><p class="text-xl font-bold text-white">ソース</p></div>
-                                <div><p class="text-[10px] font-bold opacity-60 tracking-[0.3em] mb-1 uppercase text-white">Q2. 好きなゲームは？</p><p class="text-xl font-bold text-white">モンスト</p></div>
-                                <div><p class="text-[10px] font-bold opacity-60 tracking-[0.3em] mb-1 uppercase text-white">Q3. ひとこと</p><p class="text-xl font-bold text-white">良いお年を</p></div>
+                            <div class="space-y-6 text-white">
+                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q1. 目玉焼きには？</p><p class="text-lg font-bold text-white">ソース</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q2. 好きなゲームは？</p><p class="text-lg font-bold text-white">モンスト</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q3. ひとこと</p><p class="text-lg font-bold text-white">良いお年を</p></div>
                             </div>
                         </div>
                     </div>
@@ -128,19 +117,17 @@
                 <div class="member-card" onclick="this.classList.toggle('flipped')">
                     <div class="member-card-inner">
                         <div class="card-front">
-                            <div class="w-full aspect-square bg-black/20 rounded-lg overflow-hidden mb-6 border border-white/20">
+                            <div class="w-full aspect-square bg-black/20 rounded-lg overflow-hidden mb-6">
                                 <img src="member_pokosuke.png" alt="ぽこすけ" class="w-full h-full object-cover">
                             </div>
-                            <h3 class="text-4xl font-black italic font-oswald text-white uppercase tracking-tighter">ぽこすけ</h3>
-                            <div class="mt-auto">
-                                <span class="text-[10px] text-white/70 font-bold tracking-[0.2em] uppercase text-white">Player Info</span>
-                            </div>
+                            <h3 class="text-3xl font-black italic font-oswald uppercase text-white">ぽこすけ</h3>
+                            <div class="mt-auto"><span class="text-[10px] opacity-60 tracking-widest uppercase text-white">Player Info</span></div>
                         </div>
                         <div class="card-back text-white">
-                            <div class="space-y-8 text-white">
-                                <div><p class="text-[10px] opacity-60 mb-1 uppercase text-white">Q1. 目玉焼きには？</p><p class="text-xl font-bold text-white">ノーコメント</p></div>
-                                <div><p class="text-[10px] opacity-60 mb-1 uppercase text-white">Q2. 好きなゲームは？</p><p class="text-xl font-bold text-white">ノーコメント</p></div>
-                                <div><p class="text-[10px] opacity-60 mb-1 uppercase text-white">Q3. ひとこと</p><p class="text-xl font-bold text-white">ノーコメント</p></div>
+                            <div class="space-y-6 text-white">
+                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q1. 目玉焼きには？</p><p class="text-lg font-bold text-white">ノーコメント</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q2. 好きなゲームは？</p><p class="text-lg font-bold text-white">ノーコメント</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q3. ひとこと</p><p class="text-lg font-bold text-white italic opacity-70 text-white">ノーコメント</p></div>
                             </div>
                         </div>
                     </div>
@@ -148,44 +135,42 @@
 
                 <div class="member-card" onclick="this.classList.toggle('flipped')">
                     <div class="member-card-inner">
-                        <div class="card-front text-white">
-                            <div class="w-full aspect-square bg-black/20 rounded-lg overflow-hidden mb-6 border border-white/20">
+                        <div class="card-front">
+                            <div class="w-full aspect-square bg-black/20 rounded-lg overflow-hidden mb-6">
                                 <img src="member_konpeki.png" alt="こんぺき" class="w-full h-full object-cover">
                             </div>
-                            <h3 class="text-4xl font-black italic font-oswald uppercase tracking-tighter text-white">こんぺき</h3>
-                            <div class="mt-auto flex items-center justify-between text-white">
-                                <span class="text-[10px] text-white/70 font-bold tracking-[0.2em] uppercase text-white">Player Info</span>
-                                <a href="https://x.com/Konpeki_X" target="_blank" class="hover:opacity-70 transition-opacity" onclick="event.stopPropagation();">
-                                    <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            <h3 class="text-3xl font-black italic font-oswald uppercase text-white">こんぺき</h3>
+                            <div class="mt-auto flex items-center justify-between">
+                                <span class="text-[10px] opacity-60 tracking-widest uppercase text-white">Player Info</span>
+                                <a href="https://x.com/Konpeki_X" target="_blank" onclick="event.stopPropagation();">
+                                    <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                                 </a>
                             </div>
                         </div>
                         <div class="card-back text-white">
-                            <div class="space-y-8 text-white">
-                                <div><p class="text-[10px] font-bold opacity-60 mb-1 uppercase text-white">Q1. 目玉焼きには？</p><p class="text-xl font-bold text-white">塩</p></div>
-                                <div><p class="text-[10px] font-bold opacity-60 mb-1 uppercase text-white">Q2. 好きなゲームは？</p><p class="text-base font-bold leading-snug text-white">風雲 新撰組 幕末伝 Portable</p></div>
-                                <div><p class="text-[10px] font-bold opacity-60 mb-1 uppercase text-white">Q3. ひとこと</p><p class="text-xl font-bold text-white">おやすみなさい</p></div>
+                            <div class="space-y-6 text-white">
+                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q1. 目玉焼きには？</p><p class="text-lg font-bold text-white">塩</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q2. 好きなゲームは？</p><p class="text-sm font-bold text-white leading-snug">風雲 新撰組 幕末伝 Portable</p></div>
+                                <div><p class="text-[10px] opacity-50 mb-1 text-white">Q3. ひとこと</p><p class="text-lg font-bold text-white">おやすみなさい</p></div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     </main>
 
-    <footer class="bg-[#0a1428] py-20 px-6 text-center text-white">
-        <div class="max-w-[1200px] mx-auto text-white">
-            <img src="ganarlogo.png" class="h-10 mx-auto mb-8 white-logo opacity-50">
-            <p class="text-[10px] text-white/30 tracking-[0.5em] font-oswald italic uppercase text-white">© 2026 GANAR ESPORTS ALL RIGHTS RESERVED.</p>
-        </div>
+    <footer class="bg-[#0a1428] py-16 text-center text-white">
+        <img src="ganarlogo.png" class="h-8 mx-auto mb-6 white-logo opacity-50 text-white">
+        <p class="text-[10px] text-white/30 tracking-[0.5em] font-oswald italic uppercase text-white">© 2026 GANAR ESPORTS</p>
     </footer>
 
     <script>
-        const body = document.body;
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const overlay = document.getElementById('overlay');
-        function toggleMenu() { body.classList.toggle('nav-open'); }
+        function toggleMenu() { document.body.classList.toggle('nav-open'); }
         menuBtn.addEventListener('click', toggleMenu);
         closeBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
