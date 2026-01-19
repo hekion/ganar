@@ -9,17 +9,12 @@
     <style>
         :root { --ganar-cyan: #4bb8e0; --ganar-dark: #0a0f1d; }
         body { background-color: var(--ganar-cyan); font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; margin: 0; color: #ffffff; }
-        
-        /* ナビゲーション制御 */
         #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .nav-open #side-nav { transform: translateX(0); }
         #overlay { display: none; }
         .nav-open #overlay { display: block; }
-        
         .white-logo { filter: brightness(0) invert(1); }
         .font-oswald { font-family: 'Oswald', sans-serif; }
-
-        /* ニュースカードのホバーアニメーション */
         .news-card { transition: all 0.3s ease; }
         .news-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.25); }
     </style>
@@ -78,14 +73,11 @@
 
     <footer class="bg-[#0a1428] text-white py-20 px-6 text-center mt-20">
         <div class="pt-12 border-t border-white/5">
-            <p class="text-[10px] text-gray-500 tracking-[0.4em] font-mono font-bold uppercase">
-                ©︎2026 GANAR eSports reserved
-            </p>
+            <p class="text-[10px] text-gray-500 tracking-[0.4em] font-mono font-bold uppercase">©︎2026 GANAR eSports reserved</p>
         </div>
     </footer>
 
     <script>
-        // ナビゲーション
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const overlay = document.getElementById('overlay');
@@ -94,38 +86,45 @@
         closeBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
 
-        // スプレッドシート（GAS）からのデータ取得
         const GAS_URL = "https://script.google.com/macros/s/AKfycbyVJp-zqYfROpOGgh9Oqmvtx8FxG78fRm07eWfxeHpQVgSrHGxDADtDVlXqb_6nvplPRw/exec";
+
+        // 画像読み込みエラー時の代替処理
+        function handleImageError(img) {
+            const originalSrc = img.src;
+            if (originalSrc.includes('docs.google.com/uc')) {
+                const fileId = originalSrc.split('id=')[1];
+                // 別の表示用URL（thumbnail）に切り替える
+                img.src = `https://lh3.googleusercontent.com/u/0/d/${fileId}`;
+            } else {
+                img.src = 'ganarlogo.png'; // 最終手段
+            }
+        }
 
         async function fetchNews() {
             const container = document.getElementById('news-container');
             try {
                 const response = await fetch(GAS_URL);
                 const data = await response.json();
-                
                 if (data.length === 0) {
                     container.innerHTML = '<p class="col-span-full text-center py-20 opacity-60">現在、ニュースはありません。</p>';
                     return;
                 }
-
-                container.innerHTML = ''; // 読み込み中表示をクリア
-
+                container.innerHTML = '';
                 data.forEach(item => {
-                    // 日付のフォーマット
                     const date = new Date(item.date);
                     const dateString = isNaN(date) ? item.date : `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
                     
-                    // カードの生成
                     const card = document.createElement('a');
                     card.href = `news-detail.html?id=${item.id}`;
                     card.className = "news-card bg-white/10 backdrop-blur-md rounded-xl overflow-hidden flex flex-col border border-white/20";
                     
                     card.innerHTML = `
-                        <div class="aspect-video w-full bg-black/20 overflow-hidden">
-                            <img src="${item.imageUrl || 'default-news.png'}" 
+                        <div class="aspect-video w-full bg-black/20 overflow-hidden relative">
+                            <img src="${item.imageUrl || 'ganarlogo.png'}" 
                                  alt="" 
                                  class="w-full h-full object-cover"
-                                 referrerpolicy="no-referrer">
+                                 referrerpolicy="no-referrer"
+                                 onerror="handleImageError(this)">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <div class="flex items-center gap-3 mb-3">
@@ -141,13 +140,10 @@
                     `;
                     container.appendChild(card);
                 });
-
             } catch (error) {
-                console.error("News fetch error:", error);
                 container.innerHTML = '<p class="col-span-full text-center py-20 text-red-200">データの取得に失敗しました。</p>';
             }
         }
-
         fetchNews();
     </script>
 </body>
