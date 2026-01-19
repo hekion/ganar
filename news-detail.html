@@ -15,7 +15,11 @@
         .nav-open #overlay { display: block; }
         .white-logo { filter: brightness(0) invert(1); }
         .font-oswald { font-family: 'Oswald', sans-serif; }
-        #news-content { white-space: pre-wrap; line-height: 1.8; }
+        
+        /* 本文エリアのスタイル：改行を維持し、リンクを見やすく */
+        #news-content { line-height: 1.8; word-break: break-all; }
+        #news-content a { color: #ffffff; text-decoration: underline; font-weight: bold; transition: opacity 0.2s; }
+        #news-content a:hover { opacity: 0.7; }
     </style>
 </head>
 <body class="pt-24 md:pt-28">
@@ -92,7 +96,6 @@
 
         const GAS_URL = "https://script.google.com/macros/s/AKfycbyVJp-zqYfROpOGgh9Oqmvtx8FxG78fRm07eWfxeHpQVgSrHGxDADtDVlXqb_6nvplPRw/exec";
 
-        // news.htmlと同じ安定版URL変換関数
         function getStableDriveUrl(url) {
             if (!url) return 'ganarlogo.png';
             const idMatch = url.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
@@ -100,6 +103,25 @@
                 return `https://drive.google.com/thumbnail?id=${idMatch[0]}&sz=s1000`;
             }
             return url;
+        }
+
+        // 本文をHTMLとして安全に加工する関数
+        function formatContent(text) {
+            if (!text) return "";
+            // 1. 特殊文字を無害化 (HTMLタグを効かなくする)
+            let escaped = text.toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+            
+            // 2. URLをリンクタグに変換
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            let linked = escaped.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+            
+            // 3. 改行コードを <br> に変換
+            return linked.replace(/\n/g, '<br>');
         }
 
         async function loadNewsDetail() {
@@ -127,9 +149,10 @@
                 document.getElementById('news-title').innerText = item.title;
                 document.getElementById('news-category').innerText = item.category;
                 document.getElementById('news-date').innerText = dateString;
-                document.getElementById('news-content').innerText = item.content;
                 
-                // 画像をセット
+                // 本文を加工してセット
+                document.getElementById('news-content').innerHTML = formatContent(item.content);
+                
                 const imgElement = document.getElementById('news-image');
                 imgElement.src = getStableDriveUrl(item.imageUrl);
                 
