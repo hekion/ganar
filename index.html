@@ -86,28 +86,8 @@
                 <div class="h-1 flex-grow bg-white/40"></div>
             </div>
 
-            <div class="flex flex-col gap-4">
-                <a href="news-detail-recruit.html" class="group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-start md:items-center hover:bg-white transition-all rounded-xl shadow-lg">
-                    <div class="w-24 md:w-40 aspect-video bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
-                        <img src="thumb-recruit.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Recruit">
-                    </div>
-                    <div class="flex-grow">
-                        <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase rounded">Recruit</span>
-                        <h3 class="text-sm md:text-xl font-bold mt-1.5 leading-snug text-gray-900 group-hover:text-[#4bb8e0] transition-colors">GANAR クランメンバー募集開始</h3>
-                        <p class="text-[10px] text-gray-400 mt-1.5 font-mono">2026.01.01</p>
-                    </div>
-                </a>
-                
-                <a href="news-detail-01.html" class="group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-start md:items-center hover:bg-white transition-all rounded-xl shadow-lg">
-                    <div class="w-24 md:w-40 aspect-video bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
-                        <img src="thumb-open.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Website Open">
-                    </div>
-                    <div class="flex-grow">
-                        <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase rounded">Info</span>
-                        <h3 class="text-sm md:text-xl font-bold mt-1.5 leading-snug text-gray-900 group-hover:text-[#4bb8e0] transition-colors">GANAR Official Website オープンのお知らせ</h3>
-                        <p class="text-[10px] text-gray-400 mt-1.5 font-mono">2026.01.01</p>
-                    </div>
-                </a>
+            <div id="news-list" class="flex flex-col gap-4">
+                <p class="text-center py-10 opacity-60 text-white">Loading...</p>
             </div>
 
             <div class="mt-12 text-center">
@@ -147,6 +127,62 @@
         menuBtn.addEventListener('click', toggleMenu);
         closeBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
+
+        // --- ニュース取得プログラム ---
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbyVJp-zqYfROpOGgh9Oqmvtx8FxG78fRm07eWfxeHpQVgSrHGxDADtDVlXqb_6nvplPRw/exec";
+
+        function getStableDriveUrl(url) {
+            if (!url) return 'ganarlogo.png';
+            const idMatch = url.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
+            if (idMatch) {
+                return `https://drive.google.com/thumbnail?id=${idMatch[0]}&sz=s1000`;
+            }
+            return url;
+        }
+
+        async function fetchTopNews() {
+            const listContainer = document.getElementById('news-list');
+            try {
+                const response = await fetch(GAS_URL);
+                let data = await response.json();
+                
+                if (!data || data.length === 0) {
+                    listContainer.innerHTML = '<p class="text-center py-10 opacity-60 text-white">現在、ニュースはありません。</p>';
+                    return;
+                }
+
+                // IDの大きい順にソートして最新3件を取得
+                data.sort((a, b) => Number(b.id) - Number(a.id));
+                const latestNews = data.slice(0, 3);
+
+                listContainer.innerHTML = ''; 
+
+                latestNews.forEach(item => {
+                    const date = new Date(item.date);
+                    const dateString = isNaN(date) ? item.date : `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+                    
+                    const link = document.createElement('a');
+                    link.href = `news-detail.html?id=${item.id}`;
+                    link.className = "group bg-white/95 border border-white/20 p-4 md:p-5 flex gap-4 md:gap-6 items-start md:items-center hover:bg-white transition-all rounded-xl shadow-lg";
+                    
+                    link.innerHTML = `
+                        <div class="w-24 md:w-40 aspect-video bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
+                            <img src="${getStableDriveUrl(item.imageUrl)}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="">
+                        </div>
+                        <div class="flex-grow">
+                            <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase rounded">${item.category}</span>
+                            <h3 class="text-sm md:text-xl font-bold mt-1.5 leading-snug text-gray-900 group-hover:text-[#4bb8e0] transition-colors">${item.title}</h3>
+                            <p class="text-[10px] text-gray-400 mt-1.5 font-mono">${dateString}</p>
+                        </div>
+                    `;
+                    listContainer.appendChild(link);
+                });
+            } catch (error) {
+                listContainer.innerHTML = '<p class="text-center py-10 text-white">ニュースの読み込みに失敗しました。</p>';
+            }
+        }
+
+        fetchTopNews();
     </script>
 </body>
 </html>
