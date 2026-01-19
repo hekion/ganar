@@ -111,7 +111,7 @@
                 container.innerHTML = ''; // 読み込み中表示をクリア
 
                 data.forEach(item => {
-                    // 日付のフォーマット (ISO形式などを想定して整形)
+                    // 日付のフォーマット
                     const date = new Date(item.date);
                     const dateString = isNaN(date) ? item.date : `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
                     
@@ -122,7 +122,10 @@
                     
                     card.innerHTML = `
                         <div class="aspect-video w-full bg-black/20 overflow-hidden">
-                            <img src="${item.imageUrl || 'default-news.png'}" alt="" class="w-full h-full object-cover">
+                            <img src="${item.imageUrl || 'default-news.png'}" 
+                                 alt="" 
+                                 class="w-full h-full object-cover"
+                                 referrerpolicy="no-referrer">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <div class="flex items-center gap-3 mb-3">
