@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DETAIL | GANAR Official Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --ganar-cyan: #4bb8e0; --ganar-dark: #0a0f1d; }
+        body { background-color: var(--ganar-cyan); font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; margin: 0; color: #ffffff; }
+        #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .nav-open #side-nav { transform: translateX(0); }
+        #overlay { display: none; }
+        .nav-open #overlay { display: block; }
+        .white-logo { filter: brightness(0) invert(1); }
+        .font-oswald { font-family: 'Oswald', sans-serif; }
+        
+        /* 本文の改行を維持 */
+        #news-content { white-space: pre-wrap; line-height: 1.8; }
+    </style>
+</head>
+<body class="pt-24 md:pt-28">
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 shadow-md h-24 md:h-28">
+        <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center relative text-white">
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12 md:h-16">
+                <a href="index.html"><img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain white-logo"></a>
+            </div>
+            <button id="menu-btn" class="ml-auto focus:outline-none z-10 p-2">
+                <div class="space-y-1.5">
+                    <span class="block w-8 h-1 bg-white"></span>
+                    <span class="block w-5 h-1 bg-white ml-auto"></span>
+                    <span class="block w-8 h-1 bg-white"></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <div id="overlay" class="fixed inset-0 bg-black/60 z-[55]"></div>
+
+    <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto font-oswald">
+        <div class="p-10 flex flex-col h-full text-white">
+            <button id="close-btn" class="self-end text-3xl font-light mb-10 hover:text-[#63d6ff]">✕</button>
+            <ul class="space-y-7 uppercase text-white">
+                <li><a href="index.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Home</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ホーム</span></a></li>
+                <li><a href="news.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block text-[#63d6ff]">News</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ニュース</span></a></li>
+                <li><a href="about.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">About</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">チームについて</span></a></li>
+                <li><a href="members.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Members</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">メンバー紹介</span></a></li>
+                <li><a href="news-detail-recruit.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#ffeb3b]">Recruit</span><span class="text-[10px] font-bold tracking-[0.2em] block text-[#ffeb3b] -mt-1 font-sans">メンバー募集</span></a></li>
+                <li><a href="fanclub.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Fanclub</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ファンクラブ</span></a></li>
+                <li><a href="contact.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Contact</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">お問い合わせ</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="max-w-[800px] mx-auto px-6 py-12 md:py-20 text-white">
+        <div id="loader" class="text-center py-20 opacity-60">読み込み中...</div>
+
+        <article id="news-article" class="hidden">
+            <div class="flex items-center gap-4 mb-6">
+                <span id="news-category" class="bg-white text-[#4bb8e0] text-xs font-black px-3 py-1 rounded uppercase"></span>
+                <span id="news-date" class="text-sm font-bold tracking-widest opacity-70"></span>
+            </div>
+
+            <h1 id="news-title" class="text-3xl md:text-4xl font-black mb-10 leading-tight tracking-tight"></h1>
+
+            <div class="aspect-video w-full bg-black/20 rounded-2xl overflow-hidden mb-12 shadow-2xl">
+                <img id="news-image" src="" alt="" class="w-full h-full object-cover" referrerpolicy="no-referrer" onerror="handleImageError(this)">
+            </div>
+
+            <div id="news-content" class="text-lg mb-20 text-white/90"></div>
+
+            <hr class="border-white/20 mb-12">
+        </article>
+
+        <div class="text-center">
+            <a href="news.html" class="inline-block bg-[#0a1428] text-white font-bold px-10 py-4 rounded-full hover:bg-white hover:text-[#0a1428] transition-all duration-300 tracking-widest uppercase text-sm border border-white/20">
+                ← BACK TO NEWS
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-[#0a1428] text-white py-20 px-6 text-center mt-20">
+        <div class="pt-12 border-t border-white/5">
+            <p class="text-[10px] text-gray-500 tracking-[0.4em] font-mono font-bold uppercase">©︎2026 GANAR eSports reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // ナビゲーション制御
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const overlay = document.getElementById('overlay');
+        function toggleMenu() { document.body.classList.toggle('nav-open'); }
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // 画像エラー時の代替処理
+        function handleImageError(img) {
+            const originalSrc = img.src;
+            if (originalSrc.includes('docs.google.com/uc')) {
+                const fileId = originalSrc.split('id=')[1];
+                img.src = `https://lh3.googleusercontent.com/u/0/d/$${fileId}`;
+            } else {
+                img.src = 'ganarlogo.png';
+            }
+        }
+
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbyVJp-zqYfROpOGgh9Oqmvtx8FxG78fRm07eWfxeHpQVgSrHGxDADtDVlXqb_6nvplPRw/exec";
+
+        async function loadNewsDetail() {
+            // URLからIDを取得
+            const urlParams = new URLSearchParams(window.location.search);
+            const targetId = urlParams.get('id');
+
+            if (!targetId) {
+                window.location.href = 'news.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(GAS_URL);
+                const data = await response.json();
+                
+                // IDが一致する記事を探す (IDは文字列として比較)
+                const item = data.find(n => String(n.id) === String(targetId));
+
+                if (!item) {
+                    document.getElementById('loader').innerText = "記事が見つかりませんでした。";
+                    return;
+                }
+
+                // 日付整形
+                const date = new Date(item.date);
+                const dateString = isNaN(date) ? item.date : `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+
+                // 各要素にデータを流し込む
+                document.getElementById('news-title').innerText = item.title;
+                document.getElementById('news-category').innerText = item.category;
+                document.getElementById('news-date').innerText = dateString;
+                document.getElementById('news-content').innerText = item.content;
+                document.getElementById('news-image').src = item.imageUrl || 'ganarlogo.png';
+                
+                // 表示切り替え
+                document.getElementById('loader').classList.add('hidden');
+                document.getElementById('news-article').classList.remove('hidden');
+                document.title = `${item.title} | GANAR NEWS`;
+
+            } catch (error) {
+                console.error("Detail fetch error:", error);
+                document.getElementById('loader').innerText = "エラーが発生しました。";
+            }
+        }
+
+        loadNewsDetail();
+    </script>
+</body>
+</html>
