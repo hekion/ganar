@@ -88,7 +88,6 @@
 
         const GAS_URL = "https://script.google.com/macros/s/AKfycbyVJp-zqYfROpOGgh9Oqmvtx8FxG78fRm07eWfxeHpQVgSrHGxDADtDVlXqb_6nvplPRw/exec";
 
-        // 画像URLを安定版に変換
         function getStableDriveUrl(url) {
             if (!url) return 'ganarlogo.png';
             const idMatch = url.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
@@ -109,8 +108,8 @@
                     return;
                 }
 
-                // 日付の新しい順にソート（降順）
-                data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                // IDの大きい順（逆順）にソート
+                data.sort((a, b) => Number(b.id) - Number(a.id));
 
                 container.innerHTML = '';
                 data.forEach(item => {
