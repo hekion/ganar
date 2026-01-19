@@ -88,27 +88,30 @@
 
         const GAS_URL = "https://script.google.com/macros/s/AKfycbyVJp-zqYfROpOGgh9Oqmvtx8FxG78fRm07eWfxeHpQVgSrHGxDADtDVlXqb_6nvplPRw/exec";
 
-        // 画像読み込みエラー時の代替処理
-        function handleImageError(img) {
-            const originalSrc = img.src;
-            if (originalSrc.includes('docs.google.com/uc')) {
-                const fileId = originalSrc.split('id=')[1];
-                // 別の表示用URL（thumbnail）に切り替える
-                img.src = `https://lh3.googleusercontent.com/u/0/d/${fileId}`;
-            } else {
-                img.src = 'ganarlogo.png'; // 最終手段
+        // 画像URLを安定版に変換
+        function getStableDriveUrl(url) {
+            if (!url) return 'ganarlogo.png';
+            const idMatch = url.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
+            if (idMatch) {
+                return `https://drive.google.com/thumbnail?id=${idMatch[0]}&sz=s1000`;
             }
+            return url;
         }
 
         async function fetchNews() {
             const container = document.getElementById('news-container');
             try {
                 const response = await fetch(GAS_URL);
-                const data = await response.json();
+                let data = await response.json();
+                
                 if (data.length === 0) {
                     container.innerHTML = '<p class="col-span-full text-center py-20 opacity-60">現在、ニュースはありません。</p>';
                     return;
                 }
+
+                // 日付の新しい順にソート（降順）
+                data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
                 container.innerHTML = '';
                 data.forEach(item => {
                     const date = new Date(item.date);
@@ -120,11 +123,10 @@
                     
                     card.innerHTML = `
                         <div class="aspect-video w-full bg-black/20 overflow-hidden relative">
-                            <img src="${item.imageUrl || 'ganarlogo.png'}" 
+                            <img src="${getStableDriveUrl(item.imageUrl)}" 
                                  alt="" 
                                  class="w-full h-full object-cover"
-                                 referrerpolicy="no-referrer"
-                                 onerror="handleImageError(this)">
+                                 referrerpolicy="no-referrer">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <div class="flex items-center gap-3 mb-3">
