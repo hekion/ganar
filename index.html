@@ -6,26 +6,9 @@
     <title>GANAR | Official Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --ganar-main-cyan: #4bb8e0; 
-            --ganar-black: #0a0f1d; 
-        }
-        body { 
-            background-color: var(--ganar-main-cyan); 
-            color: var(--ganar-black); 
-            font-family: 'Noto Sans JP', sans-serif; 
-            overflow-x: hidden; 
-        }
-        #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .nav-open #side-nav { transform: translateX(0); }
-        #overlay { transition: opacity 0.3s ease; display: none; }
-        .nav-open #overlay { display: block; opacity: 1; }
-        .white-logo { filter: brightness(0) invert(1); }
-        .font-oswald { font-family: 'Oswald', sans-serif; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="pt-24 md:pt-28">
+<body class="pt-24 md:pt-28 index-page">
 
     <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 shadow-md h-24 md:h-28">
         <div class="max-w-[1600px] mx-auto h-full px-4 flex items-center relative">
@@ -73,7 +56,7 @@
         <section class="w-full bg-white overflow-hidden">
             <div class="max-w-[1600px] mx-auto relative">
                 <img src="main.png" alt="Main Visual" class="w-full h-auto block">
-                <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-[#4bb8e0] to-transparent"></div>
+                <div class="index-mv-gradient"></div>
             </div>
         </section>
 
@@ -81,9 +64,9 @@
             <div class="flex items-center gap-4 mb-10">
                 <div class="flex flex-col">
                     <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase text-white drop-shadow-md font-oswald">News</h2>
-                    <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 -mt-1 uppercase text-white">ニュース</span>
+                    <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 -mt-1 uppercase">ニュース</span>
                 </div>
-                <div class="h-1 flex-grow bg-white/40"></div>
+                <div class="h-1 flex-grow bg-white/40 section-title-line"></div>
             </div>
 
             <div id="news-list" class="flex flex-col gap-4">
@@ -151,7 +134,6 @@
                     return;
                 }
 
-                // IDの大きい順にソートして最新3件を取得
                 data.sort((a, b) => Number(b.id) - Number(a.id));
                 const latestNews = data.slice(0, 3);
 
@@ -167,7 +149,7 @@
                     
                     link.innerHTML = `
                         <div class="w-24 md:w-40 aspect-video bg-slate-100 flex-shrink-0 overflow-hidden rounded-lg">
-                            <img src="${getStableDriveUrl(item.imageUrl)}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="">
+                            <img src="${getStableDriveUrl(item.imageUrl)}" class="w-full h-full object-cover hover-zoom transition-transform duration-500" alt="">
                         </div>
                         <div class="flex-grow">
                             <span class="text-[10px] font-bold text-[#4bb8e0] bg-cyan-50 px-2 py-0.5 uppercase rounded">${item.category}</span>
