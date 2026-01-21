@@ -14,6 +14,7 @@ body {
     color: #ffffff; /* index以外は基本白文字 */
     font-family: 'Noto Sans JP', sans-serif;
     overflow-x: hidden;
+    margin: 0;
 }
 
 .font-oswald {
@@ -96,7 +97,58 @@ body.index-page {
 }
 
 /* =========================================
-   6. 共通パーツ（複数ページで使用）
+   6. ⑤ members.html 専用
+   ========================================= */
+
+/* 3Dカードギミック */
+.member-card { 
+    perspective: 1000px; 
+    height: 500px; 
+    cursor: pointer; 
+}
+
+.member-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.member-card.flipped .member-card-inner { 
+    transform: rotateY(180deg); 
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    color: #ffffff !important;
+}
+
+.card-front { 
+    background: rgba(255,255,255,0.15); 
+    backdrop-filter: blur(12px); 
+    display: flex; 
+    flex-direction: column; 
+    padding: 1.5rem; 
+}
+
+.card-back { 
+    background: #0a1428; 
+    transform: rotateY(180deg); 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    padding: 2.5rem; 
+}
+
+/* =========================================
+   7. 共通パーツ（複数ページで使用）
    ========================================= */
 
 /* 見出し横の横線（News, About, Contact, Fanclub共通） */
@@ -106,9 +158,9 @@ body.index-page {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-/* ニュースカード等の画像ホバー拡大 */
+/* 画像ホバー拡大 */
 .hover-zoom {
-    transition: transform 0.5s duration;
+    transition: transform 0.5s ease;
 }
 .group:hover .hover-zoom {
     transform: scale(1.1);
