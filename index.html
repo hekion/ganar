@@ -43,7 +43,7 @@
     </nav>
 
     <section class="relative h-[80vh] md:h-screen w-full overflow-hidden bg-[#0a1428]">
-        <img src="mainvisual.png" alt="GANAR Main" class="w-full h-full object-cover opacity-80">
+        <img src="main.png" alt="GANAR Main" class="w-full h-full object-cover opacity-80">
         <div class="index-mv-gradient"></div>
     </section>
 
@@ -126,7 +126,7 @@
                 const response = await fetch(GAS_URL);
                 let data = await response.json();
                 data.sort((a, b) => Number(b.id) - Number(a.id));
-                const latestNews = data.slice(0, 4);
+                const latestNews = data.slice(0, 3); // 3つ表示に変更
 
                 container.innerHTML = '';
                 latestNews.forEach(item => {
@@ -135,7 +135,8 @@
                     
                     const card = document.createElement('a');
                     card.href = `news-detail.html?id=${item.id}`;
-                    card.className = "flex flex-col group px-4 md:px-0";
+                    // 区切りを分かりやすくするために border-b と pb-8 を追加
+                    card.className = "flex flex-col group px-4 md:px-2 border-b border-white/10 pb-8 md:border-none";
                     
                     const imageUrl = getStableDriveUrl(item.imageUrl);
                     
