@@ -26,6 +26,7 @@
     </header>
 
     <div id="overlay" class="fixed inset-0 bg-black/60 z-[55]"></div>
+
     <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto font-oswald">
         <div class="p-10 flex flex-col h-full text-white">
             <button id="close-btn" class="self-end text-3xl font-light mb-10 hover:text-[#63d6ff]">✕</button>
@@ -49,10 +50,10 @@
     <section class="py-20 md:py-32 px-6 bg-[#4bb8e0] text-white">
         <div class="max-w-[1000px] mx-auto text-center">
             <div class="mb-12">
-                <h2 class="text-4xl md:text-6xl font-black italic tracking-tighter uppercase font-oswald leading-none mb-2">Concept</h2>
-                <span class="text-[10px] font-bold tracking-[0.3em] opacity-70 uppercase font-sans">コンセプト</span>
+                <h2 class="text-4xl md:text-6xl font-black italic tracking-tighter uppercase font-oswald leading-none mb-2 text-white">Concept</h2>
+                <span class="text-[10px] font-bold tracking-[0.3em] opacity-70 uppercase font-sans text-white">コンセプト</span>
             </div>
-            <div class="concept-text text-lg md:text-2xl font-bold space-y-8">
+            <div class="concept-text text-lg md:text-2xl font-bold space-y-8 text-white">
                 <p>勝利にこだわりながらも、「楽しむこと」を何より大切にします。</p>
                 <p>結果だけではなく、過程や熱量、一緒にプレイする時間そのものを価値として捉えています。</p>
             </div>
@@ -119,9 +120,9 @@
 
     <section class="py-20 md:py-32 px-6 bg-[#4bb8e0]">
         <div class="max-w-[800px] mx-auto text-center text-white">
-            <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald leading-none mb-4">Contact</h2>
-            <p class="text-[10px] font-bold tracking-[0.3em] opacity-70 uppercase font-sans mb-10">お問い合わせ</p>
-            <p class="text-lg opacity-80 mb-12 font-sans">取材のご依頼、スポンサー契約、その他チームに関するお問い合わせはこちらから。</p>
+            <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald leading-none mb-4 text-white">Contact</h2>
+            <p class="text-[10px] font-bold tracking-[0.3em] opacity-70 uppercase font-sans mb-10 text-white">お問い合わせ</p>
+            <p class="text-lg opacity-80 mb-12 font-sans text-white">取材のご依頼、スポンサー契約、その他チームに関するお問い合わせはこちらから。</p>
             <a href="contact.html" class="inline-flex items-center gap-4 text-white font-black text-2xl md:text-3xl border-b-4 border-white pb-2 hover:opacity-60 transition-all font-oswald italic">GET IN TOUCH <span class="text-3xl">→</span></a>
         </div>
     </section>
@@ -129,12 +130,13 @@
     <footer class="bg-[#0a1428] text-white py-20 px-6 text-center">
         <div class="mb-14">
             <p class="text-[10px] font-bold tracking-[0.3em] text-gray-500 uppercase mb-8 font-sans italic">Follow on Official X</p>
-            <a href="https://x.com/GANAR_games" target="_blank" class="inline-flex w-16 h-16 bg-white text-[#0a1428] rounded-full items-center justify-center hover:bg-[#4bb8e0] hover:text-white transition-all duration-300 shadow-2xl">
+            <a href="https://x.com/GANAR_games" target="_blank" 
+               class="inline-flex w-16 h-16 bg-white text-[#0a1428] rounded-full items-center justify-center hover:bg-[#4bb8e0] hover:text-white transition-all duration-300 shadow-2xl">
                 <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
         </div>
         <div class="pt-12 border-t border-white/5 flex flex-col items-center gap-10">
-            <p class="text-[10px] text-gray-500 tracking-[0.4em] font-mono font-bold uppercase">©︎2026 GANAR eSports reserved</p>
+            <p class="text-[10px] text-gray-500 tracking-[0.4em] font-mono font-bold uppercase text-gray-500">©︎2026 GANAR eSports reserved</p>
             <div class="flex items-center gap-4">
                 <span class="text-[10px] font-bold tracking-[0.2em] text-gray-600 uppercase font-sans">powered by</span>
                 <img src="hekion-logo.png" alt="HEKION" class="h-6 w-auto opacity-50 transition-opacity hover:opacity-100">
@@ -175,7 +177,7 @@
                     
                     const card = document.createElement('a');
                     card.href = `news-detail.html?id=${item.id}`;
-                    card.className = "flex flex-col group";
+                    card.className = "flex flex-col group px-4 md:px-0"; // 指示：左右余白ありつつ
                     
                     card.innerHTML = `
                         <div class="aspect-video w-full bg-black/20 rounded-xl overflow-hidden mb-6 shadow-lg">
