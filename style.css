@@ -148,7 +148,28 @@ body.index-page {
 }
 
 /* =========================================
-   7. 共通パーツ（複数ページで使用）
+   7. ⑥ news-detail.html 専用
+   ========================================= */
+
+/* 本文エリアのスタイル：改行を維持し、リンクを見やすく */
+#news-content { 
+    line-height: 1.8; 
+    word-break: break-all; 
+}
+
+#news-content a { 
+    color: #ffffff; 
+    text-decoration: underline; 
+    font-weight: bold; 
+    transition: opacity 0.2s; 
+}
+
+#news-content a:hover { 
+    opacity: 0.7; 
+}
+
+/* =========================================
+   8. 共通パーツ（複数ページで使用）
    ========================================= */
 
 /* 見出し横の横線（News, About, Contact, Fanclub共通） */
