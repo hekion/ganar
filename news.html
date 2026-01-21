@@ -6,18 +6,7 @@
     <title>NEWS | GANAR Official Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --ganar-cyan: #4bb8e0; --ganar-dark: #0a0f1d; }
-        body { background-color: var(--ganar-cyan); font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; margin: 0; color: #ffffff; }
-        #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .nav-open #side-nav { transform: translateX(0); }
-        #overlay { display: none; }
-        .nav-open #overlay { display: block; }
-        .white-logo { filter: brightness(0) invert(1); }
-        .font-oswald { font-family: 'Oswald', sans-serif; }
-        .news-card { transition: all 0.3s ease; }
-        .news-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.25); }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="pt-24 md:pt-28">
 
@@ -57,9 +46,9 @@
         <div class="flex items-center gap-4 mb-16">
             <div class="flex flex-col">
                 <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald text-white drop-shadow-md leading-none">News</h2>
-                <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 mt-1 uppercase">ニュース</span>
+                <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 mt-1 uppercase font-sans">ニュース</span>
             </div>
-            <div class="h-1 flex-grow bg-white/40"></div>
+            <div class="h-1 flex-grow bg-white/40 section-title-line"></div>
         </div>
 
         <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -67,7 +56,7 @@
         </div>
 
         <div class="mt-20 text-center">
-            <a href="index.html" class="inline-block text-white font-bold text-sm border-b border-white hover:opacity-60 transition-all pb-1 tracking-widest uppercase">← BACK TO TOP</a>
+            <a href="index.html" class="inline-block text-white font-bold text-sm border-b border-white hover:opacity-60 transition-all pb-1 tracking-widest uppercase font-sans">← BACK TO TOP</a>
         </div>
     </main>
 
@@ -108,7 +97,6 @@
                     return;
                 }
 
-                // IDの大きい順（逆順）にソート
                 data.sort((a, b) => Number(b.id) - Number(a.id));
 
                 container.innerHTML = '';
@@ -130,11 +118,11 @@
                         <div class="p-6 flex flex-col flex-grow">
                             <div class="flex items-center gap-3 mb-3">
                                 <span class="text-[10px] font-bold tracking-widest opacity-60">${dateString}</span>
-                                <span class="bg-white text-[#4bb8e0] text-[9px] font-black px-2 py-0.5 rounded uppercase">${item.category}</span>
+                                <span class="bg-white text-[#4bb8e0] text-[9px] font-black px-2 py-0.5 rounded uppercase font-sans">${item.category}</span>
                             </div>
                             <h3 class="text-lg font-bold leading-snug mb-4 line-clamp-2">${item.title}</h3>
                             <div class="mt-auto flex items-center justify-between group">
-                                <span class="text-[10px] font-bold tracking-tighter uppercase opacity-40 group-hover:opacity-100 transition-opacity">Read More</span>
+                                <span class="text-[10px] font-bold tracking-tighter uppercase opacity-40 group-hover:opacity-100 transition-opacity font-sans">Read More</span>
                                 <span class="text-xl leading-none transition-transform group-hover:translate-x-1">→</span>
                             </div>
                         </div>
