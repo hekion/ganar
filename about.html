@@ -6,18 +6,9 @@
     <title>ABOUT | GANAR Official Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --ganar-main-cyan: #4bb8e0; --ganar-black: #0a0f1d; }
-        body { background-color: var(--ganar-main-cyan); color: white; font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; }
-        #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .nav-open #side-nav { transform: translateX(0); }
-        #overlay { transition: opacity 0.3s ease; display: none; }
-        .nav-open #overlay { display: block; opacity: 1; }
-        .white-logo { filter: brightness(0) invert(1); }
-        .font-oswald { font-family: 'Oswald', sans-serif; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="pt-24 md:pt-28">
+<body class="pt-24 md:pt-28 about-page">
 
     <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 shadow-md h-24 md:h-28">
         <div class="max-w-[1600px] mx-auto h-full px-4 flex items-center relative text-white">
@@ -65,11 +56,11 @@
                 <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald text-white drop-shadow-md leading-none">About</h2>
                 <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 mt-1 uppercase">チームについて</span>
             </div>
-            <div class="h-1 flex-grow bg-white/40"></div>
+            <div class="h-1 flex-grow bg-white/40 heading-line"></div>
         </div>
 
         <div class="w-full">
-            <h1 class="text-[14vw] md:text-[8rem] font-black italic tracking-tighter text-white uppercase drop-shadow-lg font-oswald mb-12 text-center md:text-left leading-[0.9]">
+            <h1 class="text-[14vw] md:text-[8rem] font-black italic tracking-tighter text-white uppercase drop-shadow-lg font-oswald mb-12 text-center md:text-left about-hero-title">
                 HAVE FUN <br class="md:hidden">AND WIN
             </h1>
 
@@ -80,11 +71,11 @@
                     </p>
                     <ul class="space-y-4 text-sm md:text-lg">
                         <li class="flex items-start gap-3">
-                            <span class="w-1.5 h-1.5 bg-white rounded-full mt-2.5 flex-shrink-0"></span>
+                            <span class="list-dot"></span>
                             <span>せっかくやるなら、楽しみながら勝ちにいく。</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="w-1.5 h-1.5 bg-white rounded-full mt-2.5 flex-shrink-0"></span>
+                            <span class="list-dot"></span>
                             <span>たとえ勝てなかったとしても、誰よりも楽しめたなら、それはもう勝ち。</span>
                         </li>
                     </ul>
