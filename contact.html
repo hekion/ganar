@@ -6,23 +6,9 @@
     <title>CONTACT | GANAR Official Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --ganar-main-cyan: #4bb8e0; --ganar-dark: #0a1428; }
-        body { background-color: var(--ganar-main-cyan); color: #ffffff; font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; }
-        #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .nav-open #side-nav { transform: translateX(0); }
-        #overlay { transition: opacity 0.3s ease; display: none; }
-        .nav-open #overlay { display: block; opacity: 1; }
-        .white-logo { filter: brightness(0) invert(1); }
-        .font-oswald { font-family: 'Oswald', sans-serif; }
-        
-        /* フォーム入力欄のスタイル */
-        input, select, textarea {
-            color: #0a1428 !important;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="pt-24 md:pt-28">
+<body class="pt-24 md:pt-28 contact-page">
 
     <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 shadow-md h-24 md:h-28">
         <div class="max-w-[1600px] mx-auto h-full px-4 flex items-center relative text-white">
@@ -70,11 +56,11 @@
                 <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald text-white leading-none">Contact</h2>
                 <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 mt-1 uppercase">お問い合わせ</span>
             </div>
-            <div class="h-1 flex-grow bg-white/40"></div>
+            <div class="h-1 flex-grow bg-white/40 section-title-line"></div>
         </div>
 
         <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl text-[#0a1428]">
-            <form action="https://formspree.io/f/xbdjqnrw" method="POST" class="space-y-6 font-bold">
+            <form action="https://formspree.io/f/xbdjqnrw" method="POST" class="space-y-6 font-bold contact-form">
                 <div>
                     <label class="block text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-2 font-oswald">Name / お名前</label>
                     <input type="text" name="name" placeholder="GANAR 太郎" required class="w-full bg-gray-100 border-none rounded-xl p-4 focus:ring-2 focus:ring-[#4bb8e0] outline-none transition-all">
