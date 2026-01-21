@@ -6,21 +6,7 @@
     <title>NEWS DETAIL | GANAR Official Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --ganar-cyan: #4bb8e0; --ganar-dark: #0a0f1d; }
-        body { background-color: var(--ganar-cyan); font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; margin: 0; color: #ffffff; }
-        #side-nav { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .nav-open #side-nav { transform: translateX(0); }
-        #overlay { display: none; }
-        .nav-open #overlay { display: block; }
-        .white-logo { filter: brightness(0) invert(1); }
-        .font-oswald { font-family: 'Oswald', sans-serif; }
-        
-        /* 本文エリアのスタイル：改行を維持し、リンクを見やすく */
-        #news-content { line-height: 1.8; word-break: break-all; }
-        #news-content a { color: #ffffff; text-decoration: underline; font-weight: bold; transition: opacity 0.2s; }
-        #news-content a:hover { opacity: 0.7; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="pt-24 md:pt-28">
 
@@ -73,7 +59,7 @@
         </article>
 
         <div class="text-center">
-            <a href="news.html" class="inline-block bg-[#0a1428] text-white font-bold px-10 py-4 rounded-full hover:bg-white hover:text-[#0a1428] transition-all duration-300 tracking-widest uppercase text-sm border border-white/20">
+            <a href="news.html" class="inline-block bg-[#0a1428] text-white font-bold px-10 py-4 rounded-full hover:bg-white hover:text-[#0a1428] transition-all duration-300 tracking-widest uppercase text-sm border border-white/20 font-sans">
                 ← BACK TO NEWS
             </a>
         </div>
@@ -105,10 +91,8 @@
             return url;
         }
 
-        // 本文をHTMLとして安全に加工する関数
         function formatContent(text) {
             if (!text) return "";
-            // 1. 特殊文字を無害化 (HTMLタグを効かなくする)
             let escaped = text.toString()
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
@@ -116,11 +100,9 @@
                 .replace(/"/g, "&quot;")
                 .replace(/'/g, "&#039;");
             
-            // 2. URLをリンクタグに変換
             const urlRegex = /(https?:\/\/[^\s]+)/g;
             let linked = escaped.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
             
-            // 3. 改行コードを <br> に変換
             return linked.replace(/\n/g, '<br>');
         }
 
@@ -149,8 +131,6 @@
                 document.getElementById('news-title').innerText = item.title;
                 document.getElementById('news-category').innerText = item.category;
                 document.getElementById('news-date').innerText = dateString;
-                
-                // 本文を加工してセット
                 document.getElementById('news-content').innerHTML = formatContent(item.content);
                 
                 const imgElement = document.getElementById('news-image');
@@ -164,7 +144,6 @@
                 document.getElementById('loader').innerText = "エラーが発生しました。";
             }
         }
-
         loadNewsDetail();
     </script>
 </body>
