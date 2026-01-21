@@ -151,7 +151,6 @@ body.index-page {
    7. ⑥ news-detail.html 専用
    ========================================= */
 
-/* 本文エリアのスタイル：改行を維持し、リンクを見やすく */
 #news-content { 
     line-height: 1.8; 
     word-break: break-all; 
@@ -169,17 +168,28 @@ body.index-page {
 }
 
 /* =========================================
-   8. 共通パーツ（複数ページで使用）
+   8. ⑦ news.html 専用
    ========================================= */
 
-/* 見出し横の横線（News, About, Contact, Fanclub共通） */
+.news-card { 
+    transition: all 0.3s ease; 
+}
+
+.news-card:hover { 
+    transform: translateY(-5px); 
+    background: rgba(255,255,255,0.25); 
+}
+
+/* =========================================
+   9. 共通パーツ（複数ページで使用）
+   ========================================= */
+
 .section-title-line {
     height: 0.25rem;
     flex-grow: 1;
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-/* 画像ホバー拡大 */
 .hover-zoom {
     transition: transform 0.5s ease;
 }
