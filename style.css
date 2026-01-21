@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* =========================================
-   1. 共通ベース設定
+   1. 全ページ共通（ベース・ナビ・フッター）
    ========================================= */
 :root {
     --ganar-main-cyan: #4bb8e0;
@@ -11,29 +11,24 @@
 
 body {
     background-color: var(--ganar-main-cyan);
-    color: #ffffff;
+    color: #ffffff; /* index以外は基本白文字 */
     font-family: 'Noto Sans JP', sans-serif;
     overflow-x: hidden;
 }
 
-/* 共通フォント設定 */
 .font-oswald {
     font-family: 'Oswald', sans-serif;
 }
 
-/* ロゴの白抜き設定 */
 .white-logo {
     filter: brightness(0) invert(1);
 }
 
-/* =========================================
-   2. 共通ナビゲーション (Side Nav & Overlay)
-   ========================================= */
+/* サイドナビゲーション挙動 */
 #side-nav {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ナビゲーション開閉制御 */
 .nav-open #side-nav {
     transform: translateX(0);
 }
@@ -49,59 +44,72 @@ body {
 }
 
 /* =========================================
-   3. index.html 専用
+   2. ① index.html 専用
    ========================================= */
 
-/* インデックスのみ背景と文字色の基本が他と異なる場合の微調整用 */
-.page-index {
+/* indexは基本の文字色が黒なので上書き */
+body.index-page {
     color: var(--ganar-black);
 }
 
-/* メインビジュアル下のグラデーション */
-.index-gradient-bottom {
+/* メインビジュアル下の青いぼかし（indexのみ使用） */
+.index-mv-gradient {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 4rem; /* h-16 */
+    height: 4rem;
     background: linear-gradient(to top, var(--ganar-main-cyan), transparent);
 }
 
 /* =========================================
-   4. contact.html 専用 (フォーム)
+   3. ② about.html 専用
    ========================================= */
 
-/* フォーム入力欄の文字色を紺色に固定 */
-input, 
-select, 
-textarea {
+/* HAVE FUN... の大きな見出しの行間調整 */
+.about-hero-title {
+    line-height: 0.9;
+}
+
+/* =========================================
+   4. ③ contact.html 専用
+   ========================================= */
+
+/* フォーム入力欄の文字色（背景が白いため紺色にする） */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
     color: var(--ganar-dark) !important;
 }
 
 /* =========================================
-   5. about.html / fanclub.html 用の装飾
+   5. ④ fanclub.html 専用
    ========================================= */
 
-/* 箇条書きのドット（Aboutページなど） */
-.list-dot {
-    width: 0.375rem; /* w-1.5 */
-    height: 0.375rem; /* h-1.5 */
-    background-color: white;
-    border-radius: 9999px;
-    margin-top: 0.625rem;
-    flex-shrink: 0;
+/* Discordボタン等のホバー時の微細な挙動 */
+.fanclub-join-btn {
+    transition: all 0.3s ease;
 }
 
-/* セクションの見出し横のライン */
-.heading-line {
-    height: 0.25rem; /* h-1 */
-    flex-grow: 1;
-    background-color: rgba(255, 255, 255, 0.4); /* bg-white/40 */
+.fanclub-join-btn:active {
+    transform: scale(0.95);
 }
 
 /* =========================================
-   6. アニメーション・ホバー共通
+   6. 共通パーツ（複数ページで使用）
    ========================================= */
-.group:hover .group-hover\:scale-110 {
+
+/* 見出し横の横線（News, About, Contact, Fanclub共通） */
+.section-title-line {
+    height: 0.25rem;
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ニュースカード等の画像ホバー拡大 */
+.hover-zoom {
+    transition: transform 0.5s duration;
+}
+.group:hover .hover-zoom {
     transform: scale(1.1);
 }
