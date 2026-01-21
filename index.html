@@ -48,12 +48,15 @@
     </section>
 
     <section class="py-20 md:py-32 px-6 bg-[#4bb8e0] text-white">
-        <div class="max-w-[1000px] mx-auto text-center">
-            <div class="mb-12">
-                <h2 class="text-4xl md:text-6xl font-black italic tracking-tighter uppercase font-oswald leading-none mb-2 text-white">Concept</h2>
-                <span class="text-[10px] font-bold tracking-[0.3em] opacity-70 uppercase font-sans text-white">コンセプト</span>
+        <div class="max-w-[1200px] mx-auto">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="flex flex-col">
+                    <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald text-white leading-none">Concept</h2>
+                    <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 mt-1 uppercase font-sans">コンセプト</span>
+                </div>
+                <div class="section-title-line"></div>
             </div>
-            <div class="concept-text text-lg md:text-2xl font-bold space-y-8 text-white">
+            <div class="concept-text text-lg md:text-2xl font-bold space-y-8 text-white text-center max-w-[1000px] mx-auto">
                 <p>勝利にこだわりながらも、「楽しむこと」を何より大切にします。</p>
                 <p>結果だけではなく、過程や熱量、一緒にプレイする時間そのものを価値として捉えています。</p>
             </div>
@@ -79,51 +82,6 @@
                     View All News
                 </a>
             </div>
-        </div>
-    </section>
-
-    <section class="py-20 md:py-32 px-6 bg-[#4bb8e0]">
-        <div class="max-w-[1200px] mx-auto">
-            <div class="flex items-center gap-4 mb-16">
-                <div class="flex flex-col">
-                    <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald text-white leading-none">Members</h2>
-                    <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 mt-1 uppercase font-sans">メンバー紹介</span>
-                </div>
-                <div class="section-title-line"></div>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                <a href="members.html" class="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-black/20 block">
-                    <img src="ganarlogo.png" alt="Members" class="w-full h-full object-contain p-8 opacity-40 group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                        <span class="text-white font-bold text-lg border-b-2 border-[#4bb8e0] pb-1 uppercase font-oswald italic">Show All</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 md:py-32 px-6 bg-[#4bb8e0]">
-        <div class="max-w-[1200px] mx-auto bg-[#0a1428] rounded-[2rem] p-8 md:p-20 overflow-hidden relative group">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-[#4bb8e0]/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
-            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-white">
-                <div class="max-w-[500px] text-center md:text-left">
-                    <h2 class="text-4xl md:text-6xl font-black italic tracking-tighter uppercase font-oswald leading-none mb-6">Fanclub</h2>
-                    <p class="text-white/80 text-lg leading-relaxed mb-10 font-sans">GANARを応援してくださる皆様へ。限定コンテンツや交流イベントなど、よりチームを身近に感じられるコミュニティです。</p>
-                    <a href="fanclub.html" class="inline-block bg-white text-[#0a1428] font-bold px-12 py-5 rounded-full hover:bg-[#4bb8e0] hover:text-white transition-all duration-300 tracking-widest uppercase text-sm font-sans shadow-xl">Join Community</a>
-                </div>
-                <div class="w-full md:w-1/2 flex justify-center">
-                    <img src="ganarlogo.png" alt="Fanclub" class="w-48 md:w-64 h-auto opacity-20 white-logo animate-pulse">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 md:py-32 px-6 bg-[#4bb8e0]">
-        <div class="max-w-[800px] mx-auto text-center text-white">
-            <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald leading-none mb-4 text-white">Contact</h2>
-            <p class="text-[10px] font-bold tracking-[0.3em] opacity-70 uppercase font-sans mb-10 text-white">お問い合わせ</p>
-            <p class="text-lg opacity-80 mb-12 font-sans text-white">取材のご依頼、スポンサー契約、その他チームに関するお問い合わせはこちらから。</p>
-            <a href="contact.html" class="inline-flex items-center gap-4 text-white font-black text-2xl md:text-3xl border-b-4 border-white pb-2 hover:opacity-60 transition-all font-oswald italic">GET IN TOUCH <span class="text-3xl">→</span></a>
         </div>
     </section>
 
@@ -177,11 +135,13 @@
                     
                     const card = document.createElement('a');
                     card.href = `news-detail.html?id=${item.id}`;
-                    card.className = "flex flex-col group px-4 md:px-0"; // 指示：左右余白ありつつ
+                    card.className = "flex flex-col group px-4 md:px-0";
+                    
+                    const imageUrl = getStableDriveUrl(item.imageUrl);
                     
                     card.innerHTML = `
                         <div class="aspect-video w-full bg-black/20 rounded-xl overflow-hidden mb-6 shadow-lg">
-                            <img src="${getStableDriveUrl(item.imageUrl)}" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" referrerpolicy="no-referrer">
+                            <img src="${imageUrl}" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='ganarlogo.png'" referrerpolicy="no-referrer">
                         </div>
                         <div class="px-2">
                             <div class="flex items-center gap-3 mb-3">
