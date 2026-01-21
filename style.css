@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+/* =========================================
+   1. 共通ベース設定
+   ========================================= */
+:root {
+    --ganar-main-cyan: #4bb8e0;
+    --ganar-black: #0a0f1d;
+    --ganar-dark: #0a1428;
+}
+
+body {
+    background-color: var(--ganar-main-cyan);
+    color: #ffffff;
+    font-family: 'Noto Sans JP', sans-serif;
+    overflow-x: hidden;
+}
+
+/* 共通フォント設定 */
+.font-oswald {
+    font-family: 'Oswald', sans-serif;
+}
+
+/* ロゴの白抜き設定 */
+.white-logo {
+    filter: brightness(0) invert(1);
+}
+
+/* =========================================
+   2. 共通ナビゲーション (Side Nav & Overlay)
+   ========================================= */
+#side-nav {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ナビゲーション開閉制御 */
+.nav-open #side-nav {
+    transform: translateX(0);
+}
+
+#overlay {
+    transition: opacity 0.3s ease;
+    display: none;
+}
+
+.nav-open #overlay {
+    display: block;
+    opacity: 1;
+}
+
+/* =========================================
+   3. index.html 専用
+   ========================================= */
+
+/* インデックスのみ背景と文字色の基本が他と異なる場合の微調整用 */
+.page-index {
+    color: var(--ganar-black);
+}
+
+/* メインビジュアル下のグラデーション */
+.index-gradient-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem; /* h-16 */
+    background: linear-gradient(to top, var(--ganar-main-cyan), transparent);
+}
+
+/* =========================================
+   4. contact.html 専用 (フォーム)
+   ========================================= */
+
+/* フォーム入力欄の文字色を紺色に固定 */
+input, 
+select, 
+textarea {
+    color: var(--ganar-dark) !important;
+}
+
+/* =========================================
+   5. about.html / fanclub.html 用の装飾
+   ========================================= */
+
+/* 箇条書きのドット（Aboutページなど） */
+.list-dot {
+    width: 0.375rem; /* w-1.5 */
+    height: 0.375rem; /* h-1.5 */
+    background-color: white;
+    border-radius: 9999px;
+    margin-top: 0.625rem;
+    flex-shrink: 0;
+}
+
+/* セクションの見出し横のライン */
+.heading-line {
+    height: 0.25rem; /* h-1 */
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.4); /* bg-white/40 */
+}
+
+/* =========================================
+   6. アニメーション・ホバー共通
+   ========================================= */
+.group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+}
