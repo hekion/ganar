@@ -63,6 +63,19 @@ body.index-page {
     background: linear-gradient(to top, var(--ganar-main-cyan), transparent);
 }
 
+/* NEWSカードのレイアウト：PC版で2列 */
+@media (min-width: 768px) {
+    .index-news-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* CONCEPT欄のテキスト調整 */
+.concept-text {
+    line-height: 2;
+    letter-spacing: 0.05em;
+}
+
 /* =========================================
    3. ② about.html 専用
    ========================================= */
