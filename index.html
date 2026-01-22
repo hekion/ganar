@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GANAR Official Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* キャッチコピー用の特別なスタイル */
+        .hero-title {
+            font-family: 'Anton', sans-serif;
+            letter-spacing: -0.02em;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+    </style>
 </head>
 <body class="index-page">
 
@@ -55,12 +63,12 @@
 
     <section class="relative h-[80vh] md:h-screen w-full overflow-hidden bg-[#0a1428] flex items-center justify-center">
         <picture class="absolute inset-0">
-            <source media="(min-width: 768px)" srcset="main_pc.jpg">
-            <img src="main_sp.jpg" alt="GANAR Main" class="w-full h-full object-cover opacity-80">
+            <source media="(min-width: 768px)" srcset="main_pc.png">
+            <img src="main_sp.png" alt="GANAR Main" class="w-full h-full object-cover opacity-80">
         </picture>
         <div class="relative z-10 w-full px-6 text-center">
-            <h1 class="font-oswald font-black italic uppercase text-white leading-none tracking-tighter" 
-                style="font-size: clamp(2rem, 10vw, 7rem); white-space: nowrap;">
+            <h1 class="hero-title italic uppercase text-white leading-none tracking-tighter" 
+                style="font-size: clamp(2.5rem, 12vw, 8.5rem); white-space: nowrap;">
                 HAVE FUN AND WIN
             </h1>
         </div>
@@ -174,7 +182,6 @@
             if (!url) return 'ganarlogo.png';
             const idMatch = url.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
             if (idMatch) {
-                // news.htmlと同じ高画質設定（s1000）に変更
                 return `https://drive.google.com/thumbnail?id=${idMatch[0]}&sz=s1000`;
             }
             return url;
