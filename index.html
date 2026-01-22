@@ -12,13 +12,11 @@
 
     <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 shadow-md h-24 md:h-28">
         <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center justify-between">
-            
             <div class="h-12 md:h-16">
                 <a href="index.html">
                     <img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain white-logo">
                 </a>
             </div>
-
             <nav class="hidden md:block">
                 <ul class="flex items-center gap-8 font-oswald font-black italic uppercase tracking-tighter text-xl">
                     <li><a href="news.html" class="text-white hover:text-[#0a1428] transition-all duration-300 block">News</a></li>
@@ -28,7 +26,6 @@
                     <li><a href="contact.html" class="text-white hover:text-[#0a1428] transition-all duration-300 block">Contact</a></li>
                 </ul>
             </nav>
-
             <button id="menu-btn" class="md:hidden focus:outline-none p-2">
                 <div class="space-y-1.5">
                     <span class="block w-8 h-1 bg-white"></span>
@@ -129,11 +126,9 @@
 
     <footer class="bg-[#0a1428] text-white py-16 px-6 border-t border-white/10 font-sans">
         <div class="max-w-[1200px] mx-auto flex flex-col items-center">
-            
             <div class="h-16 mb-10">
                 <img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain white-logo">
             </div>
-
             <nav class="mb-12">
                 <ul class="flex flex-wrap md:flex-row justify-center items-center gap-x-8 gap-y-4 font-oswald font-bold italic uppercase tracking-widest text-lg">
                     <li><a href="about.html" class="hover:text-[#4bb8e0] transition-colors">About</a></li>
@@ -143,7 +138,6 @@
                     <li><a href="contact.html" class="hover:text-[#4bb8e0] transition-colors">Contact</a></li>
                 </ul>
             </nav>
-
             <div class="flex items-center gap-8 mb-12">
                 <a href="https://x.com/GANAR_games" target="_blank" class="hover:text-[#4bb8e0] transition-colors">
                     <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -155,7 +149,6 @@
                     <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
             </div>
-
             <div class="pt-8 border-t border-white/5 flex items-center justify-center gap-4 text-white text-xs tracking-widest font-bold uppercase">
                 <span>©︎</span>
                 <a href="https://hekion.github.io/hekion/" target="_blank" class="transition-transform hover:scale-105">
@@ -190,7 +183,8 @@
                 const response = await fetch(GAS_URL);
                 let data = await response.json();
                 data.sort((a, b) => Number(b.id) - Number(a.id));
-                const latestNews = data.slice(0, 3);
+                // 最新4件を取得するように変更
+                const latestNews = data.slice(0, 4);
                 container.innerHTML = '';
                 latestNews.forEach(item => {
                     const date = new Date(item.date);
