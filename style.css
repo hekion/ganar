@@ -57,6 +57,17 @@ body.index-page {
     color: var(--ganar-black);
 }
 
+/* メインビジュアル中央のキャッチコピー：Russo Oneを強制適用 */
+.hero-title {
+    font-family: 'Russo One', sans-serif !important;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    /* 四角さを感じさせないよう、光の拡散と立体感を付与 */
+    text-shadow: 
+        0 0 15px rgba(75, 184, 224, 0.6),
+        4px 4px 0px var(--ganar-dark);
+}
+
 /* メインビジュアル下の青いぼかし */
 .index-mv-gradient {
     position: absolute;
