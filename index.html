@@ -173,7 +173,10 @@
         function getStableDriveUrl(url) {
             if (!url) return 'ganarlogo.png';
             const idMatch = url.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
-            if (idMatch) { return `https://drive.google.com/thumbnail?id=${idMatch[0]}&sz=1000`; }
+            if (idMatch) {
+                // news.htmlと同じ高画質設定（s1000）に変更
+                return `https://drive.google.com/thumbnail?id=${idMatch[0]}&sz=s1000`;
+            }
             return url;
         }
 
@@ -183,7 +186,6 @@
                 const response = await fetch(GAS_URL);
                 let data = await response.json();
                 data.sort((a, b) => Number(b.id) - Number(a.id));
-                // 最新4件を取得するように変更
                 const latestNews = data.slice(0, 4);
                 container.innerHTML = '';
                 latestNews.forEach(item => {
