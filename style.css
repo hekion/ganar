@@ -11,7 +11,7 @@
 
 body {
     background-color: var(--ganar-main-cyan);
-    color: #ffffff; /* index以外は基本白文字 */
+    color: #ffffff;
     font-family: 'Noto Sans JP', sans-serif;
     overflow-x: hidden;
     margin: 0;
@@ -25,7 +25,7 @@ body {
     filter: brightness(0) invert(1);
 }
 
-/* サイドナビゲーション挙動 */
+/* サイドナビゲーション挙動（スマホのみ有効） */
 #side-nav {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -48,12 +48,11 @@ body {
    2. ① index.html 専用
    ========================================= */
 
-/* indexは基本の文字色が黒なので上書き */
 body.index-page {
     color: var(--ganar-black);
 }
 
-/* メインビジュアル下の青いぼかし（indexのみ使用） */
+/* メインビジュアル下の青いぼかし */
 .index-mv-gradient {
     position: absolute;
     bottom: 0;
@@ -81,7 +80,6 @@ body.index-page {
    3. ② about.html 専用
    ========================================= */
 
-/* HAVE FUN... の大きな見出しの行間調整 */
 .about-hero-title {
     line-height: 0.9;
 }
@@ -90,7 +88,6 @@ body.index-page {
    4. ③ contact.html 専用
    ========================================= */
 
-/* フォーム入力欄の文字色（背景が白いため紺色にする） */
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
@@ -101,7 +98,6 @@ body.index-page {
    5. ④ fanclub.html 専用
    ========================================= */
 
-/* Discordボタン等のホバー時の微細な挙動 */
 .fanclub-join-btn {
     transition: all 0.3s ease;
 }
@@ -114,7 +110,6 @@ body.index-page {
    6. ⑤ members.html 専用
    ========================================= */
 
-/* 3Dカードギミック */
 .member-card { 
     perspective: 1000px; 
     height: 500px; 
@@ -195,7 +190,7 @@ body.index-page {
 }
 
 /* =========================================
-   9. 共通パーツ（複数ページで使用）
+   9. 共通パーツ
    ========================================= */
 
 .section-title-line {
