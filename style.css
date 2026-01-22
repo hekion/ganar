@@ -44,6 +44,11 @@ body {
     opacity: 1;
 }
 
+/* ヘッダーPC版ナビ：ホバーを滑らかにする */
+header nav ul li a {
+    transition: color 0.3s ease;
+}
+
 /* =========================================
    2. ① index.html 専用
    ========================================= */
@@ -199,6 +204,8 @@ body.index-page {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
+/* NEWS画像のホバー拡大はHTMLからクラスを削除したため不要ですが、
+   共通パーツとして残しておいても問題ありません */
 .hover-zoom {
     transition: transform 0.5s ease;
 }
