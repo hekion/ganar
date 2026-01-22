@@ -19,11 +19,11 @@
 
             <nav class="hidden md:block">
                 <ul class="flex items-center gap-8 font-oswald font-black italic uppercase tracking-tighter text-xl">
-                    <li><a href="news.html" class="hover:text-[#0a1428] transition-colors">News</a></li>
-                    <li><a href="about.html" class="hover:text-[#0a1428] transition-colors">About</a></li>
-                    <li><a href="members.html" class="hover:text-[#0a1428] transition-colors">Members</a></li>
-                    <li><a href="fanclub.html" class="hover:text-[#0a1428] transition-colors">Fanclub</a></li>
-                    <li><a href="contact.html" class="hover:text-[#0a1428] transition-colors">Contact</a></li>
+                    <li><a href="news.html" class="hover:text-[#0a1428] transition-all duration-300">News</a></li>
+                    <li><a href="about.html" class="hover:text-[#0a1428] transition-all duration-300">About</a></li>
+                    <li><a href="members.html" class="hover:text-[#0a1428] transition-all duration-300">Members</a></li>
+                    <li><a href="fanclub.html" class="hover:text-[#0a1428] transition-all duration-300">Fanclub</a></li>
+                    <li><a href="contact.html" class="hover:text-[#0a1428] transition-all duration-300">Contact</a></li>
                 </ul>
             </nav>
 
@@ -154,12 +154,12 @@
                 </a>
             </div>
 
-            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center gap-4 text-gray-500 text-xs tracking-widest font-bold uppercase">
-                <p>©︎ 2026 GANAR All Rights Reserved.</p>
-                <a href="https://hekion.github.io/hekion/" target="_blank" class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity">
-                    <span>powered by</span>
-                    <img src="hekion-logo.png" alt="HEKION" class="h-5 w-auto">
+            <div class="pt-8 border-t border-white/5 flex flex-row items-center justify-center gap-3 text-white text-xs tracking-widest font-bold uppercase">
+                <span>©︎</span>
+                <a href="https://hekion.github.io/hekion/" target="_blank" class="flex items-center transition-opacity hover:opacity-70">
+                    <img src="hekion-logo.png" alt="HEKION" class="h-8 md:h-10 w-auto">
                 </a>
+                <span>All Rights Reserved.</span>
             </div>
         </div>
     </footer>
@@ -199,7 +199,7 @@
                     const imageUrl = getStableDriveUrl(item.imageUrl);
                     card.innerHTML = `
                         <div class="aspect-video w-full bg-black/20 rounded-xl overflow-hidden mb-6 shadow-lg">
-                            <img src="${imageUrl}" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='ganarlogo.png'" referrerpolicy="no-referrer">
+                            <img src="${imageUrl}" alt="" class="w-full h-full object-cover" onerror="this.src='ganarlogo.png'" referrerpolicy="no-referrer">
                         </div>
                         <div class="px-2">
                             <div class="flex items-center gap-3 mb-3">
