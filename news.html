@@ -62,8 +62,14 @@
             <div class="h-1 flex-grow bg-white/40 section-title-line"></div>
         </div>
 
-        <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <p class="col-span-full text-center py-20 opacity-60">読み込み中...</p>
+        </div>
+
+        <div id="pagination" class="mt-16 flex justify-center items-center gap-6 hidden">
+            <button id="prev-btn" class="bg-white/10 hover:bg-white hover:text-[#0a1428] text-white px-6 py-2 rounded-full font-bold transition-all disabled:opacity-20 disabled:pointer-events-none font-sans text-sm tracking-widest uppercase">PREV</button>
+            <span id="page-info" class="font-oswald font-bold text-lg italic tracking-widest">1 / 1</span>
+            <button id="next-btn" class="bg-white/10 hover:bg-white hover:text-[#0a1428] text-white px-6 py-2 rounded-full font-bold transition-all disabled:opacity-20 disabled:pointer-events-none font-sans text-sm tracking-widest uppercase">NEXT</button>
         </div>
 
         <div class="mt-20 text-center">
@@ -116,6 +122,11 @@
         overlay.addEventListener('click', toggleMenu);
 
         const GAS_URL = "https://script.google.com/macros/s/AKfycbyVJp-zqYfROpOGgh9Oqmvtx8FxG78fRm07eWfxeHpQVgSrHGxDADtDVlXqb_6nvplPRw/exec";
+        
+        // 設定
+        const ITEMS_PER_PAGE = 10;
+        let currentPage = 1;
+        let allNewsData = [];
 
         function getStableDriveUrl(url) {
             if (!url) return 'ganarlogo.png';
@@ -126,53 +137,98 @@
             return url;
         }
 
+        function displayNews() {
+            const container = document.getElementById('news-container');
+            container.innerHTML = '';
+
+            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+            const endIndex = startIndex + ITEMS_PER_PAGE;
+            const currentItems = allNewsData.slice(startIndex, endIndex);
+
+            currentItems.forEach(item => {
+                const date = new Date(item.date);
+                const dateString = isNaN(date) ? item.date : `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+                
+                const card = document.createElement('a');
+                card.href = `news-detail.html?id=${item.id}`;
+                card.className = "news-card bg-white/10 backdrop-blur-md rounded-xl overflow-hidden flex flex-col border border-white/20 hover:border-white transition-all";
+                
+                card.innerHTML = `
+                    <div class="aspect-video w-full bg-black/20 overflow-hidden relative">
+                        <img src="${getStableDriveUrl(item.imageUrl)}" 
+                             alt="" 
+                             class="w-full h-full object-cover"
+                             referrerpolicy="no-referrer">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-[10px] font-bold tracking-widest opacity-60">${dateString}</span>
+                            <span class="bg-white text-[#4bb8e0] text-[9px] font-black px-2 py-0.5 rounded uppercase font-sans">${item.category}</span>
+                        </div>
+                        <h3 class="text-lg font-bold leading-snug mb-4 line-clamp-2">${item.title}</h3>
+                        <div class="mt-auto flex items-center justify-between group">
+                            <span class="text-[10px] font-bold tracking-tighter uppercase opacity-40 group-hover:opacity-100 transition-opacity font-sans">Read More</span>
+                            <span class="text-xl leading-none transition-transform group-hover:translate-x-1">→</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            updatePagination();
+            // ページ移動時にトップへスクロール（不要なら削除してください）
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updatePagination() {
+            const totalPages = Math.ceil(allNewsData.length / ITEMS_PER_PAGE);
+            const paginationEl = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                paginationEl.classList.add('hidden');
+                return;
+            }
+
+            paginationEl.classList.remove('hidden');
+            document.getElementById('page-info').innerText = `${currentPage} / ${totalPages}`;
+            document.getElementById('prev-btn').disabled = (currentPage === 1);
+            document.getElementById('next-btn').disabled = (currentPage === totalPages);
+        }
+
         async function fetchNews() {
             const container = document.getElementById('news-container');
             try {
                 const response = await fetch(GAS_URL);
-                let data = await response.json();
+                allNewsData = await response.json();
                 
-                if (data.length === 0) {
+                if (allNewsData.length === 0) {
                     container.innerHTML = '<p class="col-span-full text-center py-20 opacity-60">現在、ニュースはありません。</p>';
                     return;
                 }
 
-                data.sort((a, b) => Number(b.id) - Number(a.id));
+                allNewsData.sort((a, b) => Number(b.id) - Number(a.id));
+                displayNews();
 
-                container.innerHTML = '';
-                data.forEach(item => {
-                    const date = new Date(item.date);
-                    const dateString = isNaN(date) ? item.date : `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
-                    
-                    const card = document.createElement('a');
-                    card.href = `news-detail.html?id=${item.id}`;
-                    card.className = "news-card bg-white/10 backdrop-blur-md rounded-xl overflow-hidden flex flex-col border border-white/20";
-                    
-                    card.innerHTML = `
-                        <div class="aspect-video w-full bg-black/20 overflow-hidden relative">
-                            <img src="${getStableDriveUrl(item.imageUrl)}" 
-                                 alt="" 
-                                 class="w-full h-full object-cover"
-                                 referrerpolicy="no-referrer">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-[10px] font-bold tracking-widest opacity-60">${dateString}</span>
-                                <span class="bg-white text-[#4bb8e0] text-[9px] font-black px-2 py-0.5 rounded uppercase font-sans">${item.category}</span>
-                            </div>
-                            <h3 class="text-lg font-bold leading-snug mb-4 line-clamp-2">${item.title}</h3>
-                            <div class="mt-auto flex items-center justify-between group">
-                                <span class="text-[10px] font-bold tracking-tighter uppercase opacity-40 group-hover:opacity-100 transition-opacity font-sans">Read More</span>
-                                <span class="text-xl leading-none transition-transform group-hover:translate-x-1">→</span>
-                            </div>
-                        </div>
-                    `;
-                    container.appendChild(card);
-                });
             } catch (error) {
                 container.innerHTML = '<p class="col-span-full text-center py-20 text-red-200">データの取得に失敗しました。</p>';
             }
         }
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayNews();
+            }
+        });
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            const totalPages = Math.ceil(allNewsData.length / ITEMS_PER_PAGE);
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayNews();
+            }
+        });
+
         fetchNews();
     </script>
 </body>
