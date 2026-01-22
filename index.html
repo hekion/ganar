@@ -42,8 +42,19 @@
         </div>
     </nav>
 
-    <section class="relative h-[80vh] md:h-screen w-full overflow-hidden bg-[#0a1428]">
-        <img src="main.png" alt="GANAR Main" class="w-full h-full object-cover opacity-80">
+    <section class="relative h-[80vh] md:h-screen w-full overflow-hidden bg-[#0a1428] flex items-center justify-center">
+        <picture class="absolute inset-0">
+            <source media="(min-width: 768px)" srcset="main_pc.jpg">
+            <img src="main_sp.jpg" alt="GANAR Main" class="w-full h-full object-cover opacity-80">
+        </picture>
+        
+        <div class="relative z-10 w-full px-6 text-center">
+            <h1 class="font-oswald font-black italic uppercase text-white leading-none tracking-tighter" 
+                style="font-size: clamp(2rem, 10vw, 7rem); white-space: nowrap;">
+                HAVE FUN AND WIN
+            </h1>
+        </div>
+        
         <div class="index-mv-gradient"></div>
     </section>
 
@@ -126,7 +137,7 @@
                 const response = await fetch(GAS_URL);
                 let data = await response.json();
                 data.sort((a, b) => Number(b.id) - Number(a.id));
-                const latestNews = data.slice(0, 3); // 3つ表示に変更
+                const latestNews = data.slice(0, 3);
 
                 container.innerHTML = '';
                 latestNews.forEach(item => {
@@ -135,7 +146,6 @@
                     
                     const card = document.createElement('a');
                     card.href = `news-detail.html?id=${item.id}`;
-                    // 区切りを分かりやすくするために border-b と pb-8 を追加
                     card.className = "flex flex-col group px-4 md:px-2 border-b border-white/10 pb-8 md:border-none";
                     
                     const imageUrl = getStableDriveUrl(item.imageUrl);
