@@ -274,13 +274,13 @@ header img {
 }
 
 /* =========================================
-   5. 全セクションタイトル（背景文字と白文字の左下頂点一致＋真下に日本語）
+   5. 全セクションタイトル（背景文字と白文字の重ね合わせ・左下揃え）
    ========================================= */
 
 .section-title-wrapper { 
     position: relative; 
     display: inline-block;
-    padding: 0;
+    width: 100%;
     margin-bottom: 3.5rem; 
 }
 
@@ -304,7 +304,7 @@ header img {
     padding: 0;
 }
 
-/* 手前エリア（背景文字の左下に固定配置） */
+/* 手前エリア（背景文字の左下に重ねて配置） */
 .section-title-front { 
     position: absolute; 
     left: 0;
@@ -315,13 +315,13 @@ header img {
     align-items: flex-start;
 }
 
-/* 手前の英字（背景の左下頂点と完全一致させる） */
+/* 手前の英字（メインの白文字） */
 .section-title-front h2 { 
-    font-family: 'Montserrat', sans-serif; 
-    font-size: clamp(1.8rem, 4vw, 3rem); 
-    font-weight: 800; 
+    font-family: 'Teko', sans-serif; 
+    font-size: clamp(2rem, 5vw, 4rem); 
+    font-weight: 700; 
     letter-spacing: 0.05em; 
-    line-height: 1; /* line-heightを背景と統一 */
+    line-height: 1; 
     margin: 0;
     padding: 0;
     text-transform: uppercase; 
@@ -334,7 +334,7 @@ header img {
     font-weight: 700; 
     letter-spacing: 0.2em; 
     color: var(--ganar-cyan); 
-    margin-top: 0.5rem; 
+    margin-top: 0.3rem; 
     display: block; 
     line-height: 1.2;
 }
