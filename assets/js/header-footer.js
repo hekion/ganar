@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain">
                     </a>
 
-                    <!-- 右上 トグルボタン（2本線 ⇔ ✕印：最前面固定） -->
+                    <!-- 右上 トグルボタン（2本線 ⇔ ✕印） -->
                     <button id="menu-toggle-btn" class="zeta-menu-trigger absolute right-6 top-1/2 -translate-y-1/2" aria-label="Toggle Navigation">
                         <div class="zeta-icon-box">
                             <span class="zeta-line zeta-line-1"></span>
@@ -35,16 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- メニューコンテンツ保持エリア -->
                 <div class="zeta-nav-content w-full max-w-[1000px]">
                     
-                    <!-- 【上部エリア】ヘッダーと同高度（h-20/h-24）で左端に配置するサイドメニュー専用ロゴ -->
-                    <div class="w-full h-20 md:h-24 flex items-center justify-start">
-                        <a href="index.html" class="block h-8 md:h-10">
+                    <!-- 【上部エリア】差別化を効かせた水色発光付きロゴ -->
+                    <div class="w-full pt-2 pb-4 flex items-center justify-start">
+                        <a href="index.html" class="block h-7 md:h-9">
                             <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain zeta-menu-logo-img">
                         </a>
                     </div>
 
-                    <!-- 【中域エリア】メニュー項目（行間をしっかり確保） -->
-                    <div class="w-full pt-2 md:pt-4">
-                        <ul class="space-y-5 md:space-y-6">
+                    <!-- 【中域エリア】メニュー項目（行間をさらに拡大：space-y-7 / md:space-y-8） -->
+                    <div class="w-full pt-2">
+                        <ul class="space-y-7 md:space-y-8">
                             <li class="zeta-nav-item">
                                 <a href="index.html" class="zeta-link">
                                     <span>HOME</span>
@@ -90,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                     </div>
 
-                    <!-- 【水色SVGアイコン】メニュー直下に配置 -->
-                    <div class="w-full flex items-center gap-6 pt-6 md:pt-8 mt-2 border-t border-white/10">
+                    <!-- 【水色SVGアイコン】 -->
+                    <div class="w-full flex items-center gap-6 pt-6 md:pt-8 mt-4 border-t border-white/10">
                         <a href="https://x.com/GANAR_games" target="_blank" rel="noopener noreferrer" class="text-[#00f0ff] hover:opacity-80 transition-opacity" aria-label="X">
                             <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         </a>
@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </a>
                     </div>
 
-                    <!-- 【下部余白領域】画面下部 20〜30% に十分なスペースを確保 -->
-                    <div class="w-full h-24 md:h-36 shrink-0"></div>
+                    <!-- 【下部余白領域】画面下部 約20%の余白を確保 -->
+                    <div class="w-full h-20 md:h-28 shrink-0"></div>
                 </div>
             </div>
         `;
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // 3. ボタン1つで 2本線 ⇔ ✕印 をトグル切替するロジック
+    // 3. トグル切替ロジック
     setTimeout(() => {
         const toggleBtn = document.getElementById('menu-toggle-btn');
         const sideNav = document.getElementById('zeta-side-nav');
