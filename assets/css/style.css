@@ -35,49 +35,61 @@ body {
     height: 100vh;
     background: linear-gradient(180deg, transparent 0%, var(--ganar-cyan) 30%, var(--ganar-cyan) 70%, transparent 100%);
     box-shadow: 0 0 10px var(--ganar-cyan);
-    opacity: 0.4;
+    opacity: 0.6;
     z-index: 40;
     pointer-events: none;
 }
 
 .ganar-vertical-slogan {
     position: fixed;
-    right: 1.5rem;
+    right: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
     writing-mode: vertical-rl;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 800;
-    letter-spacing: 0.35em;
-    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.25em;
+    color: rgba(255, 255, 255, 0.3);
     user-select: none;
     pointer-events: none;
     z-index: 40;
     text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
-    .ganar-side-line, .ganar-vertical-slogan {
-        display: none;
+@media (min-width: 768px) {
+    .ganar-vertical-slogan {
+        right: 1.5rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.35em;
     }
 }
 
 /* =========================================
-   3. ZETA風 2本線ハンバーガー・CLOSEボタン
+   3. 2本線ハンバーガー・CLOSEボタン（✕アイコンのみ）
    ========================================= */
 
 .zeta-menu-trigger {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.75rem;
     color: #ffffff;
     transition: color 0.3s ease;
-    z-index: 110; /* サイドメニュー上でも最前面に表示 */
+    z-index: 1000; /* サイドメニュー（z-index: 500）の最前面に確実に配置 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .zeta-menu-trigger {
+        right: 2rem;
+    }
 }
 
 .zeta-menu-trigger:hover {
@@ -86,8 +98,8 @@ body {
 
 .zeta-icon-box {
     position: relative;
-    width: 22px;
-    height: 14px;
+    width: 24px;
+    height: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -98,21 +110,17 @@ body {
     width: 100%;
     height: 2px;
     background-color: currentColor;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: center;
 }
 
-/* 開いた時（.is-active）に中央で交差して「✕」になる設定 */
-.zeta-menu-trigger.is-active .zeta-icon-box {
-    justify-content: center;
-}
-
+/* 開いた時（.is-active）に交差して「✕」になる */
 .zeta-menu-trigger.is-active .zeta-line-1 {
-    transform: translateY(1px) rotate(45deg);
+    transform: translateY(7px) rotate(45deg);
 }
 
 .zeta-menu-trigger.is-active .zeta-line-2 {
-    transform: translateY(-1px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 /* =========================================
@@ -214,14 +222,20 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: #000000;
-    z-index: 100;
+    z-index: 500;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2.5rem 2rem;
+    padding: 6rem 1.5rem 2.5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+    #zeta-side-nav {
+        padding: 6rem 3rem 2.5rem 3rem;
+    }
 }
 
 #zeta-side-nav.active {
