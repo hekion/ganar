@@ -34,16 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <!-- メニューコンテンツ保持エリア -->
                 <div class="zeta-nav-content w-full max-w-[1000px]">
-                    
-                    <!-- 【上部エリア】差別化を効かせた水色発光付きロゴ -->
-                    <div class="w-full pt-2 pb-4 flex items-center justify-start">
-                        <a href="index.html" class="block h-7 md:h-9">
-                            <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain zeta-menu-logo-img">
-                        </a>
-                    </div>
 
-                    <!-- 【中域エリア】メニュー項目（行間をさらに拡大：space-y-7 / md:space-y-8） -->
-                    <div class="w-full pt-2">
+                    <!-- 【中域エリア】メニュー項目 -->
+                    <div class="w-full pt-4">
                         <ul class="space-y-7 md:space-y-8">
                             <li class="zeta-nav-item">
                                 <a href="index.html" class="zeta-link">
