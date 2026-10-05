@@ -1,206 +1,208 @@
 @charset "UTF-8";
 
 /* =========================================
-   1. カラー変数・フォント・基本設定
+   1. 基本設定・モダンフォント・カラー
    ========================================= */
 :root {
     --ganar-cyan: #00f0ff;
-    --ganar-cyan-glow: rgba(0, 240, 255, 0.4);
-    --ganar-blue-dark: #050a14;
-    --ganar-card-bg: rgba(10, 20, 38, 0.7);
-    --ganar-card-border: rgba(0, 240, 255, 0.25);
+    --ganar-dark: #070a12;
+    --ganar-card-bg: rgba(255, 255, 255, 0.02);
+    --ganar-border: rgba(255, 255, 255, 0.08);
 }
 
 body {
-    background-color: var(--ganar-blue-dark);
+    background-color: var(--ganar-dark);
     color: #ffffff;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
     margin: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
-.font-teko {
-    font-family: 'Teko', sans-serif;
-    text-transform: uppercase;
-}
-
-.font-chakra {
-    font-family: 'Chakra Petch', sans-serif;
+/* 欧文モダンフォントクラス */
+.font-en {
+    font-family: 'Montserrat', 'Inter', sans-serif;
 }
 
 /* =========================================
-   2. 二重タイポグラフィ (CRスタイル) & 視覚効果
+   2. 洗練された二重タイポグラフィ (CRモチーフ)
    ========================================= */
 
-/* タイトルエリアの相対配置 */
 .section-title-wrapper {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 4rem;
-    overflow: hidden;
-    padding-bottom: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
-/* 背景に浮かび上がる超巨大英字 (二重文字) */
+/* 背景の透過大文字 (デザインのアクセント) */
 .section-title-bg {
     position: absolute;
-    left: -0.05em;
-    bottom: -0.2em;
-    font-family: 'Teko', sans-serif;
-    font-size: clamp(5rem, 15vw, 11rem);
-    font-weight: 700;
+    top: -0.5rem;
+    left: -0.02em;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(4.5rem, 12vw, 9rem);
+    font-weight: 900;
     line-height: 0.8;
-    color: rgba(255, 255, 255, 0.03);
-    -webkit-text-stroke: 1px rgba(0, 240, 255, 0.08);
+    letter-spacing: -0.03em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.07);
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
     z-index: 0;
+    text-transform: uppercase;
 }
 
-/* 前面のタイトルテキスト */
+/* 前面のクリーンな見出し */
 .section-title-front {
     position: relative;
     z-index: 1;
 }
 
-.section-title-line {
-    flex-grow: 1;
-    height: 2px;
-    background: linear-gradient(90deg, var(--ganar-cyan) 0%, rgba(0, 240, 255, 0) 100%);
-    margin-left: 2rem;
-    position: relative;
-    z-index: 1;
+.section-title-front h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #ffffff;
 }
 
-/* 背景メッシュ */
-.cyber-grid-bg {
-    background-color: var(--ganar-blue-dark);
-    background-image: 
-        radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.06) 0%, transparent 70%),
-        linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
-    background-size: 100% 100%, 50px 50px, 50px 50px;
+.section-title-front span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--ganar-cyan);
+    margin-top: 0.5rem;
+    display: block;
 }
 
-/* ボタンデザイン */
-.cyber-btn {
-    position: relative;
+/* シンプルで上質なボタン */
+.clean-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.9rem 3rem;
-    font-family: 'Teko', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
+    padding: 1rem 3.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
     color: #ffffff;
-    background: rgba(10, 20, 38, 0.85);
-    border: 1px solid var(--ganar-cyan);
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
-    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cyber-btn:hover {
+.clean-btn:hover {
+    border-color: var(--ganar-cyan);
+    color: #000000;
     background: var(--ganar-cyan);
-    color: #050a14;
-    box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
     transform: translateY(-2px);
 }
 
-/* サイバーカード */
-.cyber-card {
+/* カードデザイン */
+.clean-card {
     background: var(--ganar-card-bg);
-    border: 1px solid var(--ganar-card-border);
-    backdrop-filter: blur(16px);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.cyber-card:hover {
-    border-color: var(--ganar-cyan);
-    box-shadow: 0 10px 35px -5px var(--ganar-cyan-glow);
-    transform: translateY(-4px);
-}
-
-/* =========================================
-   3. サイドメニュー (ZETAスタイル アニメーション)
-   ========================================= */
-
-#side-nav {
-    background: rgba(5, 10, 20, 0.96);
-    backdrop-filter: blur(24px);
-    border-left: 1px solid rgba(0, 240, 255, 0.25);
-}
-
-/* メニューアイテムのスライド・フェードイン演出 */
-.nav-menu-item {
-    opacity: 0;
-    transform: translateX(30px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-#side-nav.active .nav-menu-item {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* 項目ごとの遅延（Stagger効果） */
-#side-nav.active .nav-menu-item:nth-child(1) { transition-delay: 0.10s; }
-#side-nav.active .nav-menu-item:nth-child(2) { transition-delay: 0.15s; }
-#side-nav.active .nav-menu-item:nth-child(3) { transition-delay: 0.20s; }
-#side-nav.active .nav-menu-item:nth-child(4) { transition-delay: 0.25s; }
-#side-nav.active .nav-menu-item:nth-child(5) { transition-delay: 0.30s; }
-#side-nav.active .nav-menu-item:nth-child(6) { transition-delay: 0.35s; }
-#side-nav.active .nav-menu-item:nth-child(7) { transition-delay: 0.40s; }
-
-.nav-link-item {
-    position: relative;
+    border: 1px solid var(--ganar-border);
+    backdrop-filter: blur(12px);
     transition: all 0.3s ease;
 }
 
-.nav-link-item::before {
-    content: '';
-    position: absolute;
-    left: -1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 0%;
-    background-color: var(--ganar-cyan);
-    box-shadow: 0 0 8px var(--ganar-cyan);
-    transition: height 0.25s ease;
-}
-
-.nav-link-item:hover::before {
-    height: 75%;
-}
-
-.nav-link-item:hover {
-    padding-left: 0.5rem;
-    color: var(--ganar-cyan);
+.clean-card:hover {
+    border-color: rgba(0, 240, 255, 0.4);
 }
 
 /* =========================================
-   4. members.html / 下層ページ用
+   3. ZETA DIVISION完全モーチフ サイドメニュー
    ========================================= */
 
+#zeta-side-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem 2rem;
+}
+
+#zeta-side-nav.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ナビゲーションリンクのアニメーション */
+.zeta-nav-item {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#zeta-side-nav.active .zeta-nav-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 時間差表示 */
+#zeta-side-nav.active .zeta-nav-item:nth-child(1) { transition-delay: 0.10s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(2) { transition-delay: 0.15s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(3) { transition-delay: 0.20s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(4) { transition-delay: 0.25s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(5) { transition-delay: 0.30s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(6) { transition-delay: 0.35s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(7) { transition-delay: 0.40s; }
+
+.zeta-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.zeta-link:hover {
+    color: var(--ganar-cyan);
+    transform: translateX(10px);
+}
+
+.zeta-link-sub {
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: #666666;
+}
+
+/* 下層ページ用スタイル修正 */
 .member-card { perspective: 1000px; height: 500px; cursor: pointer; }
 .member-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; }
 .member-card.flipped .member-card-inner { transform: rotateY(180deg); }
-.card-front, .card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem; border: 1px solid var(--ganar-card-border); color: #ffffff !important; }
-.card-front { background: rgba(10, 20, 40, 0.75); backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 1.5rem; }
-.card-back { background: #050a14; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; padding: 2.5rem; }
+.card-front, .card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 0.5rem; border: 1px solid var(--ganar-border); color: #ffffff !important; }
+.card-front { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 1.5rem; }
+.card-back { background: #070a12; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; padding: 2.5rem; }
 
 .contact-form input, .contact-form select, .contact-form textarea {
     background-color: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(0, 240, 255, 0.25) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
     color: #ffffff !important;
+    border-radius: 0.375rem;
 }
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
     border-color: var(--ganar-cyan) !important;
     outline: none;
-    box-shadow: 0 0 15px var(--ganar-cyan-glow);
 }
