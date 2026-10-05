@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. グローバルヘッダー & サイドメニューの描画
+    // 1. ヘッダー & サイドメニュー（ZETAスタイルアニメーション対応）
     const headerElement = document.getElementById('global-header');
     if (headerElement) {
         headerElement.innerHTML = `
-            <header class="fixed top-0 left-0 w-full z-50 bg-[#050a14]/80 backdrop-blur-xl border-b border-[#00f0ff]/20 h-20 md:h-24 transition-all duration-300">
+            <header class="fixed top-0 left-0 w-full z-50 bg-[#050a14]/85 backdrop-blur-xl border-b border-[#00f0ff]/20 h-20 md:h-24 transition-all duration-300">
                 <div class="max-w-[1700px] mx-auto h-full px-6 md:px-12 flex items-center justify-between">
                     <!-- ロゴ -->
                     <div class="h-9 md:h-11 transition-transform duration-300 hover:scale-105">
@@ -12,13 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         </a>
                     </div>
 
-                    <!-- サイバーハンバーガーボタン (PC・スマホ共通) -->
+                    <!-- ハンバーガーボタン -->
                     <button id="menu-btn" class="relative group flex items-center gap-3 bg-[#0a1428]/80 border border-[#00f0ff]/30 px-4 py-2.5 rounded-lg hover:border-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all duration-300" aria-label="Toggle Menu">
                         <span class="font-teko text-xl tracking-widest uppercase text-white group-hover:text-[#00f0ff] transition-colors">Menu</span>
                         <div class="w-6 flex flex-col items-end gap-1.5">
-                            <span id="burger-line-1" class="block w-6 h-[2px] bg-[#00f0ff] transition-transform duration-300"></span>
-                            <span id="burger-line-2" class="block w-4 h-[2px] bg-white group-hover:w-6 transition-all duration-300"></span>
-                            <span id="burger-line-3" class="block w-6 h-[2px] bg-[#00f0ff] transition-transform duration-300"></span>
+                            <span class="block w-6 h-[2px] bg-[#00f0ff]"></span>
+                            <span class="block w-4 h-[2px] bg-white group-hover:w-6 transition-all duration-300"></span>
+                            <span class="block w-6 h-[2px] bg-[#00f0ff]"></span>
                         </div>
                     </button>
                 </div>
@@ -27,28 +27,26 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- 背景オーバーレイ -->
             <div id="overlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[55] opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
-            <!-- サイドスライドメニュー -->
+            <!-- サイドメニュー -->
             <nav id="side-nav" class="fixed top-0 right-0 w-[320px] md:w-[420px] h-full z-[60] translate-x-full transition-transform duration-500 cubic-bezier(0.77, 0, 0.175, 1) flex flex-col justify-between p-8 md:p-12 overflow-y-auto">
                 <div>
-                    <!-- メニューヘッダー -->
                     <div class="flex items-center justify-between pb-8 mb-8 border-b border-white/10">
                         <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-8 w-auto">
                         <button id="close-btn" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] transition-all text-xl">✕</button>
                     </div>
 
-                    <!-- メニューリスト -->
+                    <!-- スライドインアニメーション用クラス付与 -->
                     <ul class="space-y-6 font-teko text-3xl tracking-wider">
-                        <li><a href="index.html" class="nav-link-item block text-white">HOME <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">ホーム</span></a></li>
-                        <li><a href="news.html" class="nav-link-item block text-white">NEWS <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">ニュース</span></a></li>
-                        <li><a href="about.html" class="nav-link-item block text-white">ABOUT <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">チームについて</span></a></li>
-                        <li><a href="members.html" class="nav-link-item block text-white">MEMBERS <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">メンバー紹介</span></a></li>
-                        <li><a href="fanclub.html" class="nav-link-item block text-white">FANCLUB <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">ファンクラブ</span></a></li>
-                        <li><a href="recruit.html" class="nav-link-item block text-[#ffeb3b]">RECRUIT <span class="text-xs font-sans text-[#ffeb3b]/70 block tracking-widest font-normal">メンバー募集</span></a></li>
-                        <li><a href="contact.html" class="nav-link-item block text-white">CONTACT <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">お問い合わせ</span></a></li>
+                        <li class="nav-menu-item"><a href="index.html" class="nav-link-item block text-white">HOME <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">ホーム</span></a></li>
+                        <li class="nav-menu-item"><a href="news.html" class="nav-link-item block text-white">NEWS <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">ニュース</span></a></li>
+                        <li class="nav-menu-item"><a href="about.html" class="nav-link-item block text-white">ABOUT <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">チームについて</span></a></li>
+                        <li class="nav-menu-item"><a href="members.html" class="nav-link-item block text-white">MEMBERS <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">メンバー紹介</span></a></li>
+                        <li class="nav-menu-item"><a href="fanclub.html" class="nav-link-item block text-white">FANCLUB <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">ファンクラブ</span></a></li>
+                        <li class="nav-menu-item"><a href="recruit.html" class="nav-link-item block text-[#ffeb3b]">RECRUIT <span class="text-xs font-sans text-[#ffeb3b]/70 block tracking-widest font-normal">メンバー募集</span></a></li>
+                        <li class="nav-menu-item"><a href="contact.html" class="nav-link-item block text-white">CONTACT <span class="text-xs font-sans text-gray-400 block tracking-widest font-normal">お問い合わせ</span></a></li>
                     </ul>
                 </div>
 
-                <!-- メニュー下部フッター情報 -->
                 <div class="pt-8 border-t border-white/10 text-xs text-gray-400 font-sans">
                     <p class="mb-4">GANAR Official Web Site</p>
                     <div class="flex gap-4">
@@ -61,18 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // 2. グローバルフッターの描画
+    // 2. フッター
     const footerElement = document.getElementById('global-footer');
     if (footerElement) {
         footerElement.innerHTML = `
             <footer class="bg-[#02050b] text-white py-16 px-6 border-t border-[#00f0ff]/20 relative overflow-hidden font-sans">
                 <div class="max-w-[1200px] mx-auto flex flex-col items-center">
-                    <!-- GANAR ロゴ -->
                     <div class="h-12 mb-10 transition-transform hover:scale-105">
                         <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain">
                     </div>
 
-                    <!-- メインメニュー (ABOUT 〜 RECRUIT) -->
                     <nav class="mb-10">
                         <ul class="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 font-teko text-2xl tracking-widest uppercase text-gray-200">
                             <li><a href="about.html" class="hover:text-[#00f0ff] transition-colors">ABOUT</a></li>
@@ -83,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                     </nav>
 
-                    <!-- SNSアイコン -->
                     <div class="flex items-center gap-6 mb-12">
                         <a href="https://x.com/GANAR_games" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#00f0ff] hover:border-[#00f0ff] hover:text-black hover:shadow-[0_0_15px_rgba(0,240,255,0.6)] transition-all">
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -96,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </a>
                     </div>
 
-                    <!-- サブリンク（SNSアイコンの下に配置） -->
                     <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-xs font-medium text-gray-400 mb-10">
                         <a href="operation.html" class="hover:text-white transition-colors">運営情報</a>
                         <span class="text-gray-700">|</span>
@@ -107,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <a href="contact.html" class="hover:text-white transition-colors">お問い合わせ</a>
                     </div>
 
-                    <!-- 著作権表示（HEKIONロゴ） -->
                     <div class="pt-8 border-t border-white/10 flex items-center justify-center gap-3 text-gray-500 text-xs tracking-wider">
                         <span>©</span>
                         <a href="https://hekion.github.io/hekion/" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-105">
@@ -120,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // 3. サイドメニュー開閉イベントの制御
+    // 3. サイドメニュー開閉アニメーション制御
     setTimeout(() => {
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
@@ -129,12 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function toggleMenu() {
             if (!sideNav || !overlay) return;
-            const isOpen = !sideNav.classList.contains('translate-x-full');
+            const isOpen = sideNav.classList.contains('active');
             if (isOpen) {
+                sideNav.classList.remove('active');
                 sideNav.classList.add('translate-x-full');
                 overlay.classList.add('opacity-0', 'pointer-events-none');
             } else {
                 sideNav.classList.remove('translate-x-full');
+                sideNav.classList.add('active');
                 overlay.classList.remove('opacity-0', 'pointer-events-none');
             }
         }
