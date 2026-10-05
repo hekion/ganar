@@ -24,10 +24,28 @@ body {
 }
 
 /* =========================================
-   2. サイドメニュー内ビジュアル装飾（g-mark透かし & 水色ライン & 縦書きスローガン）
+   ヘッダーロゴサイズ設定（1.5倍化）
+   ========================================= */
+.header-logo img,
+header .logo img,
+#header img.logo {
+    height: 48px !important; /* 通常サイズ(約32px)の1.5倍 */
+    width: auto !important;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .header-logo img,
+    header .logo img,
+    #header img.logo {
+        height: 36px !important; /* スマホ時も1.5倍相当に拡大 */
+    }
+}
+
+/* =========================================
+   2. サイドメニュー内ビジュアル装飾
    ========================================= */
 
-/* バックグラウンド g-mark 透かしロゴ（PC中央寄せ & 白みアップ） */
 .zeta-menu-bg-mark {
     position: absolute;
     right: -5%;
@@ -73,7 +91,6 @@ body {
     }
 }
 
-/* スローガン：縦書き（1文字目の「H」の位置をHOME項目の高さに合わせて上部配置＆白字化） */
 .zeta-menu-slogan {
     position: absolute;
     top: 2rem;
@@ -149,7 +166,7 @@ body {
 }
 
 /* =========================================
-   4. サイドメニュー（ヘッダー分を開けた配置）
+   4. サイドメニュー
    ========================================= */
 
 #zeta-side-nav {
@@ -241,25 +258,24 @@ body {
 }
 
 /* =========================================
-   5. 全セクションタイトル共通（背景大文字＆表タイトルの左下重なり固定）
+   5. 全セクションタイトル（四角枠の左下頂点一致レイアウト）
    ========================================= */
 
 .section-title-wrapper { 
     position: relative; 
-    padding-top: 1rem; 
-    padding-bottom: 1.5rem; 
+    display: inline-block;
+    padding: 0;
     margin-bottom: 2.5rem; 
 }
 
 .section-title-bg { 
-    position: absolute; 
-    top: -0.5rem; 
-    left: -0.02em; 
+    position: relative; 
+    display: block;
     font-family: 'Montserrat', sans-serif; 
-    font-size: clamp(4rem, 10vw, 7.5rem); 
+    font-size: clamp(3.5rem, 9vw, 7rem); 
     font-weight: 900; 
-    line-height: 0.8; 
-    letter-spacing: -0.03em; 
+    line-height: 0.85; 
+    letter-spacing: -0.02em; 
     color: rgba(0, 240, 255, 0.03); 
     -webkit-text-stroke: 1px rgba(0, 240, 255, 0.25); 
     pointer-events: none; 
@@ -269,12 +285,12 @@ body {
     text-transform: uppercase; 
 }
 
-/* CONCEPT / NEWS / SPONSOR 等、全セクション共通で左下重なりに固定 */
+/* 背景文字の左下頂点と手前文字(h2)の左下頂点を一致させる配置 */
 .section-title-front { 
-    position: relative; 
+    position: absolute; 
+    left: 0;
+    bottom: 0;
     z-index: 1; 
-    padding-top: clamp(2rem, 5vw, 4rem);
-    padding-left: clamp(0.5rem, 1.5vw, 1.5rem);
 }
 
 .section-title-front h2 { 
@@ -282,7 +298,9 @@ body {
     font-size: clamp(1.8rem, 4vw, 3rem); 
     font-weight: 800; 
     letter-spacing: 0.05em; 
-    line-height: 1; 
+    line-height: 0.85; /* 高さ揃えのため背景と一致 */
+    margin: 0;
+    padding: 0;
     text-transform: uppercase; 
     color: #ffffff; 
 }
@@ -292,15 +310,54 @@ body {
     font-weight: 700; 
     letter-spacing: 0.25em; 
     color: var(--ganar-cyan); 
-    margin-top: 0.5rem; 
+    margin-top: 0.4rem; 
     display: block; 
 }
 
 /* =========================================
-   6. ボタン＆ニュースカードデザイン（サイバーくっきり化）
+   6. ボタン＆READ MORE・ニュースカードデザイン
    ========================================= */
 
-/* JSで自動生成されるニュースカード要素の見た目をCSS側で直接上書き制御 */
+/* READ MORE / MORE VIEW 等の全ボタン共通サイバー装飾 */
+.cyber-btn,
+a.cyber-btn,
+button.cyber-btn,
+.read-more-btn,
+a[class*="read-more"],
+a[class*="more"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.85rem 2.8rem !important;
+    font-family: 'Montserrat', 'Chakra Petch', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.2em !important;
+    color: var(--ganar-cyan) !important;
+    background: rgba(5, 10, 20, 0.85) !important;
+    border: 1px solid var(--ganar-cyan) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.25) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    text-decoration: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+}
+
+.cyber-btn:hover,
+a.cyber-btn:hover,
+button.cyber-btn:hover,
+.read-more-btn:hover,
+a[class*="read-more"]:hover,
+a[class*="more"]:hover {
+    color: #000000 !important;
+    background: var(--ganar-cyan) !important;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.7) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* JSで自動生成されるニュースカード要素の見た目をCSS側で上書き */
 #news-container .cyber-card {
     background: rgba(10, 16, 28, 0.85) !important;
     border: 1px solid rgba(0, 240, 255, 0.25) !important;
@@ -312,34 +369,6 @@ body {
     border-color: var(--ganar-cyan) !important;
     box-shadow: 0 0 25px rgba(0, 240, 255, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.05) !important;
     transform: translateY(-4px) !important;
-}
-
-/* サイバーボタン (.cyber-btn) */
-.cyber-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.9rem 3rem;
-    font-family: 'Montserrat', 'Chakra Petch', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 800;
-    letter-spacing: 0.25em;
-    color: var(--ganar-cyan);
-    background: rgba(5, 10, 20, 0.8);
-    border: 1px solid var(--ganar-cyan);
-    border-radius: 4px;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.cyber-btn:hover {
-    color: #000000;
-    background: var(--ganar-cyan);
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
-    transform: translateY(-2px);
 }
 
 /* 水色メインボタン */
