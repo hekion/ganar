@@ -1,7 +1,7 @@
 const GAS_URL = "https://script.google.com/macros/s/AKfycbyVJp-zqYfROpOGgh9Oqmvtx8FxG78fRm07eWfxeHpQVgSrHGxDADtDVlXqb_6nvplPRw/exec";
 
 function getStableDriveUrl(url) {
-    if (!url) return 'assets/images/logo/ganar-logo.png';
+    if (!url) return 'assets/images/logo/ganar.png';
     const idMatch = url.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
     if (idMatch) {
         return `https://drive.google.com/thumbnail?id=${idMatch[0]}&sz=s1000`;
@@ -30,7 +30,7 @@ async function fetchNews() {
 
             card.innerHTML = `
                 <div class="aspect-video w-full bg-black/40 overflow-hidden relative">
-                    <img src="${imageUrl}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='assets/images/logo/ganar-logo.png'" referrerpolicy="no-referrer">
+                    <img src="${imageUrl}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='assets/images/logo/ganar.png'" referrerpolicy="no-referrer">
                     <span class="absolute top-3 left-3 bg-[#0a1428]/80 backdrop-blur-md text-[#4bb8e0] border border-[#4bb8e0]/40 text-[11px] font-black px-3 py-1 rounded uppercase font-sans tracking-widest">${item.category}</span>
                 </div>
                 <div class="p-6 flex-1 flex flex-col justify-between">
