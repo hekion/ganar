@@ -1,22 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. グローバルヘッダー (ロゴ中央配置) & フルスクリーンメニュー
+    // 1. グローバルヘッダー & サイドメニュー
     const headerElement = document.getElementById('global-header');
     if (headerElement) {
         headerElement.innerHTML = `
-            <header class="fixed top-0 left-0 w-full z-50 bg-[#070a12]/90 backdrop-blur-md border-b border-white/5 h-20 md:h-24 transition-all duration-300">
-                <div class="max-w-[1600px] mx-auto h-full px-6 md:px-12 flex items-center justify-between">
-                    
-                    <!-- 左側ダミー要素（中央配置のバランス用） -->
-                    <div class="w-24 hidden md:block"></div>
+            <!-- 水色サイドライン（全画面共通） -->
+            <div class="ganar-side-line"></div>
 
-                    <!-- 中央ロゴ -->
-                    <a href="index.html" class="block h-8 md:h-10 transition-opacity hover:opacity-80 mx-auto md:mx-0">
+            <!-- 縦書きスローガン（全画面共通） -->
+            <div class="ganar-vertical-slogan">HAVE FUN AND WIN</div>
+
+            <header class="fixed top-0 left-0 w-full z-[100] bg-[#070a12]/90 backdrop-blur-md border-b border-white/5 h-20 md:h-24 transition-all duration-300">
+                <div class="relative w-full max-w-[1600px] mx-auto h-full px-6 flex items-center justify-center">
+                    
+                    <!-- 中央ロゴ（画面中央に固定配置） -->
+                    <a href="index.html" class="block h-8 md:h-10 transition-opacity hover:opacity-80">
                         <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain">
                     </a>
 
-                    <!-- 右側 2本線ハンバーガー/CLOSEトグルボタン -->
-                    <button id="menu-toggle-btn" class="zeta-menu-trigger font-en text-xs font-bold tracking-widest uppercase" aria-label="Toggle Navigation">
-                        <span id="menu-btn-label">MENU</span>
+                    <!-- 右側 2本線ハンバーガー / ✕ トグルボタン（テキスト無し） -->
+                    <button id="menu-toggle-btn" class="zeta-menu-trigger" aria-label="Toggle Navigation">
                         <div class="zeta-icon-box">
                             <span class="zeta-line zeta-line-1"></span>
                             <span class="zeta-line zeta-line-2"></span>
@@ -27,11 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <!-- ZETA DIVISION モチーフ フルスクリーンサイドメニュー -->
             <div id="zeta-side-nav">
-                <!-- メニュー内部の最上部空間 -->
-                <div class="h-20 md:h-24"></div>
-
                 <!-- ナビゲーションメインリンク -->
-                <div class="max-w-[1400px] w-full mx-auto my-auto py-6">
+                <div class="max-w-[1400px] w-full mx-auto my-auto py-4">
                     <ul class="space-y-3 md:space-y-5">
                         <li class="zeta-nav-item">
                             <a href="index.html" class="zeta-link">
@@ -147,10 +146,9 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // 3. メニュー開閉と「MENU ↔ CLOSE」「2本線 ↔ ✕」アニメーション制御
+    // 3. メニュー開閉アニメーション制御
     setTimeout(() => {
         const toggleBtn = document.getElementById('menu-toggle-btn');
-        const btnLabel = document.getElementById('menu-btn-label');
         const sideNav = document.getElementById('zeta-side-nav');
 
         function toggleMenu() {
@@ -160,12 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isActive) {
                 sideNav.classList.remove('active');
                 toggleBtn.classList.remove('is-active');
-                if (btnLabel) btnLabel.textContent = 'MENU';
                 document.body.style.overflow = '';
             } else {
                 sideNav.classList.add('active');
                 toggleBtn.classList.add('is-active');
-                if (btnLabel) btnLabel.textContent = 'CLOSE';
                 document.body.style.overflow = 'hidden';
             }
         }
