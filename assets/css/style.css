@@ -241,14 +241,14 @@ body {
 }
 
 /* =========================================
-   5. セクションタイトル背景大文字（水色化）
+   5. 全セクションタイトル共通（背景大文字＆表タイトルの左下重なり固定）
    ========================================= */
 
 .section-title-wrapper { 
     position: relative; 
-    padding-top: 1.5rem; 
-    padding-bottom: 2rem; 
-    margin-bottom: 3rem; 
+    padding-top: 1rem; 
+    padding-bottom: 1.5rem; 
+    margin-bottom: 2.5rem; 
 }
 
 .section-title-bg { 
@@ -256,7 +256,7 @@ body {
     top: -0.5rem; 
     left: -0.02em; 
     font-family: 'Montserrat', sans-serif; 
-    font-size: clamp(4.5rem, 12vw, 9rem); 
+    font-size: clamp(4rem, 10vw, 7.5rem); 
     font-weight: 900; 
     line-height: 0.8; 
     letter-spacing: -0.03em; 
@@ -269,14 +269,17 @@ body {
     text-transform: uppercase; 
 }
 
+/* CONCEPT / NEWS / SPONSOR 等、全セクション共通で左下重なりに固定 */
 .section-title-front { 
     position: relative; 
     z-index: 1; 
+    padding-top: clamp(2rem, 5vw, 4rem);
+    padding-left: clamp(0.5rem, 1.5vw, 1.5rem);
 }
 
 .section-title-front h2 { 
     font-family: 'Montserrat', sans-serif; 
-    font-size: clamp(2rem, 5vw, 3.5rem); 
+    font-size: clamp(1.8rem, 4vw, 3rem); 
     font-weight: 800; 
     letter-spacing: 0.05em; 
     line-height: 1; 
@@ -294,33 +297,48 @@ body {
 }
 
 /* =========================================
-   6. ボタン＆ニュースカードデザイン（水色化＆クッキリ化）
+   6. ボタン＆ニュースカードデザイン（サイバーくっきり化）
    ========================================= */
 
-/* index.html 用 サイバーボタン (.cyber-btn) */
+/* JSで自動生成されるニュースカード要素の見た目をCSS側で直接上書き制御 */
+#news-container .cyber-card {
+    background: rgba(10, 16, 28, 0.85) !important;
+    border: 1px solid rgba(0, 240, 255, 0.25) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#news-container .cyber-card:hover {
+    border-color: var(--ganar-cyan) !important;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.05) !important;
+    transform: translateY(-4px) !important;
+}
+
+/* サイバーボタン (.cyber-btn) */
 .cyber-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 3.5rem;
+    padding: 0.9rem 3rem;
     font-family: 'Montserrat', 'Chakra Petch', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 800;
-    letter-spacing: 0.2em;
-    color: #000000;
-    background: var(--ganar-cyan);
+    letter-spacing: 0.25em;
+    color: var(--ganar-cyan);
+    background: rgba(5, 10, 20, 0.8);
     border: 1px solid var(--ganar-cyan);
-    border-radius: 9999px;
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
 }
 
 .cyber-btn:hover {
-    background: #ffffff;
-    border-color: #ffffff;
     color: #000000;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+    background: var(--ganar-cyan);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
     transform: translateY(-2px);
 }
 
@@ -348,25 +366,6 @@ body {
     color: #000000;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
     transform: translateY(-2px);
-}
-
-/* NEWS カードデザイン（クッキリ境界線＆ホバー光彩） */
-.news-card-block {
-    display: block;
-    background: rgba(13, 18, 30, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.news-card-block:hover {
-    border-color: var(--ganar-cyan);
-    background: rgba(0, 240, 255, 0.04);
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
-    transform: translateY(-3px);
 }
 
 /* 汎用 */
