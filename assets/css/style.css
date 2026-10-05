@@ -24,8 +24,22 @@ body {
 }
 
 /* =========================================
-   2. サイドメニュー内アクセント（水色ネオンライン＆縦書きスローガン）
+   2. サイドメニュー内ビジュアル装飾（g-mark透かし & 水色ライン & スローガン）
    ========================================= */
+
+/* バックグラウンド g-mark 透かしロゴ */
+.zeta-menu-bg-mark {
+    position: absolute;
+    right: -10%;
+    bottom: 10%;
+    width: clamp(300px, 60vw, 650px);
+    height: auto;
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.3));
+}
 
 .zeta-menu-line {
     position: absolute;
@@ -38,6 +52,7 @@ body {
     opacity: 0.85;
     pointer-events: none;
     border-radius: 999px;
+    z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -61,10 +76,21 @@ body {
     user-select: none;
     pointer-events: none;
     text-transform: uppercase;
+    z-index: 1;
+}
+
+/* サイドメニュー内ロゴ（ヘッダーロゴとの差別化：水色発光付き） */
+.zeta-menu-logo-img {
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));
+    transition: filter 0.3s ease;
+}
+
+.zeta-menu-logo-img:hover {
+    filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.9));
 }
 
 /* =========================================
-   3. 2本線 → ✕印 アニメーションボタン
+   3. 2本線 ⇔ ✕印 ループトグルボタン（最前面固定）
    ========================================= */
 
 .zeta-menu-trigger {
@@ -77,7 +103,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
+    z-index: 10000; /* 全ての上に配置して操作を受け付ける */
 }
 
 .zeta-menu-trigger:hover {
@@ -102,7 +128,7 @@ body {
     transform-origin: center;
 }
 
-/* ✕印変形アニメーション */
+/* 2本線 → ✕印 トグルアニメーション */
 .zeta-menu-trigger.is-active .zeta-line-1 {
     transform: translateY(7px) rotate(45deg);
     background-color: #ffffff;
@@ -130,19 +156,27 @@ body {
     transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    padding: 1.5rem 2rem 2.5rem 3.5rem;
+    padding: 0 2rem 0 3.5rem;
     overflow-y: auto;
 }
 
 @media (max-width: 768px) {
     #zeta-side-nav {
-        padding: 1.25rem 1.25rem 2rem 2.25rem;
+        padding: 0 1.25rem 0 2.25rem;
     }
 }
 
 #zeta-side-nav.active {
     opacity: 1;
     pointer-events: auto;
+}
+
+.zeta-nav-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .zeta-nav-item {
@@ -166,7 +200,7 @@ body {
 
 .zeta-link {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+    font-size: clamp(1.6rem, 4.8vw, 2.8rem);
     font-weight: 800;
     letter-spacing: -0.01em;
     line-height: 1.2;
