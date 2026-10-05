@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* =========================================
-   1. 基本設定・モダンフォント・カラー
+   1. 基本設定・カラー・フォント
    ========================================= */
 :root {
     --ganar-cyan: #00f0ff;
@@ -19,13 +19,102 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* 欧文モダンフォントクラス */
 .font-en {
     font-family: 'Montserrat', 'Inter', sans-serif;
 }
 
 /* =========================================
-   2. 洗練された二重タイポグラフィ (CRモチーフ)
+   2. GANAR独自要素（水色ライン＆縦書きスローガン）
+   ========================================= */
+
+/* 左側の水色アクセントライン */
+.ganar-side-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100vh;
+    background: linear-gradient(180deg, transparent 0%, var(--ganar-cyan) 30%, var(--ganar-cyan) 70%, transparent 100%);
+    box-shadow: 0 0 10px var(--ganar-cyan);
+    opacity: 0.4;
+    z-index: 40;
+    pointer-events: none;
+}
+
+/* 右側の縦書きスローガン */
+.ganar-vertical-slogan {
+    position: fixed;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.35em;
+    color: rgba(255, 255, 255, 0.2);
+    user-select: none;
+    pointer-events: none;
+    z-index: 40;
+    text-transform: uppercase;
+}
+
+/* モバイルでは固定の装飾要素を非表示にして画面をすっきりさせる */
+@media (max-width: 768px) {
+    .ganar-side-line, .ganar-vertical-slogan {
+        display: none;
+    }
+}
+
+/* =========================================
+   3. ZETA風 2本線ハンバーガーボタン（アニメーション）
+   ========================================= */
+
+.zeta-menu-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.zeta-menu-trigger:hover {
+    color: var(--ganar-cyan);
+}
+
+.zeta-icon-box {
+    position: relative;
+    width: 22px;
+    height: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.zeta-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    transform-origin: center;
+}
+
+/* アクティブ（開いた時）の「✕」変形 */
+.zeta-menu-trigger.is-active .zeta-line-1 {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.zeta-menu-trigger.is-active .zeta-line-2 {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* =========================================
+   4. 二重タイポグラフィ (CRモチーフ)
    ========================================= */
 
 .section-title-wrapper {
@@ -35,7 +124,6 @@ body {
     margin-bottom: 3rem;
 }
 
-/* 背景の透過大文字 (デザインのアクセント) */
 .section-title-bg {
     position: absolute;
     top: -0.5rem;
@@ -54,7 +142,6 @@ body {
     text-transform: uppercase;
 }
 
-/* 前面のクリーンな見出し */
 .section-title-front {
     position: relative;
     z-index: 1;
@@ -79,7 +166,6 @@ body {
     display: block;
 }
 
-/* シンプルで上質なボタン */
 .clean-btn {
     display: inline-flex;
     align-items: center;
@@ -104,7 +190,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* カードデザイン */
 .clean-card {
     background: var(--ganar-card-bg);
     border: 1px solid var(--ganar-border);
@@ -117,7 +202,7 @@ body {
 }
 
 /* =========================================
-   3. ZETA DIVISION完全モーチフ サイドメニュー
+   5. ZETA風 フルスクリーンサイドメニュー
    ========================================= */
 
 #zeta-side-nav {
@@ -142,11 +227,11 @@ body {
     pointer-events: auto;
 }
 
-/* ナビゲーションリンクのアニメーション */
+/* メニュー項目のサイズ調整（ZETAよりほんの少し大きめ） */
 .zeta-nav-item {
     opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 #zeta-side-nav.active .zeta-nav-item {
@@ -154,41 +239,40 @@ body {
     transform: translateY(0);
 }
 
-/* 時間差表示 */
-#zeta-side-nav.active .zeta-nav-item:nth-child(1) { transition-delay: 0.10s; }
-#zeta-side-nav.active .zeta-nav-item:nth-child(2) { transition-delay: 0.15s; }
-#zeta-side-nav.active .zeta-nav-item:nth-child(3) { transition-delay: 0.20s; }
-#zeta-side-nav.active .zeta-nav-item:nth-child(4) { transition-delay: 0.25s; }
-#zeta-side-nav.active .zeta-nav-item:nth-child(5) { transition-delay: 0.30s; }
-#zeta-side-nav.active .zeta-nav-item:nth-child(6) { transition-delay: 0.35s; }
-#zeta-side-nav.active .zeta-nav-item:nth-child(7) { transition-delay: 0.40s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(1) { transition-delay: 0.08s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(2) { transition-delay: 0.12s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(3) { transition-delay: 0.16s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(4) { transition-delay: 0.20s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(5) { transition-delay: 0.24s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(6) { transition-delay: 0.28s; }
+#zeta-side-nav.active .zeta-nav-item:nth-child(7) { transition-delay: 0.32s; }
 
 .zeta-link {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
     font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
     color: #ffffff;
     display: inline-flex;
     align-items: baseline;
-    gap: 1.5rem;
+    gap: 1.25rem;
     transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .zeta-link:hover {
     color: var(--ganar-cyan);
-    transform: translateX(10px);
+    transform: translateX(8px);
 }
 
 .zeta-link-sub {
-    font-size: clamp(0.75rem, 1.5vw, 1rem);
+    font-size: clamp(0.7rem, 1.2vw, 0.875rem);
     font-weight: 500;
     letter-spacing: 0.1em;
     color: #666666;
 }
 
-/* 下層ページ用スタイル修正 */
+/* 下層ページ用スタイル */
 .member-card { perspective: 1000px; height: 500px; cursor: pointer; }
 .member-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; }
 .member-card.flipped .member-card-inner { transform: rotateY(180deg); }
