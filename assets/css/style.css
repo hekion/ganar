@@ -27,7 +27,6 @@ body {
    2. GANAR独自要素（水色ライン＆縦書きスローガン）
    ========================================= */
 
-/* 左側の水色アクセントライン */
 .ganar-side-line {
     position: fixed;
     top: 0;
@@ -41,7 +40,6 @@ body {
     pointer-events: none;
 }
 
-/* 右側の縦書きスローガン */
 .ganar-vertical-slogan {
     position: fixed;
     right: 1.5rem;
@@ -59,7 +57,6 @@ body {
     text-transform: uppercase;
 }
 
-/* モバイルでは固定の装飾要素を非表示にして画面をすっきりさせる */
 @media (max-width: 768px) {
     .ganar-side-line, .ganar-vertical-slogan {
         display: none;
@@ -67,11 +64,11 @@ body {
 }
 
 /* =========================================
-   3. ZETA風 2本線ハンバーガーボタン（アニメーション）
+   3. ZETA風 2本線ハンバーガー・CLOSEボタン
    ========================================= */
 
 .zeta-menu-trigger {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.75rem;
     background: transparent;
@@ -80,6 +77,7 @@ body {
     padding: 0.5rem;
     color: #ffffff;
     transition: color 0.3s ease;
+    z-index: 110; /* サイドメニュー上でも最前面に表示 */
 }
 
 .zeta-menu-trigger:hover {
@@ -104,13 +102,17 @@ body {
     transform-origin: center;
 }
 
-/* アクティブ（開いた時）の「✕」変形 */
+/* 開いた時（.is-active）に中央で交差して「✕」になる設定 */
+.zeta-menu-trigger.is-active .zeta-icon-box {
+    justify-content: center;
+}
+
 .zeta-menu-trigger.is-active .zeta-line-1 {
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(1px) rotate(45deg);
 }
 
 .zeta-menu-trigger.is-active .zeta-line-2 {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-1px) rotate(-45deg);
 }
 
 /* =========================================
@@ -227,7 +229,6 @@ body {
     pointer-events: auto;
 }
 
-/* メニュー項目のサイズ調整（ZETAよりほんの少し大きめ） */
 .zeta-nav-item {
     opacity: 0;
     transform: translateY(20px);
