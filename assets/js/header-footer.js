@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerElement = document.getElementById('global-header');
     if (headerElement) {
         headerElement.innerHTML = `
-            <header class="fixed top-0 left-0 w-full z-50 bg-[#060b14]/80 backdrop-blur-md border-b border-[#4bb8e0]/20 h-20 md:h-24 transition-all duration-300">
+            <header class="fixed top-0 left-0 w-full z-50 bg-[#060b14]/85 backdrop-blur-md border-b border-[#4bb8e0]/20 h-20 md:h-24 transition-all duration-300">
                 <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center justify-between">
                     <div class="h-10 md:h-12 transition-transform hover:scale-105">
                         <a href="index.html" class="block h-full">
-                            <img src="assets/images/logo/ganar-logo.png" alt="GANAR" class="h-full w-auto object-contain">
+                            <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain">
                         </a>
                     </div>
                     <nav class="hidden md:block">
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <footer class="bg-[#030712] text-white py-16 px-6 border-t border-[#4bb8e0]/20 font-sans relative overflow-hidden">
                 <div class="max-w-[1200px] mx-auto flex flex-col items-center relative z-10">
                     <div class="h-14 mb-8 transition-transform hover:scale-105">
-                        <img src="assets/images/logo/ganar-logo.png" alt="GANAR" class="h-full w-auto object-contain">
+                        <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain">
                     </div>
                     <nav class="mb-10">
                         <ul class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 font-oswald font-bold italic uppercase tracking-wider text-base text-gray-300">
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="pt-6 border-t border-white/10 flex items-center justify-center gap-3 text-gray-400 text-xs tracking-wider">
                         <span>©</span>
                         <a href="https://hekion.github.io/hekion/" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-105">
-                            <img src="assets/images/logo/hekion-logo.png" alt="HEKION" class="h-6 w-auto opacity-80 hover:opacity-100">
+                            <img src="assets/images/logo/hekion.png" alt="HEKION" class="h-6 w-auto opacity-80 hover:opacity-100">
                         </a>
                         <span>All Rights Reserved.</span>
                     </div>
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // サイドナビゲーションの開閉イベント設定
+    // サイドナビのイベント登録
     setTimeout(() => {
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
