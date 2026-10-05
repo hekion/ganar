@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- 2. 左側ネオン水色ライン -->
                 <div class="zeta-menu-line"></div>
 
-                <!-- 3. 右側縦書きスローガン -->
+                <!-- 3. 右側縦書きスローガン（位置をHOMEと同じ高さのTopへ） -->
                 <div class="zeta-menu-slogan">HAVE FUN AND WIN</div>
 
                 <!-- メニューコンテンツ保持エリア -->
