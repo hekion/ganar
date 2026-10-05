@@ -1,16 +1,17 @@
 @charset "UTF-8";
 
 /* =========================================
-   1. 全ページ共通（ベース・ナビ・フッター）
+   1. カラー変数・全ページ共通設定
    ========================================= */
 :root {
-    --ganar-main-cyan: #4bb8e0;
-    --ganar-black: #0a0f1d;
-    --ganar-dark: #0a1428;
+    --ganar-cyan: #4bb8e0;
+    --ganar-cyan-glow: rgba(75, 184, 224, 0.4);
+    --ganar-bg-dark: #060b14;
+    --ganar-card-bg: #0a1428;
 }
 
 body {
-    background-color: var(--ganar-main-cyan);
+    background-color: var(--ganar-bg-dark);
     color: #ffffff;
     font-family: 'Noto Sans JP', sans-serif;
     overflow-x: hidden;
@@ -25,105 +26,95 @@ body {
     filter: brightness(0) invert(1);
 }
 
-/* サイドナビゲーション挙動（スマホのみ有効） */
-#side-nav {
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* =========================================
+   2. サイバーUI・グラフィックエフェクト
+   ========================================= */
+
+/* サイバー背景グリッド */
+.cyber-grid-bg {
+    background-color: var(--ganar-bg-dark);
+    background-image: 
+        linear-gradient(rgba(75, 184, 224, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(75, 184, 224, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
 }
 
-.nav-open #side-nav {
-    transform: translateX(0);
+/* ヒーローグラデーション */
+.index-mv-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(6, 11, 20, 0.3) 0%, rgba(6, 11, 20, 0.95) 100%);
+    pointer-events: none;
 }
 
-#overlay {
-    transition: opacity 0.3s ease;
-    display: none;
+/* セクションタイトル横のネオンライン */
+.section-title-line {
+    flex-grow: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ganar-cyan) 0%, rgba(75, 184, 224, 0) 100%);
 }
 
-.nav-open #overlay {
-    display: block;
-    opacity: 1;
+/* サイバー切り欠きボタン */
+.cyber-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0a1428 0%, #102040 100%);
+    border: 1px solid rgba(75, 184, 224, 0.5);
+    box-shadow: 0 0 15px rgba(75, 184, 224, 0.15);
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ヘッダーPC版ナビ：ホバーを滑らかにする */
-header nav ul li a {
-    transition: color 0.3s ease;
+.cyber-btn:hover {
+    background: var(--ganar-cyan);
+    color: #060b14;
+    border-color: var(--ganar-cyan);
+    box-shadow: 0 0 25px rgba(75, 184, 224, 0.6);
+    transform: translateY(-2px);
+}
+
+/* サイバーカードホバー */
+.cyber-card {
+    transition: all 0.3s ease;
+}
+
+.cyber-card:hover {
+    box-shadow: 0 10px 30px -10px var(--ganar-cyan-glow);
+    transform: translateY(-4px);
+}
+
+.glow-text {
+    text-shadow: 0 0 15px var(--ganar-cyan-glow);
 }
 
 /* =========================================
-   2. ① index.html 専用
+   3. index.html 専用
    ========================================= */
 
-body.index-page {
-    color: var(--ganar-black);
-}
-
-/* メインビジュアル中央のキャッチコピー：Russo Oneを強制適用 */
 .hero-title {
     font-family: 'Russo One', sans-serif !important;
     font-style: italic;
     letter-spacing: 0.04em;
-    /* 四角さを感じさせないよう、光の拡散と立体感を付与 */
     text-shadow: 
-        0 0 15px rgba(75, 184, 224, 0.6),
-        4px 4px 0px var(--ganar-dark);
+        0 0 20px var(--ganar-cyan-glow),
+        3px 3px 0px #000000;
 }
 
-/* メインビジュアル下の青いぼかし */
-.index-mv-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4rem;
-    background: linear-gradient(to top, var(--ganar-main-cyan), transparent);
-}
-
-/* NEWSカードのレイアウト：PC版で2列 */
-@media (min-width: 768px) {
-    .index-news-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-}
-
-/* CONCEPT欄のテキスト調整 */
 .concept-text {
     line-height: 2;
     letter-spacing: 0.05em;
-    color: #ffffff;
 }
 
 /* =========================================
-   3. ② about.html 専用
-   ========================================= */
-
-.about-hero-title {
-    line-height: 0.9;
-}
-
-/* =========================================
-   4. ③ contact.html 専用
-   ========================================= */
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-    color: var(--ganar-dark) !important;
-}
-
-/* =========================================
-   5. ④ fanclub.html 専用
-   ========================================= */
-
-.fanclub-join-btn {
-    transition: all 0.3s ease;
-}
-
-.fanclub-join-btn:active {
-    transform: scale(0.95);
-}
-
-/* =========================================
-   6. ⑤ members.html 専用
+   4. members.html 専用 (3Dカード裏返りギミック)
    ========================================= */
 
 .member-card { 
@@ -151,12 +142,12 @@ body.index-page {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 1rem;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(75, 184, 224, 0.3);
     color: #ffffff !important;
 }
 
 .card-front { 
-    background: rgba(255,255,255,0.15); 
+    background: rgba(10, 20, 40, 0.7); 
     backdrop-filter: blur(12px); 
     display: flex; 
     flex-direction: column; 
@@ -164,7 +155,7 @@ body.index-page {
 }
 
 .card-back { 
-    background: #0a1428; 
+    background: #060b14; 
     transform: rotateY(180deg); 
     display: flex; 
     flex-direction: column; 
@@ -173,8 +164,32 @@ body.index-page {
 }
 
 /* =========================================
-   7. ⑥ news-detail.html 専用
+   5. contact.html / fanclub.html / news-detail.html 専用
    ========================================= */
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(75, 184, 224, 0.3) !important;
+    color: #ffffff !important;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: var(--ganar-cyan) !important;
+    outline: none;
+    box-shadow: 0 0 10px var(--ganar-cyan-glow);
+}
+
+.fanclub-join-btn {
+    transition: all 0.3s ease;
+}
+
+.fanclub-join-btn:active {
+    transform: scale(0.95);
+}
 
 #news-content { 
     line-height: 1.8; 
@@ -182,44 +197,20 @@ body.index-page {
 }
 
 #news-content a { 
-    color: #ffffff; 
+    color: var(--ganar-cyan); 
     text-decoration: underline; 
     font-weight: bold; 
     transition: opacity 0.2s; 
 }
 
 #news-content a:hover { 
-    opacity: 0.7; 
+    opacity: 0.8; 
 }
 
-/* =========================================
-   8. ⑦ news.html 専用
-   ========================================= */
-
-.news-card { 
-    transition: all 0.3s ease; 
-}
-
-.news-card:hover { 
-    transform: translateY(-5px); 
-    background: rgba(255,255,255,0.25); 
-}
-
-/* =========================================
-   9. 共通パーツ
-   ========================================= */
-
-.section-title-line {
-    height: 0.25rem;
-    flex-grow: 1;
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
-/* NEWS画像のホバー拡大はHTMLからクラスを削除したため不要ですが、
-   共通パーツとして残しておいても問題ありません */
 .hover-zoom {
     transition: transform 0.5s ease;
 }
+
 .group:hover .hover-zoom {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
