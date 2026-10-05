@@ -1,16 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. グローバルヘッダー & ZETA風 フルスクリーンメニュー
+    // 1. グローバルヘッダー (ロゴ中央配置) & フルスクリーンメニュー
     const headerElement = document.getElementById('global-header');
     if (headerElement) {
         headerElement.innerHTML = `
             <header class="fixed top-0 left-0 w-full z-50 bg-[#070a12]/90 backdrop-blur-md border-b border-white/5 h-20 md:h-24 transition-all duration-300">
                 <div class="max-w-[1600px] mx-auto h-full px-6 md:px-12 flex items-center justify-between">
-                    <!-- ロゴ -->
-                    <a href="index.html" class="block h-8 md:h-10 transition-opacity hover:opacity-80">
+                    
+                    <!-- 左側ダミー要素（中央配置のバランス用） -->
+                    <div class="w-24 hidden md:block"></div>
+
+                    <!-- 中央ロゴ -->
+                    <a href="index.html" class="block h-8 md:h-10 transition-opacity hover:opacity-80 mx-auto md:mx-0">
                         <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain">
                     </a>
 
-                    <!-- ZETA風 2本線アニメーションハンバーガーボタン -->
+                    <!-- 右側 2本線ハンバーガー/CLOSEトグルボタン -->
                     <button id="menu-toggle-btn" class="zeta-menu-trigger font-en text-xs font-bold tracking-widest uppercase" aria-label="Toggle Navigation">
                         <span id="menu-btn-label">MENU</span>
                         <div class="zeta-icon-box">
@@ -23,14 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <!-- ZETA DIVISION モチーフ フルスクリーンサイドメニュー -->
             <div id="zeta-side-nav">
-                <!-- メニューヘッダー -->
-                <div class="flex items-center justify-between max-w-[1400px] w-full mx-auto">
-                    <a href="index.html" class="h-8">
-                        <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain">
-                    </a>
-                </div>
+                <!-- メニュー内部の最上部空間 -->
+                <div class="h-20 md:h-24"></div>
 
-                <!-- ナビゲーションメインリンク（微調整したサイズ） -->
+                <!-- ナビゲーションメインリンク -->
                 <div class="max-w-[1400px] w-full mx-auto my-auto py-6">
                     <ul class="space-y-3 md:space-y-5">
                         <li class="zeta-nav-item">
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </ul>
                 </div>
 
-                <!-- メニューフッター (文字からSNSアイコン表示に変更) -->
+                <!-- メニューフッター -->
                 <div class="max-w-[1400px] w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pt-6 border-t border-white/10 font-en text-xs tracking-wider text-gray-500">
                     <div class="flex items-center gap-5">
                         <a href="https://x.com/GANAR_games" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#00f0ff] transition-colors" aria-label="X">
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // 3. メニュー開閉と2本線アニメーションの連動制御
+    // 3. メニュー開閉と「MENU ↔ CLOSE」「2本線 ↔ ✕」アニメーション制御
     setTimeout(() => {
         const toggleBtn = document.getElementById('menu-toggle-btn');
         const btnLabel = document.getElementById('menu-btn-label');
