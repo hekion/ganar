@@ -3,25 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerElement = document.getElementById('global-header');
     if (headerElement) {
         headerElement.innerHTML = `
-            <!-- 水色サイドライン（全画面共通） -->
-            <div class="ganar-side-line"></div>
-
-            <!-- 縦書きスローガン（全画面共通） -->
-            <div class="ganar-vertical-slogan">HAVE FUN AND WIN</div>
-
-            <header class="fixed top-0 left-0 w-full z-[100] bg-[#070a12]/90 backdrop-blur-md border-b border-white/5 h-20 md:h-24 transition-all duration-300">
+            <header class="fixed top-0 left-0 w-full z-50 bg-[#070a12]/90 backdrop-blur-md border-b border-white/5 h-20 md:h-24 transition-all duration-300">
                 <div class="relative w-full max-w-[1600px] mx-auto h-full px-6 flex items-center justify-center">
                     
-                    <!-- 中央ロゴ（画面中央に固定配置） -->
+                    <!-- 中央ロゴ -->
                     <a href="index.html" class="block h-8 md:h-10 transition-opacity hover:opacity-80">
                         <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain">
                     </a>
 
-                    <!-- 右側 2本線ハンバーガー / ✕ トグルボタン（テキスト無し） -->
-                    <button id="menu-toggle-btn" class="zeta-menu-trigger" aria-label="Toggle Navigation">
+                    <!-- 右側 2本線ハンバーガーボタン（ヘッダー上） -->
+                    <button id="menu-open-btn" class="zeta-menu-trigger absolute right-6 top-1/2 -translate-y-1/2" aria-label="Open Navigation">
                         <div class="zeta-icon-box">
-                            <span class="zeta-line zeta-line-1"></span>
-                            <span class="zeta-line zeta-line-2"></span>
+                            <span class="zeta-line"></span>
+                            <span class="zeta-line"></span>
                         </div>
                     </button>
                 </div>
@@ -29,9 +23,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <!-- ZETA DIVISION モチーフ フルスクリーンサイドメニュー -->
             <div id="zeta-side-nav">
-                <!-- ナビゲーションメインリンク -->
-                <div class="max-w-[1400px] w-full mx-auto my-auto py-4">
-                    <ul class="space-y-3 md:space-y-5">
+                <!-- メニュー内左側の水色ライン -->
+                <div class="zeta-menu-line"></div>
+
+                <!-- メニュー内右側の縦書きスローガン -->
+                <div class="zeta-menu-slogan">HAVE FUN AND WIN</div>
+
+                <!-- メニュー内ヘッダー（ロゴ＋閉じる✕ボタン） -->
+                <div class="w-full flex items-center justify-between pt-2 pb-6">
+                    <a href="index.html" class="block h-7 md:h-8 transition-opacity hover:opacity-80">
+                        <img src="assets/images/logo/ganar.png" alt="GANAR" class="h-full w-auto object-contain">
+                    </a>
+                    
+                    <!-- 閉じる(✕)ボタン（サイドメニュー内部に配置） -->
+                    <button id="menu-close-btn" class="zeta-menu-trigger is-active" aria-label="Close Navigation">
+                        <div class="zeta-icon-box">
+                            <span class="zeta-line zeta-line-1"></span>
+                            <span class="zeta-line zeta-line-2"></span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- ナビゲーションメインリンク（詰まりを解消し、程よい間隔へ調整） -->
+                <div class="w-full max-w-[1200px] mx-auto my-auto py-2">
+                    <ul class="space-y-4 md:space-y-6">
                         <li class="zeta-nav-item">
                             <a href="index.html" class="zeta-link">
                                 <span>HOME</span>
@@ -78,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <!-- メニューフッター -->
-                <div class="max-w-[1400px] w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pt-6 border-t border-white/10 font-en text-xs tracking-wider text-gray-500">
+                <div class="w-full max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pt-4 border-t border-white/10 font-en text-xs tracking-wider text-gray-500">
                     <div class="flex items-center gap-5">
                         <a href="https://x.com/GANAR_games" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#00f0ff] transition-colors" aria-label="X">
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -146,26 +161,25 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // 3. メニュー開閉アニメーション制御
+    // 3. サイドメニュー開閉イベントの制御
     setTimeout(() => {
-        const toggleBtn = document.getElementById('menu-toggle-btn');
+        const openBtn = document.getElementById('menu-open-btn');
+        const closeBtn = document.getElementById('menu-close-btn');
         const sideNav = document.getElementById('zeta-side-nav');
 
-        function toggleMenu() {
-            if (!sideNav || !toggleBtn) return;
-            const isActive = sideNav.classList.contains('active');
-            
-            if (isActive) {
-                sideNav.classList.remove('active');
-                toggleBtn.classList.remove('is-active');
-                document.body.style.overflow = '';
-            } else {
-                sideNav.classList.add('active');
-                toggleBtn.classList.add('is-active');
-                document.body.style.overflow = 'hidden';
-            }
+        function openMenu() {
+            if (!sideNav) return;
+            sideNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        if (toggleBtn) toggleBtn.addEventListener('click', toggleMenu);
+        function closeMenu() {
+            if (!sideNav) return;
+            sideNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (openBtn) openBtn.addEventListener('click', openMenu);
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
     }, 50);
 });
