@@ -26,19 +26,35 @@ body {
 /* =========================================
    ヘッダーロゴサイズ設定（1.5倍化）
    ========================================= */
+/* 親要素の高さ制限解除 */
+header a,
+.header-logo,
+header .logo,
+#header .logo {
+    display: inline-flex !important;
+    align-items: center !important;
+    max-height: none !important;
+    height: auto !important;
+}
+
+/* 画像自体のサイズを1.5倍（約32px→48px / 約40px→60px）に拡大 */
 .header-logo img,
 header .logo img,
-#header img.logo {
-    height: 48px !important; /* 通常サイズ(約32px)の1.5倍 */
+#header img.logo,
+header img {
+    height: 60px !important;
+    max-height: none !important;
     width: auto !important;
+    object-fit: contain !important;
     transition: transform 0.3s ease;
 }
 
 @media (max-width: 768px) {
     .header-logo img,
     header .logo img,
-    #header img.logo {
-        height: 36px !important; /* スマホ時も1.5倍相当に拡大 */
+    #header img.logo,
+    header img {
+        height: 45px !important; /* スマホ時も1.5倍相当に拡大 */
     }
 }
 
@@ -258,23 +274,24 @@ header .logo img,
 }
 
 /* =========================================
-   5. 全セクションタイトル（四角枠の左下頂点一致レイアウト）
+   5. 全セクションタイトル（背景文字と白文字の左下頂点一致＋真下に日本語）
    ========================================= */
 
 .section-title-wrapper { 
     position: relative; 
     display: inline-block;
     padding: 0;
-    margin-bottom: 2.5rem; 
+    margin-bottom: 3.5rem; 
 }
 
+/* 背景のデカ文字 */
 .section-title-bg { 
     position: relative; 
     display: block;
     font-family: 'Montserrat', sans-serif; 
     font-size: clamp(3.5rem, 9vw, 7rem); 
     font-weight: 900; 
-    line-height: 0.85; 
+    line-height: 1; 
     letter-spacing: -0.02em; 
     color: rgba(0, 240, 255, 0.03); 
     -webkit-text-stroke: 1px rgba(0, 240, 255, 0.25); 
@@ -283,48 +300,60 @@ header .logo img,
     white-space: nowrap; 
     z-index: 0; 
     text-transform: uppercase; 
+    margin: 0;
+    padding: 0;
 }
 
-/* 背景文字の左下頂点と手前文字(h2)の左下頂点を一致させる配置 */
+/* 手前エリア（背景文字の左下に固定配置） */
 .section-title-front { 
     position: absolute; 
     left: 0;
     bottom: 0;
     z-index: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
+/* 手前の英字（背景の左下頂点と完全一致させる） */
 .section-title-front h2 { 
     font-family: 'Montserrat', sans-serif; 
     font-size: clamp(1.8rem, 4vw, 3rem); 
     font-weight: 800; 
     letter-spacing: 0.05em; 
-    line-height: 0.85; /* 高さ揃えのため背景と一致 */
+    line-height: 1; /* line-heightを背景と統一 */
     margin: 0;
     padding: 0;
     text-transform: uppercase; 
     color: #ffffff; 
 }
 
+/* 白文字(h2)の真下に配置する日本語テキスト */
 .section-title-front span { 
-    font-size: 0.75rem; 
+    font-size: 0.8rem; 
     font-weight: 700; 
-    letter-spacing: 0.25em; 
+    letter-spacing: 0.2em; 
     color: var(--ganar-cyan); 
-    margin-top: 0.4rem; 
+    margin-top: 0.5rem; 
     display: block; 
+    line-height: 1.2;
 }
 
 /* =========================================
    6. ボタン＆READ MORE・ニュースカードデザイン
    ========================================= */
 
-/* READ MORE / MORE VIEW 等の全ボタン共通サイバー装飾 */
+/* READ MORE / MORE VIEW 等の全ボタン共通サイバー装飾（強力上書き） */
 .cyber-btn,
 a.cyber-btn,
 button.cyber-btn,
 .read-more-btn,
+a.read-more-btn,
+button.read-more-btn,
 a[class*="read-more"],
-a[class*="more"] {
+a[class*="more"],
+button[class*="read-more"],
+button[class*="more"] {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -349,8 +378,12 @@ a[class*="more"] {
 a.cyber-btn:hover,
 button.cyber-btn:hover,
 .read-more-btn:hover,
+a.read-more-btn:hover,
+button.read-more-btn:hover,
 a[class*="read-more"]:hover,
-a[class*="more"]:hover {
+a[class*="more"]:hover,
+button[class*="read-more"]:hover,
+button[class*="more"]:hover {
     color: #000000 !important;
     background: var(--ganar-cyan) !important;
     box-shadow: 0 0 25px rgba(0, 240, 255, 0.7) !important;
@@ -397,7 +430,7 @@ a[class*="more"]:hover {
     transform: translateY(-2px);
 }
 
-/* 汎用 */
+/* 汎用ボタン */
 .clean-btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 3.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.2em; color: #ffffff; background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 9999px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
 .clean-btn:hover { border-color: var(--ganar-cyan); color: #000000; background: var(--ganar-cyan); box-shadow: 0 0 25px rgba(0, 240, 255, 0.4); transform: translateY(-2px); }
 
