@@ -32,77 +32,106 @@
         </div>
     </section>
 
-    <!-- コンセプトセクション -->
-    <section class="py-24 md:py-36 px-6 relative border-b border-white/5">
-        <div class="max-w-[1200px] mx-auto">
-            <!-- CR風 洗練された二重タイポグラフィ -->
-            <div class="section-title-wrapper">
-                <span class="section-title-bg">CONCEPT</span>
-                <div class="section-title-front">
-                    <h2>CONCEPT</h2>
-                    <span>コンセプト</span>
-                </div>
-            </div>
-            
-            <div class="clean-card p-8 md:p-16 rounded-xl max-w-[1000px] mx-auto text-center space-y-8">
-                <p class="text-2xl md:text-3xl font-bold text-white leading-relaxed tracking-wide">
-                    勝利にこだわりながらも、<br class="hidden md:block">「楽しむこと」を何より大切にします。
-                </p>
-                <div class="w-12 h-[2px] bg-[#00f0ff] mx-auto"></div>
-                <p class="text-base md:text-lg text-gray-400 leading-relaxed max-w-[750px] mx-auto font-normal">
-                    結果だけではなく、過程や熱量、一緒にプレイする時間そのものを価値として捉えています。
-                </p>
-            </div>
+<!-- CONCEPT SECTION -->
+<section id="concept" class="py-20 px-6 max-w-[1200px] mx-auto">
+    <div class="section-title-wrapper">
+        <div class="section-title-bg">CONCEPT</div>
+        <div class="section-title-front">
+            <h2>CONCEPT</h2>
+            <span>コンセプト</span>
         </div>
-    </section>
+    </div>
 
-    <!-- ニュースセクション -->
-    <section class="py-24 px-6 relative">
-        <div class="max-w-[1200px] mx-auto">
-            <!-- CR風 洗練された二重タイポグラフィ -->
-            <div class="section-title-wrapper">
-                <span class="section-title-bg">NEWS</span>
-                <div class="section-title-front">
-                    <h2>NEWS</h2>
-                    <span>最新情報</span>
-                </div>
-            </div>
-            
-            <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <p class="text-center py-10 text-gray-500 font-sans col-span-full">読み込み中...</p>
-            </div>
+    <!-- 枠線なし・洗練されたダイレクトテキスト配置 -->
+    <div class="max-w-4xl mx-auto text-center py-6">
+        <p class="text-xl md:text-3xl font-bold leading-relaxed tracking-wide text-white mb-8">
+            勝利にこだわりながらも、<br>
+            <span class="text-[#00f0ff] stroke-cyan">「楽しむこと」</span>を何より大切にします。
+        </p>
+        
+        <p class="text-base md:text-xl text-gray-300 leading-relaxed tracking-wider">
+            <!-- スマホ表示時（2行） -->
+            <span class="block md:hidden">
+                結果だけではなく、過程や熱量、<br>
+                一緒にプレイする時間そのものを価値として捉えています。
+            </span>
+            <!-- PC表示時（1行） -->
+            <span class="hidden md:inline">
+                結果だけではなく、過程や熱量、一緒にプレイする時間そのものを価値として捉えています。
+            </span>
+        </p>
+    </div>
+</section>
 
-            <div class="mt-16 text-center">
-                <a href="news.html" class="clean-btn">
-                    VIEW ALL NEWS
-                </a>
-            </div>
+<!-- NEWS SECTION -->
+<section id="news" class="py-20 px-6 max-w-[1200px] mx-auto">
+    <div class="section-title-wrapper">
+        <div class="section-title-bg">NEWS</div>
+        <div class="section-title-front">
+            <h2>NEWS</h2>
+            <span>最新情報</span>
         </div>
-    </section>
+    </div>
 
-    <!-- スポンサー・パートナーセクション -->
-    <section class="py-24 md:py-36 px-6 relative border-t border-white/5">
-        <div class="max-w-[1200px] mx-auto">
-            <!-- CR風 洗練された二重タイポグラフィ -->
-            <div class="section-title-wrapper">
-                <span class="section-title-bg">SPONSOR</span>
-                <div class="section-title-front">
-                    <h2>SPONSOR</h2>
-                    <span>スポンサー / パートナー</span>
-                </div>
+    <!-- NEWS リスト（ブロック構造でアクセスしやすく可視化） -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <a href="news.html" class="news-card-block group">
+            <div class="flex items-center gap-3 text-xs text-gray-400 mb-3">
+                <span class="text-[#00f0ff] font-mono font-semibold">2026.09.15</span>
+                <span class="px-2 py-0.5 bg-white/10 rounded text-[10px] text-gray-200">INFO</span>
             </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-[#00f0ff] transition-colors leading-snug">
+                GANAR Webサイトリニューアルのお知らせ
+            </h3>
+        </a>
 
-            <div class="max-w-[800px] mx-auto text-center">
-                <div class="text-lg md:text-xl font-medium space-y-4 mb-12 text-gray-300 leading-relaxed">
-                    <p>GANARでは、活動を応援していただける<br class="hidden md:block">スポンサー様・パートナー様を募集しております。</p>
-                    <p class="text-sm md:text-base text-gray-500 font-normal">企業・個人は問いません。ご興味をお持ちいただけましたら、ぜひお気軽にご連絡ください。</p>
-                </div>
-                <a href="contact.html" class="clean-btn">
-                    CONTACT US
-                </a>
+        <a href="news.html" class="news-card-block group">
+            <div class="flex items-center gap-3 text-xs text-gray-400 mb-3">
+                <span class="text-[#00f0ff] font-mono font-semibold">2026.09.01</span>
+                <span class="px-2 py-0.5 bg-white/10 rounded text-[10px] text-gray-200">MATCH</span>
             </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-[#00f0ff] transition-colors leading-snug">
+                新規大会イベントへの出場決定のお知らせ
+            </h3>
+        </a>
+
+        <a href="news.html" class="news-card-block group">
+            <div class="flex items-center gap-3 text-xs text-gray-400 mb-3">
+                <span class="text-[#00f0ff] font-mono font-semibold">2026.08.20</span>
+                <span class="px-2 py-0.5 bg-white/10 rounded text-[10px] text-gray-200">RECRUIT</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-[#00f0ff] transition-colors leading-snug">
+                【メンバー募集】部門別新規ロースターオーディション開始
+            </h3>
+        </a>
+    </div>
+
+    <!-- VIEW ALL NEWS ボタン（水色） -->
+    <div class="text-center">
+        <a href="news.html" class="clean-btn-cyan">VIEW ALL NEWS</a>
+    </div>
+</section>
+
+<!-- CONTACT SECTION （ボタン水色化） -->
+<section id="contact" class="py-20 px-6 max-w-[1200px] mx-auto text-center">
+    <div class="section-title-wrapper">
+        <div class="section-title-bg">CONTACT</div>
+        <div class="section-title-front">
+            <h2>CONTACT</h2>
+            <span>お問い合わせ</span>
         </div>
-    </section>
+    </div>
+    
+    <p class="text-gray-300 mb-8 max-w-lg mx-auto">
+        チームへのお問い合わせ、スポンサー・お仕事のご依頼はこちらより承っております。
+    </p>
+
+    <!-- CONTACT US ボタン（水色） -->
+    <div>
+        <a href="contact.html" class="clean-btn-cyan">CONTACT US</a>
+    </div>
+</section>
+
 
     <!-- グローバルフッター -->
     <div id="global-footer"></div>
