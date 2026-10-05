@@ -6,7 +6,7 @@
     <title>GANAR Official Website</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts (Noto Sans JP / Teko / Chakra Petch) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Noto+Sans+JP:wght@400;700;900&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
@@ -15,10 +15,10 @@
 </head>
 <body class="bg-[#050a14] text-white font-sans antialiased selection:bg-[#00f0ff] selection:text-black">
 
-    <!-- グローバルヘッダー (assets/js/header-footer.js により自動描画) -->
+    <!-- グローバルヘッダー -->
     <div id="global-header"></div>
 
-    <!-- メインビジュアル (文字重ねなし・画像をそのまま魅せる構成) -->
+    <!-- メインビジュアル -->
     <section class="relative w-full pt-20 md:pt-24">
         <div class="w-full relative overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.8)] border-b border-[#00f0ff]/20">
             <picture>
@@ -31,8 +31,10 @@
     <!-- コンセプトセクション -->
     <section class="py-24 md:py-36 px-6 cyber-grid-bg relative border-b border-white/5">
         <div class="max-w-[1200px] mx-auto">
-            <div class="flex items-center gap-6 mb-16">
-                <div class="flex flex-col">
+            <!-- 二重タイポグラフィ見出し (CRスタイル) -->
+            <div class="section-title-wrapper">
+                <span class="section-title-bg">CONCEPT</span>
+                <div class="section-title-front flex flex-col">
                     <h2 class="text-5xl md:text-7xl font-bold tracking-wider font-teko text-white leading-none">CONCEPT</h2>
                     <span class="text-xs font-bold tracking-[0.3em] text-[#00f0ff] mt-1 font-chakra uppercase">コンセプト</span>
                 </div>
@@ -54,8 +56,10 @@
     <!-- ニュースセクション -->
     <section class="py-24 px-6 bg-[#050a14] relative">
         <div class="max-w-[1200px] mx-auto">
-            <div class="flex items-center gap-6 mb-16">
-                <div class="flex flex-col">
+            <!-- 二重タイポグラフィ見出し -->
+            <div class="section-title-wrapper">
+                <span class="section-title-bg">NEWS</span>
+                <div class="section-title-front flex flex-col">
                     <h2 class="text-5xl md:text-7xl font-bold tracking-wider font-teko text-white leading-none">NEWS</h2>
                     <span class="text-xs font-bold tracking-[0.3em] text-[#00f0ff] mt-1 font-chakra uppercase">最新情報</span>
                 </div>
@@ -77,13 +81,16 @@
     <!-- スポンサー・パートナーセクション -->
     <section class="py-24 md:py-36 px-6 cyber-grid-bg relative border-t border-white/10">
         <div class="max-w-[1200px] mx-auto">
-            <div class="flex items-center gap-6 mb-16">
-                <div class="flex flex-col">
+            <!-- 二重タイポグラフィ見出し -->
+            <div class="section-title-wrapper">
+                <span class="section-title-bg">SPONSOR</span>
+                <div class="section-title-front flex flex-col">
                     <h2 class="text-5xl md:text-7xl font-bold tracking-wider font-teko text-white leading-none">SPONSOR / PARTNER</h2>
                     <span class="text-xs font-bold tracking-[0.3em] text-[#00f0ff] mt-1 font-chakra uppercase">スポンサー / パートナー</span>
                 </div>
                 <div class="section-title-line"></div>
             </div>
+
             <div class="max-w-[800px] mx-auto text-center">
                 <div class="text-xl md:text-2xl font-bold space-y-4 mb-12 text-gray-200 leading-relaxed">
                     <p>GANARでは、活動を応援していただける<br class="hidden md:block">スポンサー様・パートナー様を募集しております。</p>
@@ -96,7 +103,7 @@
         </div>
     </section>
 
-    <!-- グローバルフッター (assets/js/header-footer.js により自動描画) -->
+    <!-- グローバルフッター -->
     <div id="global-footer"></div>
 
     <!-- Scripts -->
