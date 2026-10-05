@@ -25,21 +25,21 @@ async function fetchNews() {
             const dateString = isNaN(date) ? item.date : `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
             const card = document.createElement('a');
             card.href = `news-detail.html?id=${item.id}`;
-            card.className = "cyber-card group bg-[#0a1428]/60 border border-white/10 rounded-xl overflow-hidden hover:border-[#4bb8e0]/60 transition-all duration-300 flex flex-col";
+            card.className = "cyber-card group rounded-xl overflow-hidden flex flex-col";
             const imageUrl = getStableDriveUrl(item.imageUrl);
 
             card.innerHTML = `
-                <div class="aspect-video w-full bg-black/40 overflow-hidden relative">
+                <div class="aspect-video w-full bg-black/50 overflow-hidden relative border-b border-white/5">
                     <img src="${imageUrl}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='assets/images/logo/ganar.png'" referrerpolicy="no-referrer">
-                    <span class="absolute top-3 left-3 bg-[#0a1428]/80 backdrop-blur-md text-[#4bb8e0] border border-[#4bb8e0]/40 text-[11px] font-black px-3 py-1 rounded uppercase font-sans tracking-widest">${item.category}</span>
+                    <span class="absolute top-3 left-3 bg-[#050a14]/90 backdrop-blur-md text-[#00f0ff] border border-[#00f0ff]/40 text-[11px] font-bold px-3 py-1 rounded font-chakra tracking-wider">${item.category}</span>
                 </div>
                 <div class="p-6 flex-1 flex flex-col justify-between">
                     <div>
-                        <span class="text-xs font-bold tracking-widest text-gray-400 font-sans block mb-2">${dateString}</span>
-                        <h3 class="text-lg md:text-xl font-bold leading-snug text-white group-hover:text-[#4bb8e0] transition-colors line-clamp-2">${item.title}</h3>
+                        <span class="text-xs font-bold tracking-widest text-gray-400 font-chakra block mb-2">${dateString}</span>
+                        <h3 class="text-lg md:text-xl font-bold leading-snug text-white group-hover:text-[#00f0ff] transition-colors line-clamp-2">${item.title}</h3>
                     </div>
-                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-end text-xs font-bold text-[#4bb8e0] tracking-wider uppercase font-oswald">
-                        Read More <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-end font-teko text-xl text-[#00f0ff] tracking-widest uppercase">
+                        Read More <span class="ml-2 group-hover:translate-x-1.5 transition-transform">→</span>
                     </div>
                 </div>
             `;
