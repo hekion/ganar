@@ -24,21 +24,30 @@ body {
 }
 
 /* =========================================
-   2. サイドメニュー内ビジュアル装飾（g-mark透かし & 水色ライン & スローガン）
+   2. サイドメニュー内ビジュアル装飾（g-mark透かし & 水色ライン & 縦書きスローガン）
    ========================================= */
 
-/* バックグラウンド g-mark 透かしロゴ */
+/* バックグラウンド g-mark 透かしロゴ（PC中央寄せ & 白みアップ） */
 .zeta-menu-bg-mark {
     position: absolute;
     right: -5%;
     bottom: 5%;
-    width: clamp(280px, 50vw, 550px);
+    width: clamp(280px, 45vw, 500px);
     height: auto;
-    opacity: 0.08;
+    opacity: 0.15;
     pointer-events: none;
     user-select: none;
     z-index: 0;
-    filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.3));
+    filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.2));
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+    .zeta-menu-bg-mark {
+        right: 15%;
+        bottom: 10%;
+        width: 480px;
+    }
 }
 
 .zeta-menu-line {
@@ -62,31 +71,30 @@ body {
     }
 }
 
+/* スローガン：縦書き（1文字目の「H」の位置をHOME項目の高さに合わせて上部配置） */
 .zeta-menu-slogan {
     position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 2rem;
+    right: 2.5rem;
     writing-mode: vertical-rl;
+    text-orientation: mixed;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.95rem);
     font-weight: 800;
-    letter-spacing: 0.3em;
-    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.25em;
+    color: rgba(255, 255, 255, 0.3);
     user-select: none;
     pointer-events: none;
-    text-transform: uppercase;
     z-index: 1;
+    text-transform: uppercase;
 }
 
-/* サイドメニュー内ロゴ（水色発光付き） */
-.zeta-menu-logo-img {
-    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));
-    transition: filter 0.3s ease;
-}
-
-.zeta-menu-logo-img:hover {
-    filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.9));
+@media (max-width: 768px) {
+    .zeta-menu-slogan {
+        top: 1.5rem;
+        right: 1.25rem;
+        font-size: 0.7rem;
+    }
 }
 
 /* =========================================
@@ -144,10 +152,10 @@ body {
 
 #zeta-side-nav {
     position: fixed;
-    top: 5rem; /* スマホ時のヘッダー高さ h-20 (5rem) */
+    top: 5rem;
     left: 0;
     width: 100vw;
-    height: calc(100vh - 5rem); /* ヘッダー分を引いた高さ */
+    height: calc(100vh - 5rem);
     background-color: #000000;
     z-index: 9999;
     opacity: 0;
@@ -161,7 +169,7 @@ body {
 
 @media (min-width: 768px) {
     #zeta-side-nav {
-        top: 6rem; /* PC時のヘッダー高さ h-24 (6rem) */
+        top: 6rem;
         height: calc(100vh - 6rem);
         padding: 2rem 2rem 0 3.5rem;
     }
@@ -241,7 +249,6 @@ body {
     margin-bottom: 3rem; 
 }
 
-/* CONCEPT / NEWS / SPONSOR 等の巨大背景文字を水色のアウトライン＆グローに変更 */
 .section-title-bg { 
     position: absolute; 
     top: -0.5rem; 
@@ -284,18 +291,58 @@ body {
     display: block; 
 }
 
-/* 汎用コンポーネント */
+/* =========================================
+   6. ボタン＆ニュースカードデザイン（水色化＆クッキリ化）
+   ========================================= */
+
+/* 水色メインボタン（VIEW ALL NEWS / CONTACT US） */
+.clean-btn-cyan {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 3.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: #000000;
+    background: var(--ganar-cyan);
+    border: 1px solid var(--ganar-cyan);
+    border-radius: 9999px;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clean-btn-cyan:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+/* NEWS カードデザイン（クッキリ境界線＆ホバー光彩） */
+.news-card-block {
+    display: block;
+    background: rgba(13, 18, 30, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.news-card-block:hover {
+    border-color: var(--ganar-cyan);
+    background: rgba(0, 240, 255, 0.04);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+/* 汎用 */
 .clean-btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 3.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.2em; color: #ffffff; background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 9999px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
 .clean-btn:hover { border-color: var(--ganar-cyan); color: #000000; background: var(--ganar-cyan); box-shadow: 0 0 25px rgba(0, 240, 255, 0.4); transform: translateY(-2px); }
-.clean-card { background: var(--ganar-card-bg); border: 1px solid var(--ganar-border); backdrop-filter: blur(12px); transition: all 0.3s ease; }
-.clean-card:hover { border-color: rgba(0, 240, 255, 0.4); }
-
-.member-card { perspective: 1000px; height: 500px; cursor: pointer; }
-.member-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; }
-.member-card.flipped .member-card-inner { transform: rotateY(180deg); }
-.card-front, .card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 0.5rem; border: 1px solid var(--ganar-border); color: #ffffff !important; }
-.card-front { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 1.5rem; }
-.card-back { background: #070a12; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; padding: 2.5rem; }
 
 .contact-form input, .contact-form select, .contact-form textarea { background-color: rgba(255, 255, 255, 0.03) !important; border: 1px solid rgba(255, 255, 255, 0.15) !important; color: #ffffff !important; border-radius: 0.375rem; }
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--ganar-cyan) !important; outline: none; }
