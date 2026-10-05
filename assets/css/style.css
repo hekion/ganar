@@ -30,9 +30,9 @@ body {
 /* バックグラウンド g-mark 透かしロゴ */
 .zeta-menu-bg-mark {
     position: absolute;
-    right: -10%;
-    bottom: 10%;
-    width: clamp(300px, 60vw, 650px);
+    right: -5%;
+    bottom: 5%;
+    width: clamp(280px, 50vw, 550px);
     height: auto;
     opacity: 0.08;
     pointer-events: none;
@@ -79,7 +79,7 @@ body {
     z-index: 1;
 }
 
-/* サイドメニュー内ロゴ（ヘッダーロゴとの差別化：水色発光付き） */
+/* サイドメニュー内ロゴ（水色発光付き） */
 .zeta-menu-logo-img {
     filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));
     transition: filter 0.3s ease;
@@ -90,7 +90,7 @@ body {
 }
 
 /* =========================================
-   3. 2本線 ⇔ ✕印 ループトグルボタン（最前面固定）
+   3. 2本線 ⇔ ✕印 ループトグルボタン
    ========================================= */
 
 .zeta-menu-trigger {
@@ -103,7 +103,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000; /* 全ての上に配置して操作を受け付ける */
+    z-index: 10000;
 }
 
 .zeta-menu-trigger:hover {
@@ -128,7 +128,6 @@ body {
     transform-origin: center;
 }
 
-/* 2本線 → ✕印 トグルアニメーション */
 .zeta-menu-trigger.is-active .zeta-line-1 {
     transform: translateY(7px) rotate(45deg);
     background-color: #ffffff;
@@ -140,15 +139,15 @@ body {
 }
 
 /* =========================================
-   4. フルスクリーンサイドメニュー
+   4. サイドメニュー（ヘッダー分を開けた配置）
    ========================================= */
 
 #zeta-side-nav {
     position: fixed;
-    top: 0;
+    top: 5rem; /* スマホ時のヘッダー高さ h-20 (5rem) */
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 5rem); /* ヘッダー分を引いた高さ */
     background-color: #000000;
     z-index: 9999;
     opacity: 0;
@@ -156,13 +155,21 @@ body {
     transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    padding: 0 2rem 0 3.5rem;
+    padding: 1.5rem 2rem 0 3.5rem;
     overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+    #zeta-side-nav {
+        top: 6rem; /* PC時のヘッダー高さ h-24 (6rem) */
+        height: calc(100vh - 6rem);
+        padding: 2rem 2rem 0 3.5rem;
+    }
 }
 
 @media (max-width: 768px) {
     #zeta-side-nav {
-        padding: 0 1.25rem 0 2.25rem;
+        padding: 1.5rem 1.25rem 0 2.25rem;
     }
 }
 
@@ -176,7 +183,7 @@ body {
     z-index: 2;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 .zeta-nav-item {
@@ -200,7 +207,7 @@ body {
 
 .zeta-link {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.6rem, 4.8vw, 2.8rem);
+    font-size: clamp(1.6rem, 4.5vw, 2.6rem);
     font-weight: 800;
     letter-spacing: -0.01em;
     line-height: 1.2;
@@ -223,13 +230,61 @@ body {
     color: #666666;
 }
 
-/* 汎用スタイル */
-.section-title-wrapper { position: relative; padding-top: 1.5rem; padding-bottom: 2rem; margin-bottom: 3rem; }
-.section-title-bg { position: absolute; top: -0.5rem; left: -0.02em; font-family: 'Montserrat', sans-serif; font-size: clamp(4.5rem, 12vw, 9rem); font-weight: 900; line-height: 0.8; letter-spacing: -0.03em; color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.07); pointer-events: none; user-select: none; white-space: nowrap; z-index: 0; text-transform: uppercase; }
-.section-title-front { position: relative; z-index: 1; }
-.section-title-front h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: 0.05em; line-height: 1; text-transform: uppercase; color: #ffffff; }
-.section-title-front span { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; color: var(--ganar-cyan); margin-top: 0.5rem; display: block; }
+/* =========================================
+   5. セクションタイトル背景大文字（水色化）
+   ========================================= */
 
+.section-title-wrapper { 
+    position: relative; 
+    padding-top: 1.5rem; 
+    padding-bottom: 2rem; 
+    margin-bottom: 3rem; 
+}
+
+/* CONCEPT / NEWS / SPONSOR 等の巨大背景文字を水色のアウトライン＆グローに変更 */
+.section-title-bg { 
+    position: absolute; 
+    top: -0.5rem; 
+    left: -0.02em; 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: clamp(4.5rem, 12vw, 9rem); 
+    font-weight: 900; 
+    line-height: 0.8; 
+    letter-spacing: -0.03em; 
+    color: rgba(0, 240, 255, 0.03); 
+    -webkit-text-stroke: 1px rgba(0, 240, 255, 0.25); 
+    pointer-events: none; 
+    user-select: none; 
+    white-space: nowrap; 
+    z-index: 0; 
+    text-transform: uppercase; 
+}
+
+.section-title-front { 
+    position: relative; 
+    z-index: 1; 
+}
+
+.section-title-front h2 { 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: clamp(2rem, 5vw, 3.5rem); 
+    font-weight: 800; 
+    letter-spacing: 0.05em; 
+    line-height: 1; 
+    text-transform: uppercase; 
+    color: #ffffff; 
+}
+
+.section-title-front span { 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    letter-spacing: 0.25em; 
+    color: var(--ganar-cyan); 
+    margin-top: 0.5rem; 
+    display: block; 
+}
+
+/* 汎用コンポーネント */
 .clean-btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 3.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.2em; color: #ffffff; background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 9999px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
 .clean-btn:hover { border-color: var(--ganar-cyan); color: #000000; background: var(--ganar-cyan); box-shadow: 0 0 25px rgba(0, 240, 255, 0.4); transform: translateY(-2px); }
 .clean-card { background: var(--ganar-card-bg); border: 1px solid var(--ganar-border); backdrop-filter: blur(12px); transition: all 0.3s ease; }
