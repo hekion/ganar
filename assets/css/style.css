@@ -52,10 +52,10 @@ body {
 
 .zeta-menu-line {
     position: absolute;
-    top: 5%;
+    top: 2rem;
     left: 2rem;
     width: 3px;
-    height: 90%;
+    height: calc(100% - 4rem);
     background: linear-gradient(180deg, transparent 0%, var(--ganar-cyan) 20%, var(--ganar-cyan) 80%, transparent 100%);
     box-shadow: 0 0 15px var(--ganar-cyan), 0 0 5px var(--ganar-cyan);
     opacity: 0.85;
@@ -66,12 +66,14 @@ body {
 
 @media (max-width: 768px) {
     .zeta-menu-line {
+        top: 1.5rem;
         left: 1rem;
+        height: calc(100% - 3rem);
         width: 2px;
     }
 }
 
-/* スローガン：縦書き（1文字目の「H」の位置をHOME項目の高さに合わせて上部配置） */
+/* スローガン：縦書き（1文字目の「H」の位置をHOME項目の高さに合わせて上部配置＆白字化） */
 .zeta-menu-slogan {
     position: absolute;
     top: 2rem;
@@ -82,7 +84,7 @@ body {
     font-size: clamp(0.75rem, 1.2vw, 0.95rem);
     font-weight: 800;
     letter-spacing: 0.25em;
-    color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
     user-select: none;
     pointer-events: none;
     z-index: 1;
