@@ -1,116 +1,132 @@
 @charset "UTF-8";
 
 /* =========================================
-   1. カラー変数・全ページ共通設定
+   1. カラー変数・フォント・基本設定
    ========================================= */
 :root {
-    --ganar-cyan: #4bb8e0;
-    --ganar-cyan-glow: rgba(75, 184, 224, 0.4);
-    --ganar-bg-dark: #060b14;
-    --ganar-card-bg: #0a1428;
+    --ganar-cyan: #00f0ff;
+    --ganar-cyan-glow: rgba(0, 240, 255, 0.4);
+    --ganar-blue-dark: #050a14;
+    --ganar-card-bg: rgba(10, 20, 38, 0.65);
+    --ganar-card-border: rgba(0, 240, 255, 0.25);
 }
 
 body {
-    background-color: var(--ganar-bg-dark);
+    background-color: var(--ganar-blue-dark);
     color: #ffffff;
     font-family: 'Noto Sans JP', sans-serif;
     overflow-x: hidden;
     margin: 0;
 }
 
-.font-oswald {
-    font-family: 'Oswald', sans-serif;
+/* 欧文サイバーフォント */
+.font-teko {
+    font-family: 'Teko', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.white-logo {
-    filter: brightness(0) invert(1);
+.font-chakra {
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 /* =========================================
    2. サイバーUI・グラフィックエフェクト
    ========================================= */
 
-/* サイバー背景グリッド */
+/* 背景メッシュパターン */
 .cyber-grid-bg {
-    background-color: var(--ganar-bg-dark);
+    background-color: var(--ganar-blue-dark);
     background-image: 
-        linear-gradient(rgba(75, 184, 224, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(75, 184, 224, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-}
-
-/* ヒーローグラデーション */
-.index-mv-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(6, 11, 20, 0.3) 0%, rgba(6, 11, 20, 0.95) 100%);
-    pointer-events: none;
+        radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
 }
 
 /* セクションタイトル横のネオンライン */
 .section-title-line {
     flex-grow: 1;
     height: 2px;
-    background: linear-gradient(90deg, var(--ganar-cyan) 0%, rgba(75, 184, 224, 0) 100%);
+    background: linear-gradient(90deg, var(--ganar-cyan) 0%, rgba(0, 240, 255, 0) 100%);
 }
 
-/* サイバー切り欠きボタン */
+/* 高級サイバー切り欠きボタン */
 .cyber-btn {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2.5rem;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
+    padding: 0.9rem 2.8rem;
+    font-family: 'Teko', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
     letter-spacing: 0.15em;
     color: #ffffff;
-    background: linear-gradient(135deg, #0a1428 0%, #102040 100%);
-    border: 1px solid rgba(75, 184, 224, 0.5);
-    box-shadow: 0 0 15px rgba(75, 184, 224, 0.15);
-    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(10, 20, 38, 0.8);
+    border: 1px solid var(--ganar-cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .cyber-btn:hover {
     background: var(--ganar-cyan);
-    color: #060b14;
-    border-color: var(--ganar-cyan);
-    box-shadow: 0 0 25px rgba(75, 184, 224, 0.6);
+    color: #050a14;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
     transform: translateY(-2px);
 }
 
-/* サイバーカードホバー */
+/* サイバーカード（ガラスモーフィズム） */
 .cyber-card {
-    transition: all 0.3s ease;
+    background: var(--ganar-card-bg);
+    border: 1px solid var(--ganar-card-border);
+    backdrop-filter: blur(12px);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .cyber-card:hover {
-    box-shadow: 0 10px 30px -10px var(--ganar-cyan-glow);
-    transform: translateY(-4px);
-}
-
-.glow-text {
-    text-shadow: 0 0 15px var(--ganar-cyan-glow);
+    border-color: var(--ganar-cyan);
+    box-shadow: 0 10px 30px -5px var(--ganar-cyan-glow);
+    transform: translateY(-5px);
 }
 
 /* =========================================
-   3. index.html 専用
+   3. サイドメニュー（ドロワー）アニメーション
    ========================================= */
 
-.hero-title {
-    font-family: 'Russo One', sans-serif !important;
-    font-style: italic;
-    letter-spacing: 0.04em;
-    text-shadow: 
-        0 0 20px var(--ganar-cyan-glow),
-        3px 3px 0px #000000;
+#side-nav {
+    background: rgba(5, 10, 20, 0.95);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(0, 240, 255, 0.3);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
 }
 
-.concept-text {
-    line-height: 2;
-    letter-spacing: 0.05em;
+.nav-link-item {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link-item::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0%;
+    background-color: var(--ganar-cyan);
+    box-shadow: 0 0 10px var(--ganar-cyan);
+    transition: height 0.3s ease;
+}
+
+.nav-link-item:hover::before {
+    height: 80%;
+}
+
+.nav-link-item:hover {
+    padding-left: 0.5rem;
+    color: var(--ganar-cyan);
 }
 
 /* =========================================
@@ -142,12 +158,12 @@ body {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 1rem;
-    border: 1px solid rgba(75, 184, 224, 0.3);
+    border: 1px solid var(--ganar-card-border);
     color: #ffffff !important;
 }
 
 .card-front { 
-    background: rgba(10, 20, 40, 0.7); 
+    background: rgba(10, 20, 40, 0.75); 
     backdrop-filter: blur(12px); 
     display: flex; 
     flex-direction: column; 
@@ -155,7 +171,7 @@ body {
 }
 
 .card-back { 
-    background: #060b14; 
+    background: #050a14; 
     transform: rotateY(180deg); 
     display: flex; 
     flex-direction: column; 
@@ -164,14 +180,14 @@ body {
 }
 
 /* =========================================
-   5. contact.html / fanclub.html / news-detail.html 専用
+   5. お問い合わせ / ニュース等の下層ページ補正
    ========================================= */
 
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(75, 184, 224, 0.3) !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(0, 240, 255, 0.25) !important;
     color: #ffffff !important;
 }
 
@@ -180,37 +196,10 @@ body {
 .contact-form textarea:focus {
     border-color: var(--ganar-cyan) !important;
     outline: none;
-    box-shadow: 0 0 10px var(--ganar-cyan-glow);
-}
-
-.fanclub-join-btn {
-    transition: all 0.3s ease;
-}
-
-.fanclub-join-btn:active {
-    transform: scale(0.95);
-}
-
-#news-content { 
-    line-height: 1.8; 
-    word-break: break-all; 
+    box-shadow: 0 0 15px var(--ganar-cyan-glow);
 }
 
 #news-content a { 
     color: var(--ganar-cyan); 
     text-decoration: underline; 
-    font-weight: bold; 
-    transition: opacity 0.2s; 
-}
-
-#news-content a:hover { 
-    opacity: 0.8; 
-}
-
-.hover-zoom {
-    transition: transform 0.5s ease;
-}
-
-.group:hover .hover-zoom {
-    transform: scale(1.05);
 }
