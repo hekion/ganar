@@ -297,7 +297,34 @@ body {
    6. ボタン＆ニュースカードデザイン（水色化＆クッキリ化）
    ========================================= */
 
-/* 水色メインボタン（VIEW ALL NEWS / CONTACT US） */
+/* index.html 用 サイバーボタン (.cyber-btn) */
+.cyber-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 3.5rem;
+    font-family: 'Montserrat', 'Chakra Petch', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: #000000;
+    background: var(--ganar-cyan);
+    border: 1px solid var(--ganar-cyan);
+    border-radius: 9999px;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+}
+
+.cyber-btn:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+/* 水色メインボタン */
 .clean-btn-cyan {
     display: inline-flex;
     align-items: center;
