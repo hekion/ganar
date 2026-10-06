@@ -4,232 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEWS | GANAR Official Website</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Noto+Sans+JP:wght@400;700;900&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="pt-24 md:pt-28">
+<body class="bg-[#050a14] text-white font-sans antialiased selection:bg-[#00f0ff] selection:text-black">
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-[#4bb8e0] border-b border-white/20 shadow-md h-24 md:h-28">
-        <div class="max-w-[1600px] mx-auto h-full px-6 flex items-center justify-between">
-            <div class="h-12 md:h-16">
-                <a href="index.html">
-                    <img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain white-logo">
-                </a>
+    <!-- グローバルヘッダー -->
+    <div id="global-header"></div>
+
+    <main class="max-w-[1200px] mx-auto px-6 mb-24 py-12 md:py-20 text-white pt-24 md:pt-28">
+        <!-- 二重タイポグラフィ見出し -->
+        <div class="section-title-wrapper mb-16">
+            <span class="section-title-bg">NEWS</span>
+            <div class="section-title-front flex flex-col">
+                <h2 class="text-5xl md:text-7xl font-bold tracking-wider font-teko text-white leading-none">NEWS</h2>
+                <span class="text-xs font-bold tracking-[0.3em] text-[#00f0ff] mt-1 font-chakra uppercase">ニュース</span>
             </div>
-            <nav class="hidden md:block">
-                <ul class="flex items-center gap-8 font-oswald font-black italic uppercase tracking-tighter text-xl">
-                    <li><a href="news.html" class="text-white hover:text-[#0a1428] transition-all duration-300 block">News</a></li>
-                    <li><a href="about.html" class="text-white hover:text-[#0a1428] transition-all duration-300 block">About</a></li>
-                    <li><a href="members.html" class="text-white hover:text-[#0a1428] transition-all duration-300 block">Members</a></li>
-                    <li><a href="fanclub.html" class="text-white hover:text-[#0a1428] transition-all duration-300 block">Fanclub</a></li>
-                    <li><a href="contact.html" class="text-white hover:text-[#0a1428] transition-all duration-300 block">Contact</a></li>
-                </ul>
-            </nav>
-            <button id="menu-btn" class="md:hidden focus:outline-none p-2">
-                <div class="space-y-1.5">
-                    <span class="block w-8 h-1 bg-white"></span>
-                    <span class="block w-5 h-1 bg-white ml-auto"></span>
-                    <span class="block w-8 h-1 bg-white"></span>
-                </div>
-            </button>
-        </div>
-    </header>
-
-    <div id="overlay" class="fixed inset-0 bg-black/60 z-[55]"></div>
-
-    <nav id="side-nav" class="fixed top-0 right-0 w-[280px] md:w-[350px] h-full bg-[#0a1428] z-[60] shadow-2xl translate-x-full text-white overflow-y-auto font-oswald">
-        <div class="p-10 flex flex-col h-full text-white">
-            <button id="close-btn" class="self-end text-3xl font-light mb-10 hover:text-[#63d6ff]">✕</button>
-            <ul class="space-y-7 uppercase text-white">
-                <li><a href="index.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Home</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ホーム</span></a></li>
-                <li><a href="news.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block text-[#63d6ff]">News</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ニュース</span></a></li>
-                <li><a href="about.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">About</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">チームについて</span></a></li>
-                <li><a href="members.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Members</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">メンバー紹介</span></a></li>
-                <li><a href="news-detail-recruit.html" class="group block"><span class="text-2xl font-black italic tracking-tighter block text-[#ffeb3b]">Recruit</span><span class="text-[10px] font-bold tracking-[0.2em] block text-[#ffeb3b] -mt-1 font-sans">メンバー募集</span></a></li>
-                <li><a href="fanclub.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Fanclub</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">ファンクラブ</span></a></li>
-                <li><a href="contact.html" class="group block text-white"><span class="text-2xl font-black italic tracking-tighter block transition hover:text-[#63d6ff]">Contact</span><span class="text-[10px] font-bold tracking-[0.2em] block text-gray-400 -mt-1 font-sans">お問い合わせ</span></a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main class="max-w-[1200px] mx-auto px-6 mb-24 py-12 md:py-20 text-white">
-        <div class="flex items-center gap-4 mb-16">
-            <div class="flex flex-col">
-                <h2 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase font-oswald text-white drop-shadow-md leading-none">News</h2>
-                <span class="text-[10px] font-bold tracking-[0.3em] text-white/70 mt-1 uppercase font-sans">ニュース</span>
-            </div>
-            <div class="h-1 flex-grow bg-white/40 section-title-line"></div>
+            <div class="section-title-line"></div>
         </div>
 
         <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <p class="col-span-full text-center py-20 opacity-60">読み込み中...</p>
+            <p class="col-span-full text-center py-20 text-gray-400 font-sans">読み込み中...</p>
         </div>
 
         <div id="pagination" class="mt-16 flex justify-center items-center gap-6 hidden">
-            <button id="prev-btn" class="bg-white/10 hover:bg-white hover:text-[#0a1428] text-white px-6 py-2 rounded-full font-bold transition-all disabled:opacity-20 disabled:pointer-events-none font-sans text-sm tracking-widest uppercase">PREV</button>
-            <span id="page-info" class="font-oswald font-bold text-lg italic tracking-widest">1 / 1</span>
-            <button id="next-btn" class="bg-white/10 hover:bg-white hover:text-[#0a1428] text-white px-6 py-2 rounded-full font-bold transition-all disabled:opacity-20 disabled:pointer-events-none font-sans text-sm tracking-widest uppercase">NEXT</button>
-        </div>
-
-        <div class="mt-20 text-center">
-            <a href="index.html" class="inline-block text-white font-bold text-sm border-b border-white hover:opacity-60 transition-all pb-1 tracking-widest uppercase font-sans">← BACK TO TOP</a>
+            <button id="prev-btn" class="cyber-btn">PREV</button>
+            <span id="page-info" class="font-teko text-2xl font-bold tracking-widest text-[#00f0ff]">1 / 1</span>
+            <button id="next-btn" class="cyber-btn">NEXT</button>
         </div>
     </main>
 
-    <footer class="bg-[#0a1428] text-white py-16 px-6 border-t border-white/10 font-sans">
-        <div class="max-w-[1200px] mx-auto flex flex-col items-center">
-            <div class="h-16 mb-10">
-                <img src="ganarlogo.png" alt="GANAR" class="h-full w-auto object-contain white-logo">
-            </div>
-            <nav class="mb-12">
-                <ul class="flex flex-wrap md:flex-row justify-center items-center gap-x-8 gap-y-4 font-oswald font-bold italic uppercase tracking-widest text-lg">
-                    <li><a href="about.html" class="hover:text-[#4bb8e0] transition-colors">About</a></li>
-                    <li><a href="news.html" class="hover:text-[#4bb8e0] transition-colors">News</a></li>
-                    <li><a href="members.html" class="hover:text-[#4bb8e0] transition-colors">Members</a></li>
-                    <li><a href="fanclub.html" class="hover:text-[#4bb8e0] transition-colors">Fanclub</a></li>
-                    <li><a href="contact.html" class="hover:text-[#4bb8e0] transition-colors">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="flex items-center gap-8 mb-12">
-                <a href="https://x.com/GANAR_games" target="_blank" class="hover:text-[#4bb8e0] transition-colors">
-                    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/ganar_games" target="_blank" class="hover:text-[#4bb8e0] transition-colors">
-                    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="https://youtube.com/@ganar_esports" target="_blank" class="hover:text-[#4bb8e0] transition-colors">
-                    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-            </div>
-            <div class="pt-8 border-t border-white/5 flex items-center justify-center gap-4 text-white text-xs tracking-widest font-bold uppercase">
-                <span>©︎</span>
-                <a href="https://hekion.github.io/hekion/" target="_blank" class="transition-transform hover:scale-105">
-                    <img src="hekion-logo.png" alt="HEKION" class="h-8 md:h-12 w-auto">
-                </a>
-                <span>All Rights Reserved.</span>
-            </div>
-        </div>
-    </footer>
+    <!-- グローバルフッター -->
+    <div id="global-footer"></div>
 
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const closeBtn = document.getElementById('close-btn');
-        const overlay = document.getElementById('overlay');
-        function toggleMenu() { document.body.classList.toggle('nav-open'); }
-        menuBtn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbyVJp-zqYfROpOGgh9Oqmvtx8FxG78fRm07eWfxeHpQVgSrHGxDADtDVlXqb_6nvplPRw/exec";
-        
-        // 設定
-        const ITEMS_PER_PAGE = 10;
-        let currentPage = 1;
-        let allNewsData = [];
-
-        function getStableDriveUrl(url) {
-            if (!url) return 'ganarlogo.png';
-            const idMatch = url.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
-            if (idMatch) {
-                return `https://drive.google.com/thumbnail?id=${idMatch[0]}&sz=s1000`;
-            }
-            return url;
-        }
-
-        function displayNews() {
-            const container = document.getElementById('news-container');
-            container.innerHTML = '';
-
-            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-            const endIndex = startIndex + ITEMS_PER_PAGE;
-            const currentItems = allNewsData.slice(startIndex, endIndex);
-
-            currentItems.forEach(item => {
-                const date = new Date(item.date);
-                const dateString = isNaN(date) ? item.date : `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
-                
-                const card = document.createElement('a');
-                card.href = `news-detail.html?id=${item.id}`;
-                card.className = "news-card bg-white/10 backdrop-blur-md rounded-xl overflow-hidden flex flex-col border border-white/20 hover:border-white transition-all";
-                
-                card.innerHTML = `
-                    <div class="aspect-video w-full bg-black/20 overflow-hidden relative">
-                        <img src="${getStableDriveUrl(item.imageUrl)}" 
-                             alt="" 
-                             class="w-full h-full object-cover"
-                             referrerpolicy="no-referrer">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="text-[10px] font-bold tracking-widest opacity-60">${dateString}</span>
-                            <span class="bg-white text-[#4bb8e0] text-[9px] font-black px-2 py-0.5 rounded uppercase font-sans">${item.category}</span>
-                        </div>
-                        <h3 class="text-lg font-bold leading-snug mb-4 line-clamp-2">${item.title}</h3>
-                        <div class="mt-auto flex items-center justify-between group">
-                            <span class="text-[10px] font-bold tracking-tighter uppercase opacity-40 group-hover:opacity-100 transition-opacity font-sans">Read More</span>
-                            <span class="text-xl leading-none transition-transform group-hover:translate-x-1">→</span>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-
-            updatePagination();
-            // ページ移動時にトップへスクロール（不要なら削除してください）
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function updatePagination() {
-            const totalPages = Math.ceil(allNewsData.length / ITEMS_PER_PAGE);
-            const paginationEl = document.getElementById('pagination');
-            
-            if (totalPages <= 1) {
-                paginationEl.classList.add('hidden');
-                return;
-            }
-
-            paginationEl.classList.remove('hidden');
-            document.getElementById('page-info').innerText = `${currentPage} / ${totalPages}`;
-            document.getElementById('prev-btn').disabled = (currentPage === 1);
-            document.getElementById('next-btn').disabled = (currentPage === totalPages);
-        }
-
-        async function fetchNews() {
-            const container = document.getElementById('news-container');
-            try {
-                const response = await fetch(GAS_URL);
-                allNewsData = await response.json();
-                
-                if (allNewsData.length === 0) {
-                    container.innerHTML = '<p class="col-span-full text-center py-20 opacity-60">現在、ニュースはありません。</p>';
-                    return;
-                }
-
-                allNewsData.sort((a, b) => Number(b.id) - Number(a.id));
-                displayNews();
-
-            } catch (error) {
-                container.innerHTML = '<p class="col-span-full text-center py-20 text-red-200">データの取得に失敗しました。</p>';
-            }
-        }
-
-        document.getElementById('prev-btn').addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                displayNews();
-            }
-        });
-
-        document.getElementById('next-btn').addEventListener('click', () => {
-            const totalPages = Math.ceil(allNewsData.length / ITEMS_PER_PAGE);
-            if (currentPage < totalPages) {
-                currentPage++;
-                displayNews();
-            }
-        });
-
-        fetchNews();
-    </script>
+    <!-- Scripts -->
+    <script src="assets/js/header-footer.js"></script>
+    <script src="assets/js/news-api.js"></script>
 </body>
 </html>
