@@ -45,15 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </a>
                             </li>
                             <li class="zeta-nav-item">
-                                <a href="news.html" class="zeta-link">
-                                    <span>NEWS</span>
-                                    <span class="zeta-link-sub">ニュース</span>
-                                </a>
-                            </li>
-                            <li class="zeta-nav-item">
                                 <a href="about.html" class="zeta-link">
                                     <span>ABOUT</span>
                                     <span class="zeta-link-sub">チームについて</span>
+                                </a>
+                            </li>
+                            </li>
+                            <li class="zeta-nav-item">
+                                <a href="news.html" class="zeta-link">
+                                    <span>NEWS</span>
+                                    <span class="zeta-link-sub">ニュース</span>
                                 </a>
                             </li>
                             <li class="zeta-nav-item">
