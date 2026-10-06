@@ -23,10 +23,8 @@ body {
     font-family: 'Montserrat', 'Inter', sans-serif;
 }
 
-@charset "UTF-8";
-
 /* =========================================
-   1. ヘッダーロゴの1.5倍拡大（親枠制限の解除）
+   2. ヘッダーロゴの1.5倍拡大（親枠制限の解除）
    ========================================= */
 /* ロゴを囲む親要素の高さ制限を解除 */
 header a,
@@ -56,7 +54,7 @@ header img {
 
 
 /* =========================================
-   2. サイドメニュー内ビジュアル装飾（g-mark透かし & 水色ライン & 縦書きスローガン）
+   3. サイドメニュー内ビジュアル装飾（g-mark透かし & 水色ライン & 縦書きスローガン）
    ========================================= */
 
 /* バックグラウンド g-mark 透かしロゴ（PC中央寄せ & 白みアップ） */
@@ -132,7 +130,7 @@ header img {
 }
 
 /* =========================================
-   3. 2本線 ⇔ ✕印 ループトグルボタン
+   4. 2本線 ⇔ ✕印 ループトグルボタン
    ========================================= */
 
 .zeta-menu-trigger {
@@ -181,7 +179,7 @@ header img {
 }
 
 /* =========================================
-   4. サイドメニュー（ヘッダー分を開けた配置）
+   5. サイドメニュー（ヘッダー分を開けた配置）
    ========================================= */
 
 #zeta-side-nav {
@@ -273,7 +271,7 @@ header img {
 }
 
 /* =========================================
-   5. 全セクションタイトル共通（背景大文字＆表タイトルの左下重なり固定）
+   6. 全セクションタイトル共通（背景大文字＆表タイトルの左下重なり固定）
    ========================================= */
 
 .section-title-wrapper { 
@@ -301,7 +299,6 @@ header img {
     text-transform: uppercase; 
 }
 
-/* CONCEPT / NEWS / SPONSOR 等、全セクション共通で左下重なりに固定 */
 .section-title-front { 
     position: relative; 
     z-index: 1; 
@@ -329,10 +326,9 @@ header img {
 }
 
 /* =========================================
-   6. ボタン＆ニュースカードデザイン（サイバーくっきり化）
+   7. ボタン＆ニュースカードデザイン（サイバーくっきり化）
    ========================================= */
 
-/* JSで自動生成されるニュースカード要素の見た目をCSS側で直接上書き制御 */
 #news-container .cyber-card {
     background: rgba(10, 16, 28, 0.85) !important;
     border: 1px solid rgba(0, 240, 255, 0.25) !important;
@@ -346,7 +342,6 @@ header img {
     transform: translateY(-4px) !important;
 }
 
-/* サイバーボタン (.cyber-btn) */
 .cyber-btn {
     display: inline-flex;
     align-items: center;
@@ -374,7 +369,6 @@ header img {
     transform: translateY(-2px);
 }
 
-/* 水色メインボタン */
 .clean-btn-cyan {
     display: inline-flex;
     align-items: center;
@@ -400,10 +394,38 @@ header img {
     transform: translateY(-2px);
 }
 
-/* 汎用 */
-.clean-btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 3.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.2em; color: #ffffff; background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 9999px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-.clean-btn:hover { border-color: var(--ganar-cyan); color: #000000; background: var(--ganar-cyan); box-shadow: 0 0 25px rgba(0, 240, 255, 0.4); transform: translateY(-2px); }
+.clean-btn { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 1rem 3.5rem; 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 0.9rem; 
+    font-weight: 700; 
+    letter-spacing: 0.2em; 
+    color: #ffffff; 
+    background: transparent; 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 9999px; 
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+}
 
-.contact-form input, .contact-form select, .contact-form textarea { background-color: rgba(255, 255, 255, 0.03) !important; border: 1px solid rgba(255, 255, 255, 0.15) !important; color: #ffffff !important; border-radius: 0.375rem; }
-.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--ganar-cyan) !important; outline: none; }
+.clean-btn:hover { 
+    border-color: var(--ganar-cyan); 
+    color: #000000; 
+    background: var(--ganar-cyan); 
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.4); 
+    transform: translateY(-2px); 
+}
 
+.contact-form input, .contact-form select, .contact-form textarea { 
+    background-color: rgba(255, 255, 255, 0.03) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.15) !important; 
+    color: #ffffff !important; 
+    border-radius: 0.375rem; 
+}
+
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { 
+    border-color: var(--ganar-cyan) !important; 
+    outline: none; 
+}
