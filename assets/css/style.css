@@ -462,9 +462,11 @@ button[class*="more"]:hover {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 1rem;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(0, 240, 255, 0.4); /* 水色の縁線 */
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.15); /* サイバーな発光感を追加する場合 */
     color: #ffffff !important;
 }
+
 
 .card-front { 
     background: rgba(255,255,255,0.15); 
