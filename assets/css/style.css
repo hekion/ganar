@@ -24,40 +24,44 @@ body {
 }
 
 /* =========================================
-   2. ヘッダーロゴの1.5倍拡大（親枠制限の解除）
+   ヘッダーロゴサイズ設定（1.5倍化）
    ========================================= */
-/* ロゴを囲む親要素の高さ制限を解除 */
+/* 親要素の高さ制限解除 */
 header a,
 .header-logo,
-header .logo {
+header .logo,
+#header .logo {
     display: inline-flex !important;
     align-items: center !important;
     max-height: none !important;
     height: auto !important;
 }
 
-/* 画像自体のサイズを強力に1.5倍指定 */
+/* 画像自体のサイズを1.5倍（約32px→48px / 約40px→60px）に拡大 */
 .header-logo img,
+header .logo img,
+#header img.logo,
 header img {
-    height: 60px !important; /* 元の標準サイズ(約40px)の1.5倍 */
+    height: 60px !important;
     max-height: none !important;
     width: auto !important;
     object-fit: contain !important;
+    transition: transform 0.3s ease;
 }
 
 @media (max-width: 768px) {
     .header-logo img,
+    header .logo img,
+    #header img.logo,
     header img {
-        height: 45px !important; /* スマホ時も拡大 */
+        height: 45px !important; /* スマホ時も1.5倍相当に拡大 */
     }
 }
 
-
 /* =========================================
-   3. サイドメニュー内ビジュアル装飾（g-mark透かし & 水色ライン & 縦書きスローガン）
+   2. サイドメニュー内ビジュアル装飾
    ========================================= */
 
-/* バックグラウンド g-mark 透かしロゴ（PC中央寄せ & 白みアップ） */
 .zeta-menu-bg-mark {
     position: absolute;
     right: -5%;
@@ -103,7 +107,6 @@ header img {
     }
 }
 
-/* スローガン：縦書き（1文字目の「H」の位置をHOME項目の高さに合わせて上部配置＆白字化） */
 .zeta-menu-slogan {
     position: absolute;
     top: 2rem;
@@ -130,7 +133,7 @@ header img {
 }
 
 /* =========================================
-   4. 2本線 ⇔ ✕印 ループトグルボタン
+   3. 2本線 ⇔ ✕印 ループトグルボタン
    ========================================= */
 
 .zeta-menu-trigger {
@@ -179,7 +182,7 @@ header img {
 }
 
 /* =========================================
-   5. サイドメニュー（ヘッダー分を開けた配置）
+   4. サイドメニュー
    ========================================= */
 
 #zeta-side-nav {
@@ -271,25 +274,25 @@ header img {
 }
 
 /* =========================================
-   6. 全セクションタイトル共通（背景大文字＆表タイトルの左下重なり固定）
+   5. 全セクションタイトル（背景文字と白文字の重ね合わせ・左下揃え）
    ========================================= */
 
 .section-title-wrapper { 
     position: relative; 
-    padding-top: 1rem; 
-    padding-bottom: 1.5rem; 
-    margin-bottom: 2.5rem; 
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 3.5rem; 
 }
 
+/* 背景のデカ文字 */
 .section-title-bg { 
-    position: absolute; 
-    top: -0.5rem; 
-    left: -0.02em; 
+    position: relative; 
+    display: block;
     font-family: 'Montserrat', sans-serif; 
-    font-size: clamp(4rem, 10vw, 7.5rem); 
+    font-size: clamp(3.5rem, 9vw, 7rem); 
     font-weight: 900; 
-    line-height: 0.8; 
-    letter-spacing: -0.03em; 
+    line-height: 1; 
+    letter-spacing: -0.02em; 
     color: rgba(0, 240, 255, 0.03); 
     -webkit-text-stroke: 1px rgba(0, 240, 255, 0.25); 
     pointer-events: none; 
@@ -297,38 +300,97 @@ header img {
     white-space: nowrap; 
     z-index: 0; 
     text-transform: uppercase; 
+    margin: 0;
+    padding: 0;
 }
 
+/* 手前エリア（背景文字の左下に重ねて配置） */
 .section-title-front { 
-    position: relative; 
+    position: absolute; 
+    left: 0;
+    bottom: 0;
     z-index: 1; 
-    padding-top: clamp(2rem, 5vw, 4rem);
-    padding-left: clamp(0.5rem, 1.5vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
+/* 手前の英字（メインの白文字） */
 .section-title-front h2 { 
-    font-family: 'Montserrat', sans-serif; 
-    font-size: clamp(1.8rem, 4vw, 3rem); 
-    font-weight: 800; 
+    font-family: 'Teko', sans-serif; 
+    font-size: clamp(2rem, 5vw, 4rem); 
+    font-weight: 700; 
     letter-spacing: 0.05em; 
     line-height: 1; 
+    margin: 0;
+    padding: 0;
     text-transform: uppercase; 
     color: #ffffff; 
 }
 
+/* 白文字(h2)の真下に配置する日本語テキスト */
 .section-title-front span { 
-    font-size: 0.75rem; 
+    font-size: 0.8rem; 
     font-weight: 700; 
-    letter-spacing: 0.25em; 
+    letter-spacing: 0.2em; 
     color: var(--ganar-cyan); 
-    margin-top: 0.5rem; 
+    margin-top: 0.3rem; 
     display: block; 
+    line-height: 1.2;
 }
 
 /* =========================================
-   7. ボタン＆ニュースカードデザイン（サイバーくっきり化）
+   6. ボタン＆READ MORE・ニュースカードデザイン
    ========================================= */
 
+/* READ MORE / MORE VIEW 等の全ボタン共通サイバー装飾（強力上書き） */
+.cyber-btn,
+a.cyber-btn,
+button.cyber-btn,
+.read-more-btn,
+a.read-more-btn,
+button.read-more-btn,
+a[class*="read-more"],
+a[class*="more"],
+button[class*="read-more"],
+button[class*="more"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.85rem 2.8rem !important;
+    font-family: 'Montserrat', 'Chakra Petch', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.2em !important;
+    color: var(--ganar-cyan) !important;
+    background: rgba(5, 10, 20, 0.85) !important;
+    border: 1px solid var(--ganar-cyan) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.25) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    text-decoration: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+}
+
+.cyber-btn:hover,
+a.cyber-btn:hover,
+button.cyber-btn:hover,
+.read-more-btn:hover,
+a.read-more-btn:hover,
+button.read-more-btn:hover,
+a[class*="read-more"]:hover,
+a[class*="more"]:hover,
+button[class*="read-more"]:hover,
+button[class*="more"]:hover {
+    color: #000000 !important;
+    background: var(--ganar-cyan) !important;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.7) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* JSで自動生成されるニュースカード要素の見た目をCSS側で上書き */
 #news-container .cyber-card {
     background: rgba(10, 16, 28, 0.85) !important;
     border: 1px solid rgba(0, 240, 255, 0.25) !important;
@@ -342,33 +404,7 @@ header img {
     transform: translateY(-4px) !important;
 }
 
-.cyber-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.9rem 3rem;
-    font-family: 'Montserrat', 'Chakra Petch', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 800;
-    letter-spacing: 0.25em;
-    color: var(--ganar-cyan);
-    background: rgba(5, 10, 20, 0.8);
-    border: 1px solid var(--ganar-cyan);
-    border-radius: 4px;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.cyber-btn:hover {
-    color: #000000;
-    background: var(--ganar-cyan);
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
-    transform: translateY(-2px);
-}
-
+/* 水色メインボタン */
 .clean-btn-cyan {
     display: inline-flex;
     align-items: center;
@@ -394,38 +430,9 @@ header img {
     transform: translateY(-2px);
 }
 
-.clean-btn { 
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center; 
-    padding: 1rem 3.5rem; 
-    font-family: 'Montserrat', sans-serif; 
-    font-size: 0.9rem; 
-    font-weight: 700; 
-    letter-spacing: 0.2em; 
-    color: #ffffff; 
-    background: transparent; 
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    border-radius: 9999px; 
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
-}
+/* 汎用ボタン */
+.clean-btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 3.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.2em; color: #ffffff; background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 9999px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.clean-btn:hover { border-color: var(--ganar-cyan); color: #000000; background: var(--ganar-cyan); box-shadow: 0 0 25px rgba(0, 240, 255, 0.4); transform: translateY(-2px); }
 
-.clean-btn:hover { 
-    border-color: var(--ganar-cyan); 
-    color: #000000; 
-    background: var(--ganar-cyan); 
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.4); 
-    transform: translateY(-2px); 
-}
-
-.contact-form input, .contact-form select, .contact-form textarea { 
-    background-color: rgba(255, 255, 255, 0.03) !important; 
-    border: 1px solid rgba(255, 255, 255, 0.15) !important; 
-    color: #ffffff !important; 
-    border-radius: 0.375rem; 
-}
-
-.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { 
-    border-color: var(--ganar-cyan) !important; 
-    outline: none; 
-}
+.contact-form input, .contact-form select, .contact-form textarea { background-color: rgba(255, 255, 255, 0.03) !important; border: 1px solid rgba(255, 255, 255, 0.15) !important; color: #ffffff !important; border-radius: 0.375rem; }
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--ganar-cyan) !important; outline: none; }
